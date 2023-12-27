@@ -72,3 +72,7 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+ProjectBM/Binaries/
+ProjectBM/Intermediate/
+ProjectBM/Config/
+ProjectBM/Saved/
