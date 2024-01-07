@@ -72,3 +72,9 @@ void APC::Move(const FInputActionValue& Value)
 		AddMovementInput(Direction, InputValue.Y);
 	}
 }
+
+// 인터페이스 호출용
+void APC::OnDeath_Implementation()
+{
+
+}

@@ -4,10 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "BaseCharacterInterface.h"
 #include "BaseCharacter.generated.h"
 
+class UHealthComponent;
+
 UCLASS()
-class PROJECTBM_API ABaseCharacter : public ACharacter
+class PROJECTBM_API ABaseCharacter : public ACharacter, public IBaseCharacterInterface
 {
 	GENERATED_BODY()
 
@@ -22,4 +25,12 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+
+private:
+	// 체력 관리 컴포넌트
+	UHealthComponent* HealthComponent;
+
+public:
+	virtual void OnDeath_Implementation() override;
 };
