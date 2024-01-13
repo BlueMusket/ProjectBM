@@ -23,9 +23,6 @@ ABaseProjectile::ABaseProjectile()
 	// 피직스 시뮬은 Hit이벤트를 발생시킨다.
 	SphereComponent->SetNotifyRigidBodyCollision(true);
 
-	// 이벤트 바인드
-	SphereComponent->OnComponentHit.AddDynamic(this, &ABaseProjectile::OnHit);
-
 	// 충돌체를 Root로 둔다.
 	RootComponent = SphereComponent;
 
@@ -35,6 +32,11 @@ ABaseProjectile::ABaseProjectile()
 
 }
 
+void ABaseProjectile::BeginPlay()
+{
+	// 이벤트 바인드
+	SphereComponent->OnComponentHit.AddDynamic(this, &ABaseProjectile::OnHit);
+}
 
 void ABaseProjectile::OnHit(UPrimitiveComponent* HitComp
 						  , AActor* OtherActor, UPrimitiveComponent* OtherComp

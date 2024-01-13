@@ -17,6 +17,10 @@ class PROJECTBM_API ABaseProjectile : public ABaseActor
 public:
 	ABaseProjectile();
 
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
 public:
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp
