@@ -67,6 +67,7 @@ void APC::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 		}
 
 		EnhancedInputComponent->BindAction(IA_Move, ETriggerEvent::Triggered, this, &APC::Move);
+		EnhancedInputComponent->BindAction(IA_Jump, ETriggerEvent::Started, this, &APC::Jump);
 	}
 
 }
@@ -82,6 +83,20 @@ void APC::Move(const FInputActionValue& Value)
 		const FVector Direction = FRotationMatrix(YawRot).GetUnitAxis(EAxis::X);
 		AddMovementInput(Direction, InputValue.Y);
 	}
+}
+
+void APC::Jump(const FInputActionValue& Value)
+{
+	Super::Jump();
+	//FVector2D InputValue = Value.Get<FVector2D>();
+	//// FLT_EPSILON < FMath::Abs(value)
+	//if (NULL != Controller/* && 0.f != value*/)
+	//{
+	//	const FRotator Rot = Controller->GetControlRotation();
+	//	const FRotator YawRot(0, Rot.Yaw, 0);
+	//	const FVector Direction = FRotationMatrix(YawRot).GetUnitAxis(EAxis::X);
+	//	AddMovementInput(Direction, InputValue.Y);
+	//}
 }
 
 // 인터페이스 호출용

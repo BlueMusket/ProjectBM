@@ -37,11 +37,13 @@ public:
 	UPROPERTY(EditAnywhere, Category = Input)
 	class UInputAction* IA_Move;
 
-
+	UPROPERTY(EditAnywhere, Category = Input)
+	class UInputAction* IA_Jump;
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	void Move(const FInputActionValue& Value);
+	void Jump(const FInputActionValue& Value);
 
 private:
 	ABasePlayerController* PCController;
