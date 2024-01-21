@@ -11,6 +11,8 @@
  *
  */
 
+class ABasePlayerController;
+
 UCLASS()
 class PROJECTBM_API APC : public ABaseCharacter
 {
@@ -19,6 +21,10 @@ class PROJECTBM_API APC : public ABaseCharacter
 public:
 	APC();
 
+public:
+	virtual void BeginPlay() override;
+
+public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 	class USpringArmComponent* CameraArm;
 
@@ -37,6 +43,10 @@ public:
 
 	void Move(const FInputActionValue& Value);
 
+private:
+	ABasePlayerController* PCController;
+
 public:
 	virtual void OnDeath_Implementation() override final;
+	virtual void OnTakeDamage_Implementation() override final;
 };

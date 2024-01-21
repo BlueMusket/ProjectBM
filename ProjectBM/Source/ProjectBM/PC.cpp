@@ -7,15 +7,18 @@
 #include "GameFramework/DefaultPawn.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
+#include "Kismet/KismetSystemLibrary.h"
+
 #include "BasePlayerController.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubSystems.h"
 #include "InputMappingContext.h"
 #include "InputAction.h"
 #include "InputTriggers.h"
-
+#include "HealthComponent.h"
 APC::APC()
 	: Super()
+	, PCController(nullptr)
 {
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.f);
 
@@ -40,14 +43,22 @@ APC::APC()
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 }
 
+void APC::BeginPlay()
+{
+	Super::BeginPlay();
+
+	PCController->UpdateHealthPercent(HealthComponent->GetHealthPercent());
+}
+
+
 void APC::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent);
 
 	if (NULL != EnhancedInputComponent)
 	{
-		ABasePlayerController* PlayerController = Cast< ABasePlayerController>(Controller);
-		UEnhancedInputLocalPlayerSubsystem* EnhancedSubSystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer());
+		PCController = Cast< ABasePlayerController>(Controller);
+		UEnhancedInputLocalPlayerSubsystem* EnhancedSubSystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PCController->GetLocalPlayer());
 
 		if (NULL != EnhancedSubSystem)
 		{
@@ -76,5 +87,14 @@ void APC::Move(const FInputActionValue& Value)
 // 인터페이스 호출용
 void APC::OnDeath_Implementation()
 {
+	PCController->ShowRestartWidget();
 
+	//UKismetSystemLibrary::QuitGame(this, nullptr, EQuitPreference::Quit, true);
+}
+
+// 인터페이스 호출용
+void APC::OnTakeDamage_Implementation()
+{
+	PCController->UpdateHealthPercent(HealthComponent->GetHealthPercent());
+	//UKismetSystemLibrary::QuitGame(this, nullptr, EQuitPreference::Quit, true);
 }

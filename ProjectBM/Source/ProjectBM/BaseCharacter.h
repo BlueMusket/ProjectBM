@@ -27,10 +27,11 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 
-private:
+protected:
 	// 체력 관리 컴포넌트
 	UHealthComponent* HealthComponent;
 
 public:
 	virtual void OnDeath_Implementation() override;
+	virtual void OnTakeDamage_Implementation() override;
 };

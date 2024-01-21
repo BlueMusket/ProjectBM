@@ -30,3 +30,9 @@ void ABaseCharacter::OnDeath_Implementation()
 {
 
 }
+
+// 인터페이스 호출용
+void ABaseCharacter::OnTakeDamage_Implementation()
+{
+
+}

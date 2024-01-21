@@ -8,7 +8,6 @@
 // Sets default values for this component's properties
 UHealthComponent::UHealthComponent()
 	: Super()
-	, Health(MaxHealth)
 {
 	// Tick 이벤트는 X
 	PrimaryComponentTick.bCanEverTick = false;
@@ -22,8 +21,8 @@ void UHealthComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
-	
+	// 생성자에서 할당시 MaxHealth가 0이다.
+	Health = MaxHealth;
 }
 
 
@@ -42,6 +41,13 @@ void UHealthComponent::VaryHealth(float Value)
 
 
 	Health = FMath::Clamp(NewHealth, 0.f, MaxHealth);
+
+	if (OldHealth == Health)
+	{
+		return;
+	}
+
+	IBaseCharacterInterface::Execute_OnTakeDamage(GetOwner());
 
 	if (0.f == Health && true == GetOwner()->Implements<UBaseCharacterInterface>())
 	{
