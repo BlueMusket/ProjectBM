@@ -66,13 +66,14 @@ void APC::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 			EnhancedSubSystem->AddMappingContext(IC_PC, 1);
 		}
 
-		EnhancedInputComponent->BindAction(IA_Move, ETriggerEvent::Triggered, this, &APC::Move);
-		EnhancedInputComponent->BindAction(IA_Jump, ETriggerEvent::Started, this, &APC::Jump);
+		EnhancedInputComponent->BindAction(IA_Move, ETriggerEvent::Triggered, this, &APC::OnMove);
+		EnhancedInputComponent->BindAction(IA_Jump, ETriggerEvent::Started, this, &APC::OnJump);
+		EnhancedInputComponent->BindAction(IA_Throw, ETriggerEvent::Triggered, this, &APC::OnThrow);
 	}
 
 }
 
-void APC::Move(const FInputActionValue& Value)
+void APC::OnMove(const FInputActionValue& Value)
 {
 	FVector2D InputValue = Value.Get<FVector2D>();
 	// FLT_EPSILON < FMath::Abs(value)
@@ -85,18 +86,14 @@ void APC::Move(const FInputActionValue& Value)
 	}
 }
 
-void APC::Jump(const FInputActionValue& Value)
+void APC::OnJump(const FInputActionValue& Value)
 {
-	Super::Jump();
-	//FVector2D InputValue = Value.Get<FVector2D>();
-	//// FLT_EPSILON < FMath::Abs(value)
-	//if (NULL != Controller/* && 0.f != value*/)
-	//{
-	//	const FRotator Rot = Controller->GetControlRotation();
-	//	const FRotator YawRot(0, Rot.Yaw, 0);
-	//	const FVector Direction = FRotationMatrix(YawRot).GetUnitAxis(EAxis::X);
-	//	AddMovementInput(Direction, InputValue.Y);
-	//}
+	Jump();
+}
+
+void APC::OnThrow(const FInputActionValue& Value)
+{
+
 }
 
 // 인터페이스 호출용

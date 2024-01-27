@@ -15,13 +15,11 @@ ABaseActor::ABaseActor()
 void ABaseActor::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
 void ABaseActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 

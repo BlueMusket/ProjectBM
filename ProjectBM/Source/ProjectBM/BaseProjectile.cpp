@@ -3,6 +3,7 @@
 
 #include "BaseProjectile.h"
 #include "Components/SphereComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "PC.h"
 #include "HealthComponent.h"
@@ -10,10 +11,11 @@
 ABaseProjectile::ABaseProjectile()
 	: Super()
 {
+	//PrimaryActorTick.bCanEverTick = true;
+	// 
 	// 충돌용 Component 생성
-	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereCollision"));
+	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
 	SphereComponent->SetSphereRadius(35.f);
-
 	// 
 	SphereComponent->SetCollisionProfileName(FName("BaseProjectile"));
 
@@ -27,15 +29,31 @@ ABaseProjectile::ABaseProjectile()
 	RootComponent = SphereComponent;
 
 	// Movement 시작
-	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
-	ProjectileMovement->InitialSpeed = 1500.f;
+	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileComponent"));
+	ProjectileMovement->UpdatedComponent = SphereComponent;
+	ProjectileMovement->ProjectileGravityScale = 1.0f;
+	ProjectileMovement->InitialSpeed = 800.f;
+	ProjectileMovement->MaxSpeed = 800.f;
 
+	// 메시 시작
+	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
+	MeshComponent->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform); //권고 알람이 뜨는데  훔...
+	//MeshComponent->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+	
+	// 3초 후에 삭제
+	//InitialLifeSpan = 3.0f;
 }
 
 void ABaseProjectile::BeginPlay()
 {
+	Super::BeginPlay();
 	// 이벤트 바인드
 	SphereComponent->OnComponentHit.AddDynamic(this, &ABaseProjectile::OnHit);
+}
+
+void ABaseProjectile::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
 }
 
 void ABaseProjectile::OnHit(UPrimitiveComponent* HitComp
@@ -53,4 +71,6 @@ void ABaseProjectile::OnHit(UPrimitiveComponent* HitComp
 		}
 		Destroy();
 	}
+
+	//UE_LOG("");
 }

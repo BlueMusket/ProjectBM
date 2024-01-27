@@ -21,6 +21,9 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	// Called when the game starts or when spawned
+	virtual void Tick(float DeltaTime) override;
+
 public:
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp
@@ -34,6 +37,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Projectile, meta = (AllowPrivateAccecc = "true"))
 	class UProjectileMovementComponent* ProjectileMovement;
+
+	UPROPERTY(EditAnywhere, Category = Projectile)
+	class UStaticMeshComponent* MeshComponent;
 
 protected:
 	UPROPERTY(EditAnywhere, Category = Damage )
