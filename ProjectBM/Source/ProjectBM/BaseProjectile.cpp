@@ -3,7 +3,6 @@
 
 #include "BaseProjectile.h"
 #include "Components/SphereComponent.h"
-#include "Components/StaticMeshComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "PC.h"
 #include "HealthComponent.h"
@@ -35,11 +34,6 @@ ABaseProjectile::ABaseProjectile()
 	ProjectileMovement->InitialSpeed = 800.f;
 	ProjectileMovement->MaxSpeed = 800.f;
 
-	// 메시 시작
-	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
-	MeshComponent->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform); //권고 알람이 뜨는데  훔...
-	//MeshComponent->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
-	
 	// 3초 후에 삭제
 	//InitialLifeSpan = 3.0f;
 }

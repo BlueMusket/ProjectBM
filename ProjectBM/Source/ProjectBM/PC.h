@@ -10,6 +10,14 @@
 /**
  *
  */
+UENUM(BlueprintType)
+enum class EThrowState : uint8
+{
+	EThrowState_None UMETA(DisplayName="None"),
+	EThrowState_Ready UMETA(DisplayName="Ready"),
+	EThrowState_Throw UMETA(DisplayName = "Throw"),
+	EThrowState_Count UMETA(DisplayName = "Count"),
+};
 
 class ABasePlayerController;
 
@@ -23,6 +31,10 @@ public:
 
 public:
 	virtual void BeginPlay() override;
+
+public:
+	UFUNCTION(BlueprintCallable)
+	EThrowState GetThrowState();
 
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
@@ -48,10 +60,16 @@ public:
 
 	void OnMove(const FInputActionValue& Value);
 	void OnJump(const FInputActionValue& Value);
+	void OnThrowReady(const FInputActionValue& Value);
 	void OnThrow(const FInputActionValue& Value);
 
 private:
+	bool ChangeThrowState(EThrowState NewState);
+
+private:
 	ABasePlayerController* PCController;
+	EThrowState ThrowState;
+
 
 public:
 	virtual void OnDeath_Implementation() override final;

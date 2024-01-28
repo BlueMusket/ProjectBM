@@ -7,6 +7,7 @@
 #include "GameFramework/DefaultPawn.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
+#include "Animation/AnimInstance.h"
 #include "Kismet/KismetSystemLibrary.h"
 
 #include "BasePlayerController.h"
@@ -16,9 +17,11 @@
 #include "InputAction.h"
 #include "InputTriggers.h"
 #include "HealthComponent.h"
+
 APC::APC()
 	: Super()
 	, PCController(nullptr)
+	, ThrowState(EThrowState::EThrowState_None)
 {
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.f);
 
@@ -50,6 +53,11 @@ void APC::BeginPlay()
 	PCController->UpdateHealthPercent(HealthComponent->GetHealthPercent());
 }
 
+EThrowState APC::GetThrowState()
+{
+	return EThrowState();
+}
+
 
 void APC::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -67,7 +75,8 @@ void APC::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 		}
 
 		EnhancedInputComponent->BindAction(IA_Move, ETriggerEvent::Triggered, this, &APC::OnMove);
-		EnhancedInputComponent->BindAction(IA_Jump, ETriggerEvent::Started, this, &APC::OnJump);
+		//EnhancedInputComponent->BindAction(IA_Jump, ETriggerEvent::Started, this, &APC::OnJump);
+		EnhancedInputComponent->BindAction(IA_Jump, ETriggerEvent::Started, this, &APC::OnThrowReady);
 		EnhancedInputComponent->BindAction(IA_Throw, ETriggerEvent::Triggered, this, &APC::OnThrow);
 	}
 
@@ -91,9 +100,70 @@ void APC::OnJump(const FInputActionValue& Value)
 	Jump();
 }
 
+void APC::OnThrowReady(const FInputActionValue& Value)
+{
+	if (false == ChangeThrowState(EThrowState::EThrowState_Ready))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("APC::OnThrowReady Fail"));
+		return;
+	}
+
+	//if (nullptr != Anim_ThrowReady)
+	//{
+	//	//GetMesh()->GetAnimInstance()->AnimSeq(Anim_ThrowReady, false);
+	//}
+}
+
 void APC::OnThrow(const FInputActionValue& Value)
 {
+	if (false == ChangeThrowState(EThrowState::EThrowState_Throw))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("APC::OnThrowReady Fail"));
+		return;
+	}
+}
 
+bool APC::ChangeThrowState(EThrowState NewState)
+{
+	switch (NewState)
+	{
+		case EThrowState::EThrowState_None:
+		{
+			if (EThrowState::EThrowState_Throw != ThrowState)
+			{
+				return false;
+			}
+		}
+		break;
+		
+		case EThrowState::EThrowState_Ready:
+		{
+			if (EThrowState::EThrowState_Throw != ThrowState)
+			{
+				return false;
+			}
+		}
+		break;
+		
+		case EThrowState::EThrowState_Throw:
+		{
+			if (EThrowState::EThrowState_Ready != ThrowState)
+			{
+				return false;
+			}
+		}
+		break;
+	
+		case EThrowState::EThrowState_Count:
+		default:
+		{
+			return false;
+		}
+	}
+
+	ThrowState = NewState;
+
+	return true;
 }
 
 // 인터페이스 호출용

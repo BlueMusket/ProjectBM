@@ -38,9 +38,6 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Projectile, meta = (AllowPrivateAccecc = "true"))
 	class UProjectileMovementComponent* ProjectileMovement;
 
-	UPROPERTY(EditAnywhere, Category = Projectile)
-	class UStaticMeshComponent* MeshComponent;
-
 protected:
 	UPROPERTY(EditAnywhere, Category = Damage )
 	float Damage = 34.f;
