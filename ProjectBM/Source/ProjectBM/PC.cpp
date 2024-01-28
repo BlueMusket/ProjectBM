@@ -3,6 +3,7 @@
 
 #include "PC.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/DefaultPawn.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -11,6 +12,7 @@
 #include "Kismet/KismetSystemLibrary.h"
 
 #include "BasePlayerController.h"
+#include "BaseProjectile.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubSystems.h"
 #include "InputMappingContext.h"
@@ -55,9 +57,8 @@ void APC::BeginPlay()
 
 EThrowState APC::GetThrowState()
 {
-	return EThrowState();
+	return ThrowState;
 }
-
 
 void APC::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -76,7 +77,7 @@ void APC::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 		EnhancedInputComponent->BindAction(IA_Move, ETriggerEvent::Triggered, this, &APC::OnMove);
 		//EnhancedInputComponent->BindAction(IA_Jump, ETriggerEvent::Started, this, &APC::OnJump);
-		EnhancedInputComponent->BindAction(IA_Jump, ETriggerEvent::Started, this, &APC::OnThrowReady);
+		EnhancedInputComponent->BindAction(IA_Jump, ETriggerEvent::Started, this, &APC::OnShootRelease); // 임시, 슈팅 종료 이벤트로 들어와야한다.
 		EnhancedInputComponent->BindAction(IA_Throw, ETriggerEvent::Triggered, this, &APC::OnThrow);
 	}
 
@@ -100,70 +101,84 @@ void APC::OnJump(const FInputActionValue& Value)
 	Jump();
 }
 
-void APC::OnThrowReady(const FInputActionValue& Value)
+void APC::OnShootRelease(const FInputActionValue& Value)
 {
-	if (false == ChangeThrowState(EThrowState::EThrowState_Ready))
-	{
-		UE_LOG(LogTemp, Warning, TEXT("APC::OnThrowReady Fail"));
-		return;
-	}
-
-	//if (nullptr != Anim_ThrowReady)
-	//{
-	//	//GetMesh()->GetAnimInstance()->AnimSeq(Anim_ThrowReady, false);
-	//}
+	ThrowState = EThrowState::EThrowState_None;
 }
 
 void APC::OnThrow(const FInputActionValue& Value)
 {
-	if (false == ChangeThrowState(EThrowState::EThrowState_Throw))
+	FVector2D InputValue = Value.Get<FVector2D>();
+
+	if (1 == InputValue.X) // 누르는중
 	{
-		UE_LOG(LogTemp, Warning, TEXT("APC::OnThrowReady Fail"));
-		return;
+		ThrowNextStep();
+	}
+	else if (0 == InputValue.X) // 키땜
+	{
+		ThrowRelease();
 	}
 }
 
-bool APC::ChangeThrowState(EThrowState NewState)
+void APC::SpawnProjectile()
 {
-	switch (NewState)
+	if (nullptr == BP_PlayerProjectile)
 	{
-		case EThrowState::EThrowState_None:
-		{
-			if (EThrowState::EThrowState_Throw != ThrowState)
-			{
-				return false;
-			}
-		}
-		break;
-		
-		case EThrowState::EThrowState_Ready:
-		{
-			if (EThrowState::EThrowState_Throw != ThrowState)
-			{
-				return false;
-			}
-		}
-		break;
-		
-		case EThrowState::EThrowState_Throw:
-		{
-			if (EThrowState::EThrowState_Ready != ThrowState)
-			{
-				return false;
-			}
-		}
-		break;
-	
-		case EThrowState::EThrowState_Count:
-		default:
-		{
-			return false;
-		}
+		return;
 	}
 
-	ThrowState = NewState;
+	UWorld* World = GetWorld();
 
-	return true;
+	if (nullptr == World)
+	{
+		return;
+	}
+
+	FActorSpawnParameters SpawnParams;
+	SpawnParams.Owner = this;
+
+	const FVector SpawnLocation = GetMesh()->GetSocketLocation(FName("ProjectileSocket"));
+	const FRotator Rotation = GetActorForwardVector().Rotation();
+
+	ABaseProjectile* NewProjectile = World->SpawnActor<ABaseProjectile>(BP_PlayerProjectile, SpawnLocation, Rotation, SpawnParams);
+}
+
+void APC::ThrowNextStep()
+{
+	switch (ThrowState)
+	{
+		case EThrowState::EThrowState_None: // 각도 조절 시작
+		{
+			ThrowState = EThrowState::EThrowState_Angle;
+		}
+		break;
+		
+		case EThrowState::EThrowState_AngleEnd:
+		{
+			ThrowState = EThrowState::EThrowState_Power;
+		}
+		break;
+	}
+}
+
+void APC::ThrowRelease()
+{
+	switch (ThrowState)
+	{
+		case EThrowState::EThrowState_Angle:
+		{
+			// 뭔가 이벤트 처리?
+			ThrowState = EThrowState::EThrowState_AngleEnd;
+		}
+		break;
+
+		case EThrowState::EThrowState_Power:
+		{
+			// 바로 슈팅
+			ThrowState = EThrowState::EThrowState_Shoot;
+		}
+		break;
+	}
 }
 
 // 인터페이스 호출용

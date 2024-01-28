@@ -2,11 +2,18 @@
 
 
 #include "Anim_ProjectileNotify.h"
+#include "PC.h"
 
 void UAnim_ProjectileNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation
 								  , const FAnimNotifyEventReference& EventReference)
 {
-	Super::Notify(MeshComp, Animation, EventReference);
+ 	Super::Notify(MeshComp, Animation, EventReference);
 
-	UE_LOG(LogTemp, Warning, TEXT("Throw Notify"));
+	APC* Pc = Cast<APC>(MeshComp->GetOwner());
+	if (nullptr == Pc)
+	{
+		return;
+	}
+
+	Pc->SpawnProjectile();
 }

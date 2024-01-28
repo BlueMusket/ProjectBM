@@ -14,6 +14,7 @@ ABaseProjectile::ABaseProjectile()
 	// 
 	// 충돌용 Component 생성
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
+
 	SphereComponent->SetSphereRadius(35.f);
 	// 
 	SphereComponent->SetCollisionProfileName(FName("BaseProjectile"));
@@ -33,9 +34,9 @@ ABaseProjectile::ABaseProjectile()
 	ProjectileMovement->ProjectileGravityScale = 1.0f;
 	ProjectileMovement->InitialSpeed = 800.f;
 	ProjectileMovement->MaxSpeed = 800.f;
-
+	PostInitializeComponents();
 	// 3초 후에 삭제
-	//InitialLifeSpan = 3.0f;
+	InitialLifeSpan = 10.0f;
 }
 
 void ABaseProjectile::BeginPlay()
@@ -55,16 +56,16 @@ void ABaseProjectile::OnHit(UPrimitiveComponent* HitComp
 						  , FVector NormalImpulse, const FHitResult& Hit)
 {
 	APC* PC = Cast<APC>(OtherActor);
-	if ( NULL != PC)
-	{
-		UHealthComponent* HealthComponent = PC->FindComponentByClass<UHealthComponent>();
+	//if ( NULL != PC)
+	//{
+	//	UHealthComponent* HealthComponent = PC->FindComponentByClass<UHealthComponent>();
 
-		if (NULL != HealthComponent)
-		{
-			HealthComponent->VaryHealth(-Damage);
-		}
-		Destroy();
-	}
+	//	if (NULL != HealthComponent)
+	//	{
+	//		HealthComponent->VaryHealth(-Damage);
+	//	}
+	//	Destroy();
+	//}
 
 	//UE_LOG("");
 }
