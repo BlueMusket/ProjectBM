@@ -56,16 +56,16 @@ void ABaseProjectile::OnHit(UPrimitiveComponent* HitComp
 						  , FVector NormalImpulse, const FHitResult& Hit)
 {
 	APC* PC = Cast<APC>(OtherActor);
-	//if ( NULL != PC)
-	//{
-	//	UHealthComponent* HealthComponent = PC->FindComponentByClass<UHealthComponent>();
+	if ( NULL != PC)
+	{
+		UHealthComponent* HealthComponent = PC->FindComponentByClass<UHealthComponent>();
 
-	//	if (NULL != HealthComponent)
-	//	{
-	//		HealthComponent->VaryHealth(-Damage);
-	//	}
-	//	Destroy();
-	//}
+		if (NULL != HealthComponent)
+		{
+			HealthComponent->VaryHealth(-Damage);
+		}
+		Destroy();
+	}
 
 	//UE_LOG("");
 }
