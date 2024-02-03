@@ -3,12 +3,16 @@
 
 #include "BaseCharacter.h"
 #include "HealthComponent.h"
+#include "AttackComponent.h"
 
 ABaseCharacter::ABaseCharacter()
 	: Super()
 {
 	// 체력 관리 컴포넌트 추가
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
+
+	// 공격 관리 컴포넌트 추가
+	AttackComponent = CreateDefaultSubobject<UAttackComponent>(TEXT("AttackComponent"));
 }
 
 // Called when the game starts or when spawned

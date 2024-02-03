@@ -46,6 +46,7 @@ void ABaseProjectile::BeginPlay()
 	SphereComponent->OnComponentHit.AddDynamic(this, &ABaseProjectile::OnHit);
 }
 
+
 void ABaseProjectile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);

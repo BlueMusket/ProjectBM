@@ -9,10 +9,16 @@ void ABasePlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
+	ENetRole MyLocalRole = GetLocalRole();
+	ENetRole MyRemoteRole = GetRemoteRole();
+
 	if (nullptr != BP_HUDWidget)
 	{
 		HUDWidget = CreateWidget<UHUDWidget>(this, BP_HUDWidget);
-		HUDWidget->AddToViewport();
+		if (nullptr != HUDWidget)
+		{
+			HUDWidget->AddToViewport();
+		}
 	}
 }
 
@@ -25,7 +31,10 @@ void ABasePlayerController::ShowRestartWidget()
 
 		SetShowMouseCursor(true);
 		RestartWidget = CreateWidget<URestartWidget>(this, BP_RestartWidget);
-		RestartWidget->AddToViewport();
+		if (nullptr != RestartWidget)
+		{
+			RestartWidget->AddToViewport();
+		}
 	}
 }
 

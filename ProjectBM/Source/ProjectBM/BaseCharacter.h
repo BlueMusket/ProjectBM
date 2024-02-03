@@ -31,6 +31,9 @@ protected:
 	// 체력 관리 컴포넌트
 	UHealthComponent* HealthComponent;
 
+	// 공격 관리 컴포넌트
+	UAttackComponent* AttackComponent;
+
 public:
 	virtual void OnDeath_Implementation() override;
 	virtual void OnTakeDamage_Implementation() override;
