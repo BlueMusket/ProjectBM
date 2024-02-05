@@ -17,7 +17,13 @@ class PROJECTBM_API ABasePlayerController : public APlayerController
 public:
 	virtual void BeginPlay() override;
 
+	// Server only
+	virtual void OnPossess(APawn* InPawn) override;
+
+	// PlayerState 세팅 반응
+	virtual void OnRep_PlayerState() override;
 public:
+	void CreateHUD();
 	void ShowRestartWidget();
 	void HideRestartWidget();
 	void UpdateHealthPercent(float HealthPercent);

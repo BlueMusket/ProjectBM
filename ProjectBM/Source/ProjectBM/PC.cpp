@@ -53,6 +53,10 @@ void APC::BeginPlay()
 	Super::BeginPlay();
 
 	PCController->UpdateHealthPercent(HealthComponent->GetHealthPercent());
+
+#if UE_SERVER
+
+#endif
 }
 
 EThrowState APC::GetThrowState()

@@ -8,6 +8,7 @@
 #include "BaseCharacter.generated.h"
 
 class UHealthComponent;
+class UAttackComponent;
 
 UCLASS()
 class PROJECTBM_API ABaseCharacter : public ACharacter, public IBaseCharacterInterface
