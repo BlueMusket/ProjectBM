@@ -4,6 +4,7 @@
 #include "BasePlayerController.h"
 #include "RestartWidget.h"
 #include "HUDWidget.h"
+#include "BaseCharacter.h"
 
 void ABasePlayerController::BeginPlay()
 {
@@ -14,6 +15,33 @@ void ABasePlayerController::BeginPlay()
 
 
 }
+
+void ABasePlayerController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	const FString SessionIdStr = FString::Printf(TEXT("SessionId : %d"), EntryInfo.GetSessionId());
+
+	ABaseCharacter* BaseCharacter = GetPawn<ABaseCharacter>();
+
+	if (!IsValid(BaseCharacter))
+	{
+		return;
+	}
+
+	FVector Location = BaseCharacter->GetActorLocation();
+
+	if (true == IsLocalController()) // 서버
+	{
+		Location.Z += 10;
+		DrawDebugString(GetWorld(), Location, SessionIdStr, nullptr, FColor::Red, 0.0f, true);
+	}
+	else // 클라이언트
+	{
+		DrawDebugString(GetWorld(), Location, SessionIdStr, nullptr, FColor::White, 0.0f, true);
+	}
+}
+
 
 void ABasePlayerController::CreateHUD()
 {
@@ -57,6 +85,16 @@ void ABasePlayerController::UpdateHealthPercent(float HealthPercent)
 	//{
 	//	HUDWidget->UpdateHealthPercent(HealthPercent);
 	//}
+}
+
+void ABasePlayerController::SetSessionId(int32 NewSessionId)
+{
+	EntryInfo.SetSessionId(NewSessionId);
+}
+
+int ABasePlayerController::GetSessionId()
+{
+	return EntryInfo.GetSessionId();
 }
 
 // Server only

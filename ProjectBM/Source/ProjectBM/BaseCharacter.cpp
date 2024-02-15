@@ -22,6 +22,31 @@ void ABaseCharacter::BeginPlay()
 	
 }
 
+
+bool ABaseCharacter::IsNetRelevantFor(const AActor* RealViewer, const AActor* ViewTarget, const FVector& SrcLocation) const
+{
+	bool result = false;
+
+	do
+	{
+		if (false == Super::IsNetRelevantFor(RealViewer, ViewTarget, SrcLocation))
+		{
+			break;
+		}
+
+
+		result = true;
+
+	} while (false);
+
+	return result;
+}
+
+void ABaseCharacter::GetLifetimeReplicatedProps(TArray< FLifetimeProperty >& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+}
+
 // Called every frame
 void ABaseCharacter::Tick(float DeltaTime)
 {

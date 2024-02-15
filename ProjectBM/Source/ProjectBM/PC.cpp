@@ -59,6 +59,18 @@ void APC::BeginPlay()
 #endif
 }
 
+void APC::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	//if (IsValid(PCController))
+	//{
+	//	CEntryInfo* EntryInfo = PCController->GetEntryInfo();
+	//	const FString SessionIdStr = FString::Printf(TEXT("SessionId : %d"), EntryInfo->GetSessionId());
+
+	//	DrawDebugString(GetWorld(), GetActorLocation(), SessionIdStr, nullptr, FColor::White, 0.0f, true);
+	//}
+}
+
 EThrowState APC::GetThrowState()
 {
 	return ThrowState;

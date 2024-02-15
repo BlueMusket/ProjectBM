@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "EntryInfo.h"
 #include "BasePlayerController.generated.h"
 
 /**
@@ -16,7 +17,7 @@ class PROJECTBM_API ABasePlayerController : public APlayerController
 
 public:
 	virtual void BeginPlay() override;
-
+	virtual void Tick(float DeltaTime) override;
 	// Server only
 	virtual void OnPossess(APawn* InPawn) override;
 
@@ -27,6 +28,11 @@ public:
 	void ShowRestartWidget();
 	void HideRestartWidget();
 	void UpdateHealthPercent(float HealthPercent);
+
+public:
+	void SetSessionId(int32 NewSessionId);
+	int GetSessionId();
+	CEntryInfo* GetEntryInfo() { return &EntryInfo; }
 
 public:
 	UPROPERTY(EditDefaultsOnly)
@@ -41,4 +47,7 @@ private:
 
 	UPROPERTY()
 	class UHUDWidget* HUDWidget;
+
+private:
+	CEntryInfo EntryInfo;
 };

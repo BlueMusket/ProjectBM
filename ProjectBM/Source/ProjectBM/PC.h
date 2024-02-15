@@ -33,6 +33,7 @@ public:
 
 public:
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
 
 public:
 	UFUNCTION(BlueprintCallable)
