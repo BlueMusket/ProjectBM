@@ -5,78 +5,68 @@
 #include "RestartWidget.h"
 #include "HUDWidget.h"
 #include "BaseCharacter.h"
+#include "PCEntryInfo.h"
+#include "Net/UnrealNetwork.h"
+
+ABasePlayerController::ABasePlayerController(const FObjectInitializer& ObjectInitializer/* = FObjectInitializer::Get()*/)
+	: Super(ObjectInitializer)
+	, RestartWidget(nullptr)
+	, HUDWidget(nullptr)
+	, AdminWidget(nullptr)
+{
+	// 리플리케이션 활성화
+	bReplicates = true;
+
+	// PCEntryInfo 인스턴스 생성 및 초기화
+	//if (HasAuthority())
+	{
+		PCEntryInfo = NewObject<UPCEntryInfo>();
+	}
+}
+
+void ABasePlayerController::Deserialize(int NewSessionId, int NewPartyId, int NewUserId)
+{
+	PCEntryInfo->Deserialize(NewSessionId, NewPartyId, NewUserId);
+}
 
 void ABasePlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	ENetRole MyLocalRole = GetLocalRole();
-	ENetRole MyRemoteRole = GetRemoteRole();
 
-
+	//ENetRole MyLocalRole = GetLocalRole();
+	//ENetRole MyRemoteRole = GetRemoteRole();
 }
 
 void ABasePlayerController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	const FString SessionIdStr = FString::Printf(TEXT("SessionId : %d"), EntryInfo.GetSessionId());
-
-	ABaseCharacter* BaseCharacter = GetPawn<ABaseCharacter>();
-
-	if (!IsValid(BaseCharacter))
+	if (nullptr != PCEntryInfo)
 	{
-		return;
-	}
+		const FString SessionIdStr = FString::Printf(TEXT("SessionId : %d"), PCEntryInfo->GetSessionId());
 
-	FVector Location = BaseCharacter->GetActorLocation();
+		ABaseCharacter* BaseCharacter = GetPawn<ABaseCharacter>();
 
-	if (true == IsLocalController()) // 서버
-	{
-		Location.Z += 10;
-		DrawDebugString(GetWorld(), Location, SessionIdStr, nullptr, FColor::Red, 0.0f, true);
-	}
-	else // 클라이언트
-	{
-		DrawDebugString(GetWorld(), Location, SessionIdStr, nullptr, FColor::White, 0.0f, true);
-	}
-}
-
-
-void ABasePlayerController::CreateHUD()
-{
-	if (nullptr != BP_HUDWidget)
-	{
-		HUDWidget = CreateWidget<UHUDWidget>(this, BP_HUDWidget);
-		if (nullptr != HUDWidget)
+		if (!IsValid(BaseCharacter))
 		{
-			HUDWidget->AddToViewport();
+			return;
+		}
+
+		FVector Location = BaseCharacter->GetActorLocation();
+
+		ENetRole MyLocalRole = GetLocalRole();
+
+		if (ENetRole::ROLE_Authority == MyLocalRole) // 서버
+		{
+			Location.Z += 10;
+			DrawDebugString(GetWorld(), Location, SessionIdStr, nullptr, FColor::Red, 0.0f, true);
+		}
+		else // 클라이언트
+		{
+			DrawDebugString(GetWorld(), Location, SessionIdStr, nullptr, FColor::White, 0.0f, true);
 		}
 	}
-}
-
-void ABasePlayerController::ShowRestartWidget()
-{
-	//if (nullptr != BP_RestartWidget)
-	//{
-	//	SetPause(true);
-	//	SetInputMode(FInputModeGameAndUI());
-
-	//	SetShowMouseCursor(true);
-	//	RestartWidget = CreateWidget<URestartWidget>(this, BP_RestartWidget);
-	//	if (nullptr != RestartWidget)
-	//	{
-	//		RestartWidget->AddToViewport();
-	//	}
-	//}
-}
-
-void ABasePlayerController::HideRestartWidget()
-{
-	//RestartWidget->RemoveFromParent();
-	//RestartWidget->Destruct();
-	//SetPause(false);
-	//SetShowMouseCursor(false);
 }
 
 void ABasePlayerController::UpdateHealthPercent(float HealthPercent)
@@ -87,14 +77,12 @@ void ABasePlayerController::UpdateHealthPercent(float HealthPercent)
 	//}
 }
 
-void ABasePlayerController::SetSessionId(int32 NewSessionId)
+void ABasePlayerController::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
-	EntryInfo.SetSessionId(NewSessionId);
-}
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-int ABasePlayerController::GetSessionId()
-{
-	return EntryInfo.GetSessionId();
+	// EntryInfo의 리플리케이션 설정
+	DOREPLIFETIME(ABasePlayerController, PCEntryInfo);
 }
 
 // Server only
@@ -108,6 +96,12 @@ void ABasePlayerController::OnPossess(APawn* InPawn)
 	//	// Init ASC with PS (Owner) and our new Pawn (AvatarActor)
 	//	PS->GetAbilitySystemComponent()->InitAbilityActorInfo(PS, InPawn);
 	//}
+}
+
+
+void ABasePlayerController::OnRep_EntryInfo()
+{
+
 }
 
 void ABasePlayerController::OnRep_PlayerState()

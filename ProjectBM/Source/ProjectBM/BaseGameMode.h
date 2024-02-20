@@ -6,7 +6,6 @@
 #include "GameFramework/GameModeBase.h"
 #include "BaseGameMode.generated.h"
 
-class CEntryBuilder;
 /**
  * 
  */
@@ -29,8 +28,4 @@ public:
 
 	// 플레이어가 접속한 후 호출되는 함수
 	virtual void PostLogin(APlayerController* NewPlayer) override;
-
-
-private:
-	CEntryBuilder* EntryBuilder;
 };

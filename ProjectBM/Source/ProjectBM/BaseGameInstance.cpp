@@ -9,10 +9,15 @@ void UBaseGameInstance::Init()
 	Super::Init();
 }
 
-void UBaseGameInstance::CommandSetSessionId(FString SessionIdStr)
+void UBaseGameInstance::SetSessionId(FString SessionIdStr)
 {
 	const int NewSessionId = FCString::Atoi(*SessionIdStr);
 
+	CmdSessionId = NewSessionId;
+}
+
+void UBaseGameInstance::AdminWidget()
+{
 	UWorld* World = GetWorld();
 
 	ABasePlayerController* PlayerController = World->GetFirstPlayerController<ABasePlayerController>();
@@ -21,5 +26,5 @@ void UBaseGameInstance::CommandSetSessionId(FString SessionIdStr)
 		return;
 	}
 
-	PlayerController->SetSessionId(NewSessionId);
+	PlayerController->ToggleAdminWidget();
 }

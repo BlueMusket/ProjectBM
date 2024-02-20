@@ -11,9 +11,12 @@ class ABasePlayerController;
 class PROJECTBM_API CEntryBuilder
 {
 public:
-	CEntryBuilder();
+	CEntryBuilder(ABasePlayerController* Target);
 	~CEntryBuilder();
 
 public:
-	void Build(ABasePlayerController* PlayerController);
+	void Build(const FString& Options);
+
+private:
+	ABasePlayerController* PlayerController;
 };

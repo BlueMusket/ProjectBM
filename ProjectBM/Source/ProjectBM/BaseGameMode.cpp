@@ -7,7 +7,6 @@
 
 ABaseGameMode::ABaseGameMode(const FObjectInitializer& ObjectInitializer)
     : Super(ObjectInitializer)
-    , EntryBuilder( new CEntryBuilder() )
 {
 }
 
@@ -33,7 +32,24 @@ void ABaseGameMode::PreLogin(const FString& Options, const FString& Address, con
 
 APlayerController* ABaseGameMode::Login(UPlayer* NewPlayer, ENetRole InRemoteRole, const FString& Portal, const FString& Options, const FUniqueNetIdRepl& UniqueId, FString& ErrorMessage)
 {
-    return Super::Login(NewPlayer, InRemoteRole, Portal, Options, UniqueId, ErrorMessage);
+    APlayerController* BaseController = Super::Login(NewPlayer, InRemoteRole, Portal, Options, UniqueId, ErrorMessage);
+
+    do
+    {
+        ABasePlayerController* NewPlayerController = Cast<ABasePlayerController>(BaseController);
+
+        if (!IsValid(NewPlayerController))
+        {
+            break;
+        }
+
+        CEntryBuilder Builder(NewPlayerController);
+        Builder.Build(Options);
+
+
+    } while (false);
+
+    return BaseController;
 }
 
 
@@ -48,6 +64,4 @@ void ABaseGameMode::PostLogin(APlayerController* NewPlayer)
     }
 
 	UE_LOG(LogTemp, Log, TEXT("플레이어가 게임에 접속했습니다: %s"), *NewPlayer->GetName());
-
-    EntryBuilder->Build(Cast<ABasePlayerController>(NewPlayer));
 }

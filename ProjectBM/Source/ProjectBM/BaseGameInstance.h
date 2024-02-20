@@ -4,10 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
-#include "EntryInfo.h"
 #include "BaseGameInstance.generated.h"
 
-class UConsoleCommand;
 /**
  * 
  */
@@ -20,13 +18,15 @@ public:
 	virtual void Init() override;
 
 public:
-	UFUNCTION(Exec)
-	 void CommandSetSessionId(FString SessionIdStr);
+	int GetCmdSessionId() { return CmdSessionId; }
 
 public:
-	CEntryInfo* GetEntryInfo() { return &EntryInfo; }
+	UFUNCTION(Exec)
+	void SetSessionId(FString SessionIdStr);
+
+	UFUNCTION(Exec)
+	void AdminWidget();
 
 private:
-	UConsoleCommand* ConsoleCommand;
-	CEntryInfo EntryInfo;
+	int CmdSessionId;
 };
