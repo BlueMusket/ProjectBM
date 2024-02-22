@@ -4,6 +4,8 @@
 #include "BaseCharacter.h"
 #include "HealthComponent.h"
 #include "AttackComponent.h"
+#include "BasePlayerController.h"
+#include "PCEntryInfo.h"
 
 ABaseCharacter::ABaseCharacter()
 	: Super()
@@ -34,6 +36,26 @@ bool ABaseCharacter::IsNetRelevantFor(const AActor* RealViewer, const AActor* Vi
 			break;
 		}
 
+		const ABasePlayerController* TargetPlayerController = Cast<ABasePlayerController>(RealViewer);
+		const ABasePlayerController* OwnerPlayerController = Cast<ABasePlayerController>(Controller);
+
+		if (nullptr == TargetPlayerController || nullptr == OwnerPlayerController)
+		{
+			break;
+		}
+
+		UPCEntryInfo* TargetEntryInfo = TargetPlayerController->PCEntryInfo;
+		UPCEntryInfo* OwnerEntryInfo = OwnerPlayerController->PCEntryInfo;
+
+		if (nullptr == TargetEntryInfo || nullptr == OwnerEntryInfo)
+		{
+			break;
+		}
+
+		if (TargetEntryInfo->GetSessionId() != OwnerEntryInfo->GetSessionId())
+		{
+			break;
+		}
 
 		result = true;
 
