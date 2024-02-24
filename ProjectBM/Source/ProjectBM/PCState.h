@@ -14,4 +14,10 @@ class PROJECTBM_API APCState : public APlayerState
 {
 	GENERATED_BODY()
 	
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackInfo")
+	float AttackAngle;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackInfo")
+	float AttackPower;
 };
