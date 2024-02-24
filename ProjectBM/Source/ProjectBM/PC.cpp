@@ -108,7 +108,7 @@ void APC::SpawnProjectile()
 // 인터페이스 호출용
 void APC::OnDeath_Implementation()
 {
-	PCController->ShowRestartWidget();
+	//PCController->ShowRestartWidget();
 
 	//UKismetSystemLibrary::QuitGame(this, nullptr, EQuitPreference::Quit, true);
 }

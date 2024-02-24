@@ -6,16 +6,15 @@
 #include "HUDWidget.h"
 #include "BaseCharacter.h"
 #include "PCEntryInfo.h"
+#include "WidgetContextComponent.h"
 #include "Net/UnrealNetwork.h"
 
 ABasePlayerController::ABasePlayerController(const FObjectInitializer& ObjectInitializer/* = FObjectInitializer::Get()*/)
 	: Super(ObjectInitializer)
-	, RestartWidget(nullptr)
-	, HUDWidget(nullptr)
-	, AdminWidget(nullptr)
 {
 	// 리플리케이션 활성화
 	bReplicates = true;
+	WidgetContext = CreateDefaultSubobject<UWidgetContextComponent>(TEXT("WidgetContext"));
 
 	// PCEntryInfo 인스턴스 생성 및 초기화
 	//if (HasAuthority())
@@ -109,6 +108,6 @@ void ABasePlayerController::OnRep_PlayerState()
 	Super::OnRep_PlayerState();
 
 	// For edge cases where the PlayerState is repped before the Hero is possessed.
-	CreateHUD();
+	// CreateHUD();
 }
 

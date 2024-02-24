@@ -6,6 +6,7 @@
 #include "GameFramework/PlayerController.h"
 #include "BasePlayerController.generated.h"
 
+class UWidgetContextComponent;
 class UPCEntryInfo;
 /**
  * 
@@ -30,13 +31,6 @@ public:
 	// PlayerState 세팅 반응
 	virtual void OnRep_PlayerState() override;
 
-public: // widget
-	void CreateHUD();
-	void ShowRestartWidget();
-	void HideRestartWidget();
-	void ToggleAdminWidget();
-
-
 public:
 	void UpdateHealthPercent(float HealthPercent);
 
@@ -45,24 +39,8 @@ public:
 	void OnRep_EntryInfo();
 
 public: // widget
-	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<class URestartWidget> BP_RestartWidget;
-
-	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<class UHUDWidget> BP_HUDWidget;
-
-	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<class UAdminWidget> BP_AdminWidget;
-
-private: // widget
-	UPROPERTY()
-	class URestartWidget* RestartWidget;
-
-	UPROPERTY()
-	class UHUDWidget* HUDWidget;
-
-	UPROPERTY()
-	class UAdminWidget* AdminWidget;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+	class UWidgetContextComponent* WidgetContext;
 
 public:
 	UPROPERTY(ReplicatedUsing = OnRep_EntryInfo, VisibleAnywhere, BlueprintReadOnly, Category = "Player")

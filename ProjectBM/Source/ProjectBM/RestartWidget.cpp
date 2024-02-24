@@ -20,7 +20,7 @@ void URestartWidget::OnRestartClicked()
 	ABasePlayerController* PlayerController = Cast< ABasePlayerController>(GetOwningPlayer());
 	if (nullptr != PlayerController)
 	{
-		PlayerController->HideRestartWidget();
+		//PlayerController->HideRestartWidget();
 	}
 
 	UGameplayStatics::OpenLevel(this, FName(*UGameplayStatics::GetCurrentLevelName(this)));
