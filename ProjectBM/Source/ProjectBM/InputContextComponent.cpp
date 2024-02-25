@@ -91,6 +91,9 @@ void UInputContextComponent::OnJump(const FInputActionValue& Value)
 void UInputContextComponent::OnThrow(const FInputActionValue& Value)
 {
 	FVector2D InputValue = Value.Get<FVector2D>();
+
+	APC* OwnerCharacter = Cast<APC>(GetOwner());
+	OwnerCharacter->OnThrow();
 }
 
 
@@ -98,6 +101,13 @@ void UInputContextComponent::OnAngle(const FInputActionValue& Value)
 {
 	FVector2D InputValue = Value.Get<FVector2D>();
 
+	APC* OwnerCharacter = Cast<APC>(GetOwner());
+	ABasePlayerController* Controller = OwnerCharacter->GetController<ABasePlayerController>();
+
+	if (nullptr != Controller)
+	{
+		Controller->UpdateAttackAngle();
+	}
 }
 
 
@@ -106,4 +116,11 @@ void UInputContextComponent::OnPower(const FInputActionValue& Value)
 {
 	FVector2D InputValue = Value.Get<FVector2D>();
 
+	APC* OwnerCharacter = Cast<APC>(GetOwner());
+	ABasePlayerController* Controller = OwnerCharacter->GetController<ABasePlayerController>();
+
+	if (nullptr != Controller)
+	{
+		Controller->UpdateAttackPower();
+	}
 }

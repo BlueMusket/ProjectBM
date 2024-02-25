@@ -28,8 +28,25 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 public:
-	void ThrowNextStep(); // 던지기 스텝을 넘긴다.
-	void ThrowRelease();
+
+	void OnThrow();
+
+	// 서버에 요청
+	UFUNCTION(Server, Reliable, WithValidation)
+	void ServerOnThrow();
+	void ServerOnThrow_Implementation();
+	bool ServerOnThrow_Validate();
+
+	// 서버에서 멀티케스팅
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastOnThrow();
+	void MulticastOnThrow_Implementation();
+
+	UFUNCTION(Client, Reliable)
+	void ClientOnThrow();
+	void ClientOnThrow_Implementation();
+
+
 	void SpawnProjectile();
 
 public:

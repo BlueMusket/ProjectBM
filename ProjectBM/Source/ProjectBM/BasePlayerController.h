@@ -8,6 +8,7 @@
 
 class UWidgetContextComponent;
 class UPCEntryInfo;
+
 /**
  * 
  */
@@ -32,6 +33,9 @@ public:
 	virtual void OnRep_PlayerState() override;
 
 public:
+	void UpdateAttackAngle();
+	void UpdateAttackPower();
+
 	void UpdateHealthPercent(float HealthPercent);
 
 	// EntryInfo 변경 시 호출될 함수

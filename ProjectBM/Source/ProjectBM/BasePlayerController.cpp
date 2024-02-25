@@ -8,6 +8,7 @@
 #include "PCEntryInfo.h"
 #include "WidgetContextComponent.h"
 #include "Net/UnrealNetwork.h"
+#include "PCState.h"
 
 ABasePlayerController::ABasePlayerController(const FObjectInitializer& ObjectInitializer/* = FObjectInitializer::Get()*/)
 	: Super(ObjectInitializer)
@@ -109,5 +110,47 @@ void ABasePlayerController::OnRep_PlayerState()
 
 	// For edge cases where the PlayerState is repped before the Hero is possessed.
 	// CreateHUD();
+}
+
+void ABasePlayerController::UpdateAttackAngle()
+{
+	APCState* State = GetPlayerState<APCState>();
+	if (nullptr == State)
+	{
+		return;
+	}
+
+	static float Increase = 0.1f;
+	float OldValue = State->AttackAngle;
+	OldValue += Increase;
+
+	if (90.f < OldValue)
+	{
+		OldValue = 0.f;
+	}
+
+	State->AttackAngle = OldValue;
+
+}
+
+void ABasePlayerController::UpdateAttackPower()
+{
+	APCState* State = GetPlayerState<APCState>();
+	if (nullptr == State)
+	{
+		return;
+	}
+
+	static float Increase = 0.1f;
+	float OldValue = State->AttackPower;
+	OldValue += Increase;
+
+	if (90.f < OldValue)
+	{
+		OldValue = 0.f;
+	}
+
+	State->AttackPower = OldValue;
+
 }
 

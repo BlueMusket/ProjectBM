@@ -82,6 +82,48 @@ void APC::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	}
 }
 
+void APC::OnThrow()
+{
+	if (HasAuthority())
+	{
+		ServerOnThrow_Implementation();
+	}
+	else
+	{
+		ServerOnThrow();
+	}
+}
+
+void APC::ServerOnThrow_Implementation()
+{
+	// 검증 검증
+
+	// 해당 클라이언트만 처리
+	ClientOnThrow();
+
+	// 멀티 케스팅 처리
+	MulticastOnThrow();
+}
+
+bool APC::ServerOnThrow_Validate()
+{
+	return true;
+}
+
+
+void APC::MulticastOnThrow_Implementation()
+{
+	// 검증 검증
+	SpawnProjectile();
+}
+
+void APC::ClientOnThrow_Implementation()
+{
+	// 검증 검증
+
+	//SpawnProjectile();
+}
+
 void APC::SpawnProjectile()
 {
 	if (nullptr == BP_PlayerProjectile)
