@@ -13,5 +13,7 @@ UCLASS()
 class PROJECTBM_API UBaseAnimInstance : public UAnimInstance
 {
 	GENERATED_BODY()
-	
+
+public:
+	virtual void PlayThrow();
 };

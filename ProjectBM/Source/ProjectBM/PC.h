@@ -13,6 +13,7 @@
  */
 
 class UInputContextComponent;
+class UAttackComponent;
 class ABasePlayerController;
 
 UCLASS()
@@ -56,11 +57,8 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 	class UCameraComponent* FollowCamera;
 
-	UPROPERTY(VisibleAnywhere , BlueprintReadOnly, Category = Input)
-	class UInputContextComponent* InputContext;
-
-	UPROPERTY(EditAnywhere, Category = Projectile)
-	class TSubclassOf<class ABaseProjectile> BP_PlayerProjectile;
+	UPROPERTY(VisibleAnywhere , BlueprintReadOnly)
+	class UInputContextComponent* InputContextComponent;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

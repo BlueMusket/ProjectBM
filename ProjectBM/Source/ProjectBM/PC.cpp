@@ -20,14 +20,15 @@
 #include "InputTriggers.h"
 #include "HealthComponent.h"
 #include "InputContextComponent.h"
-
+#include "AttackComponent.h"
+#include "BaseAnimInstance.h"
 
 APC::APC()
 	: Super()
 	, PCController(nullptr)
 {
-	InputContext = CreateDefaultSubobject<UInputContextComponent>(TEXT("InputContext"));
-
+	InputContextComponent = CreateDefaultSubobject<UInputContextComponent>(TEXT("InputContext"));
+	
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.f);
 
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -76,9 +77,9 @@ void APC::Tick(float DeltaTime)
 
 void APC::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
-	if (nullptr != InputContext)
+	if (nullptr != InputContextComponent)
 	{
-		InputContext->SetupPlayerInputComponent(PlayerInputComponent);
+		InputContextComponent->SetupPlayerInputComponent(PlayerInputComponent);
 	}
 }
 
@@ -114,7 +115,12 @@ bool APC::ServerOnThrow_Validate()
 void APC::MulticastOnThrow_Implementation()
 {
 	// 검증 검증
-	SpawnProjectile();
+	UBaseAnimInstance* AnimInstance = Cast<UBaseAnimInstance>(GetMesh()->GetAnimInstance());
+
+	if (nullptr != AnimInstance)
+	{
+		AnimInstance->PlayThrow();
+	}
 }
 
 void APC::ClientOnThrow_Implementation()
@@ -126,7 +132,7 @@ void APC::ClientOnThrow_Implementation()
 
 void APC::SpawnProjectile()
 {
-	if (nullptr == BP_PlayerProjectile)
+	/*if (nullptr == BP_PlayerProjectile)
 	{
 		return;
 	}
@@ -144,7 +150,7 @@ void APC::SpawnProjectile()
 	const FVector SpawnLocation = GetMesh()->GetSocketLocation(FName("ProjectileSocket"));
 	const FRotator Rotation = GetActorForwardVector().Rotation();
 
-	ABaseProjectile* NewProjectile = World->SpawnActor<ABaseProjectile>(BP_PlayerProjectile, SpawnLocation, Rotation, SpawnParams);
+	ABaseProjectile* NewProjectile = World->SpawnActor<ABaseProjectile>(BP_PlayerProjectile, SpawnLocation, Rotation, SpawnParams);*/
 }
 
 // 인터페이스 호출용

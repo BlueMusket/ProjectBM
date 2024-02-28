@@ -3,17 +3,21 @@
 
 #include "Anim_ProjectileNotify.h"
 #include "PC.h"
-
+#include "AttackComponent.h"
 void UAnim_ProjectileNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation
 								  , const FAnimNotifyEventReference& EventReference)
 {
  	Super::Notify(MeshComp, Animation, EventReference);
 
-	APC* Pc = Cast<APC>(MeshComp->GetOwner());
-	if (nullptr == Pc)
+	APC* PC = Cast<APC>(MeshComp->GetOwner());
+	if (nullptr == PC)
 	{
 		return;
 	}
+	UAttackComponent* AttackComponent = PC->GetComponentByClass<UAttackComponent>();
 
-	Pc->SpawnProjectile();
+	if (nullptr != AttackComponent)
+	{
+		AttackComponent->OnThrow();
+	}
 }

@@ -3,3 +3,7 @@
 
 #include "BaseAnimInstance.h"
 
+void UBaseAnimInstance::PlayThrow()
+{
+
+}

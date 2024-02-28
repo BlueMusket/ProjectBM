@@ -33,9 +33,11 @@ public:
 
 protected:
 	// 체력 관리 컴포넌트
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UHealthComponent* HealthComponent;
 
 	// 공격 관리 컴포넌트
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UAttackComponent* AttackComponent;
 
 public:

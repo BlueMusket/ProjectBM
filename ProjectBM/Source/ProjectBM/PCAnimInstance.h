@@ -6,6 +6,7 @@
 #include "BaseAnimInstance.h"
 #include "PCAnimInstance.generated.h"
 
+class UAnimMontage;
 /**
  * 
  */
@@ -14,4 +15,10 @@ class PROJECTBM_API UPCAnimInstance : public UBaseAnimInstance
 {
 	GENERATED_BODY()
 	
+public:
+	virtual void PlayThrow() override;
+
+public:
+	UPROPERTY(EditAnywhere)
+	class UAnimMontage* ThrowMontage;
 };

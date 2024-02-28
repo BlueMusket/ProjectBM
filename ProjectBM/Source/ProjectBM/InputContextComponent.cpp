@@ -61,7 +61,10 @@ void UInputContextComponent::SetupPlayerInputComponent(UInputComponent* PlayerIn
 		EnhancedInputComponent->BindAction(IA_Jump, ETriggerEvent::Started, this, &UInputContextComponent::OnJump); // 임시, 슈팅 종료 이벤트로 들어와야한다.
 		EnhancedInputComponent->BindAction(IA_Throw, ETriggerEvent::Triggered, this, &UInputContextComponent::OnThrow);
 		EnhancedInputComponent->BindAction(IA_Angle, ETriggerEvent::Triggered, this, &UInputContextComponent::OnAngle);
+
+		EnhancedInputComponent->BindAction(IA_Power, ETriggerEvent::Started, this, &UInputContextComponent::OnPrePower);
 		EnhancedInputComponent->BindAction(IA_Power, ETriggerEvent::Triggered, this, &UInputContextComponent::OnPower);
+		EnhancedInputComponent->BindAction(IA_Power, ETriggerEvent::Completed, this, &UInputContextComponent::OnPostPower);
 	}
 }
 
@@ -110,10 +113,25 @@ void UInputContextComponent::OnAngle(const FInputActionValue& Value)
 	}
 }
 
+void UInputContextComponent::OnPrePower(const FInputActionValue& Value)
+{
+	// 사전 동작 필요하면 작업
+	// 
+	//UE_LOG(LogTemp, Log, TEXT("Powerrr"));
+	//FVector2D InputValue = Value.Get<FVector2D>();
 
+	//APC* OwnerCharacter = Cast<APC>(GetOwner());
+	//ABasePlayerController* Controller = OwnerCharacter->GetController<ABasePlayerController>();
+
+	//if (nullptr != Controller)
+	//{
+	//	Controller->UpdateAttackPower();
+	//}
+}
 
 void UInputContextComponent::OnPower(const FInputActionValue& Value)
 {
+	UE_LOG(LogTemp, Log, TEXT("Powerrr"));
 	FVector2D InputValue = Value.Get<FVector2D>();
 
 	APC* OwnerCharacter = Cast<APC>(GetOwner());
@@ -124,3 +142,11 @@ void UInputContextComponent::OnPower(const FInputActionValue& Value)
 		Controller->UpdateAttackPower();
 	}
 }
+
+void UInputContextComponent::OnPostPower(const FInputActionValue& Value)
+{
+	UE_LOG(LogTemp, Log, TEXT("OnPostPower"));
+	APC* OwnerCharacter = Cast<APC>(GetOwner());
+	OwnerCharacter->OnThrow();
+}
+

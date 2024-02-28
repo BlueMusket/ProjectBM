@@ -6,7 +6,6 @@
 #include "Components/ActorComponent.h"
 #include "AttackComponent.generated.h"
 
-
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class PROJECTBM_API UAttackComponent : public UActorComponent
 {
@@ -16,6 +15,11 @@ public:
 	// Sets default values for this component's properties
 	UAttackComponent();
 
+public:
+	void OnThrow();
+
+	void SpawnProjectile();
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -24,5 +28,7 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-		
+public:
+	UPROPERTY(EditAnywhere, Category = Projectile)
+	class TSubclassOf<class ABaseProjectile> BP_PlayerProjectile;
 };

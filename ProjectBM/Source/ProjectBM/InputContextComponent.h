@@ -34,7 +34,9 @@ public:
 	void OnJump(const FInputActionValue& Value);
 	void OnThrow(const FInputActionValue& Value);
 	void OnAngle(const FInputActionValue& Value);
+	void OnPrePower(const FInputActionValue& Value);
 	void OnPower(const FInputActionValue& Value);
+	void OnPostPower(const FInputActionValue& Value);
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
