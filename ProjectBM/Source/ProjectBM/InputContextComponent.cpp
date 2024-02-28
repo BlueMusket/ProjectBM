@@ -131,7 +131,6 @@ void UInputContextComponent::OnPrePower(const FInputActionValue& Value)
 
 void UInputContextComponent::OnPower(const FInputActionValue& Value)
 {
-	UE_LOG(LogTemp, Log, TEXT("Powerrr"));
 	FVector2D InputValue = Value.Get<FVector2D>();
 
 	APC* OwnerCharacter = Cast<APC>(GetOwner());
@@ -145,7 +144,6 @@ void UInputContextComponent::OnPower(const FInputActionValue& Value)
 
 void UInputContextComponent::OnPostPower(const FInputActionValue& Value)
 {
-	UE_LOG(LogTemp, Log, TEXT("OnPostPower"));
 	APC* OwnerCharacter = Cast<APC>(GetOwner());
 	OwnerCharacter->OnThrow();
 }

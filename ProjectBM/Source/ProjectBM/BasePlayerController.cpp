@@ -152,5 +152,7 @@ void ABasePlayerController::UpdateAttackPower()
 
 	State->AttackPower = OldValue;
 
+	UE_LOG(LogTemp, Log, TEXT("Power : %d"), OldValue);
+
 }
 
