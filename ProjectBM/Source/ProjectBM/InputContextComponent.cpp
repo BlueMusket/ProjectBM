@@ -102,6 +102,7 @@ void UInputContextComponent::OnThrow(const FInputActionValue& Value)
 
 void UInputContextComponent::OnAngle(const FInputActionValue& Value)
 {
+	UE_LOG(LogTemp, Log, TEXT("OnAngle"));
 	FVector2D InputValue = Value.Get<FVector2D>();
 
 	APC* OwnerCharacter = Cast<APC>(GetOwner());
@@ -115,6 +116,7 @@ void UInputContextComponent::OnAngle(const FInputActionValue& Value)
 
 void UInputContextComponent::OnPrePower(const FInputActionValue& Value)
 {
+	UE_LOG(LogTemp, Log, TEXT("OnPrePower"));
 	// 사전 동작 필요하면 작업
 	// 
 	//UE_LOG(LogTemp, Log, TEXT("Powerrr"));
@@ -131,6 +133,9 @@ void UInputContextComponent::OnPrePower(const FInputActionValue& Value)
 
 void UInputContextComponent::OnPower(const FInputActionValue& Value)
 {
+
+	UE_LOG(LogTemp, Log, TEXT("OnPower"));
+
 	FVector2D InputValue = Value.Get<FVector2D>();
 
 	APC* OwnerCharacter = Cast<APC>(GetOwner());
@@ -144,6 +149,9 @@ void UInputContextComponent::OnPower(const FInputActionValue& Value)
 
 void UInputContextComponent::OnPostPower(const FInputActionValue& Value)
 {
+
+	UE_LOG(LogTemp, Log, TEXT("OnPostPower"));
+
 	APC* OwnerCharacter = Cast<APC>(GetOwner());
 	OwnerCharacter->OnThrow();
 }

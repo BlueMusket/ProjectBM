@@ -33,6 +33,7 @@ void ABasePlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
+	SetShowMouseCursor(true);
 
 	//ENetRole MyLocalRole = GetLocalRole();
 	//ENetRole MyRemoteRole = GetRemoteRole();
