@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "ThrowParam.h"
 #include "AttackComponent.generated.h"
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -29,6 +30,14 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 public:
+	const FThrowParam& GetThrowParam() { return ThrowParam; }
+	void SetThrowParam(FThrowParam& Param) { ThrowParam = Param; }
+
+
+public:
 	UPROPERTY(EditAnywhere, Category = Projectile)
 	class TSubclassOf<class ABaseProjectile> BP_PlayerProjectile;
+
+private:
+	FThrowParam ThrowParam;
 };

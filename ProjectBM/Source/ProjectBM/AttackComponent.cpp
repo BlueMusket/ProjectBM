@@ -50,6 +50,11 @@ void UAttackComponent::SpawnProjectile()
 		return;
 	}
 
+	if (false == ThrowParam.IsValid)
+	{
+		return;
+	}
+
 	UWorld* World = GetWorld();
 
 	if (nullptr == World)
@@ -57,42 +62,10 @@ void UAttackComponent::SpawnProjectile()
 		return;
 	}
 
-	ABasePlayerController* Controller = GetOwner<ABaseCharacter>()->GetController<ABasePlayerController>();
-
-	// 마우스 위치를 저장할 변수
-	float MouseX, MouseY;
-	FVector CursorLocation, CursorDirection;
-	FVector OutLocation;
-	if (Controller->GetMousePosition(MouseX, MouseY))
-	{
-		if (Controller->DeprojectScreenPositionToWorld(MouseX, MouseY, CursorLocation, CursorDirection))
-		{
-			// 카메라 위치에서 마우스가 가리키는 방향으로 레이를 쏴서 X = PlaneX 평면과의 교차점을 찾습니다.
-			// 레이의 방정식: P = WorldLocation + t * WorldDirection
-			// 교차점에서 X = PlaneX 이므로, t = (PlaneX - WorldLocation.X) / WorldDirection.X
-			if (FMath::Abs(CursorDirection.X) > KINDA_SMALL_NUMBER) // 0으로 나누는 것을 방지
-			{
-				float t = (0 - CursorLocation.X) / CursorDirection.X;
-				OutLocation = CursorLocation + t * CursorDirection;
-
-				// OutLocation은 이제 X = 0 평면에서 마우스 위치에 해당하는 월드 좌표입니다.
-			}
-		}
-	}
-
-	// 마우스 위치를 월드 위치와 방향으로 변환
-	//Controller->DeprojectMousePositionToWorld(CursorLocation, CursorDirection);
-	CursorLocation.X = 0.f;
-	FVector SpawnLocation = GetOwner<ABaseCharacter>()->GetMesh()->GetSocketLocation(FName("ProjectileSocket"));
-	SpawnLocation.X = 0.f;
-	// 발사 방향 계산
-	FVector Direction = (OutLocation - SpawnLocation).GetSafeNormal();
-	FRotator FireRotation = Direction.Rotation();
-
 	FActorSpawnParameters SpawnParams;
 	SpawnParams.Owner = GetOwner();
 
-	ABaseProjectile* NewProjectile = World->SpawnActor<ABaseProjectile>(BP_PlayerProjectile, SpawnLocation, FireRotation, SpawnParams);
+	ABaseProjectile* NewProjectile = World->SpawnActor<ABaseProjectile>(BP_PlayerProjectile, ThrowParam.SpawnLocation, ThrowParam.ThrowRotation, SpawnParams);
 	
 	if (NewProjectile)
 	{
@@ -106,22 +79,24 @@ void UAttackComponent::SpawnProjectile()
 		}
 	}
 
-	// 발사 방향을 시각화하기 위한 디버그 라인 그리기
-	FVector LineEnd = SpawnLocation + (Direction * 1000); // 라인의 길이를 조절하려면 이 값을 변경하세요.
-	FColor LineColor = FColor::Red; // 라인의 색상
-	float LineDuration = 5.0f; // 라인이 화면에 표시되는 시간(초)
-	bool bPersistentLines = false; // 라인이 지속적으로 남을지 여부
+	//// 발사 방향을 시각화하기 위한 디버그 라인 그리기
+	//FVector LineEnd = ThrowParam.SpawnLocation + (Direction * 1000); // 라인의 길이를 조절하려면 이 값을 변경하세요.
+	//FColor LineColor = FColor::Red; // 라인의 색상
+	//float LineDuration = 5.0f; // 라인이 화면에 표시되는 시간(초)
+	//bool bPersistentLines = false; // 라인이 지속적으로 남을지 여부
 
-	DrawDebugLine(
-		GetWorld(),
-		SpawnLocation,
-		LineEnd,
-		LineColor,
-		bPersistentLines,
-		LineDuration,
-		0,
-		5.0f // 라인의 두께
-	);
+	//DrawDebugLine(
+	//	GetWorld(),
+	//	ThrowParam.SpawnLocation,
+	//	LineEnd,
+	//	LineColor,
+	//	bPersistentLines,
+	//	LineDuration,
+	//	0,
+	//	5.0f // 라인의 두께
+	//);
 
-	DrawDebugSphere(GetWorld(), OutLocation, 50.0f , 5, LineColor, false , 5.0f);
+	DrawDebugSphere(GetWorld(), ThrowParam.SpawnLocation, 50.0f , 5, FColor::Red, false , 5.0f);
+
+	ThrowParam.IsValid = false;
 }

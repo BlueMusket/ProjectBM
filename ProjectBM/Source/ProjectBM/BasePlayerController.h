@@ -33,14 +33,19 @@ public:
 	virtual void OnRep_PlayerState() override;
 
 public:
-	void UpdateAttackAngle();
-	void UpdateAttackPower();
 
 	void UpdateHealthPercent(float HealthPercent);
 
 	// EntryInfo 변경 시 호출될 함수
 	UFUNCTION()
 	void OnRep_EntryInfo();
+
+public:
+	void SetThrowMousePos(float X, float Y);
+	void GetThrowMousePos(float& X, float& Y);
+
+	void SetThrowPower(float NewPower) { ThrowPower = NewPower; }
+	float GetThrowPower() { return ThrowPower; }
 
 public: // widget
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
@@ -53,5 +58,8 @@ protected:
 	// 리플리케이션 설정
 	virtual void GetLifetimeReplicatedProps(TArray< FLifetimeProperty >& OutLifetimeProps) const override;
 
-
+private:
+	float ThrowMousePosX;
+	float ThrowMousePosY;
+	float ThrowPower;
 };

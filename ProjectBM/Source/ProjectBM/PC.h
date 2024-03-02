@@ -34,18 +34,18 @@ public:
 
 	// 서버에 요청
 	UFUNCTION(Server, Reliable, WithValidation)
-	void ServerOnThrow();
-	void ServerOnThrow_Implementation();
-	bool ServerOnThrow_Validate();
+	void ServerOnThrow(FThrowParam Param);
+	void ServerOnThrow_Implementation(FThrowParam Param);
+	bool ServerOnThrow_Validate(FThrowParam Param);
 
 	// 서버에서 멀티케스팅
 	UFUNCTION(NetMulticast, Reliable)
-	void MulticastOnThrow();
-	void MulticastOnThrow_Implementation();
+	void MulticastOnThrow(FThrowParam Param);
+	void MulticastOnThrow_Implementation(FThrowParam Param);
 
 	UFUNCTION(Client, Reliable)
-	void ClientOnThrow();
-	void ClientOnThrow_Implementation();
+	void ClientOnThrow(FThrowParam Param);
+	void ClientOnThrow_Implementation(FThrowParam Param);
 
 
 	void SpawnProjectile();
@@ -65,7 +65,6 @@ public:
 
 private:
 	ABasePlayerController* PCController;
-
 
 public:
 	virtual void OnDeath_Implementation() override final;

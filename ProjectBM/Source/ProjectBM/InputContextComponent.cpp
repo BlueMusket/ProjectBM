@@ -108,9 +108,10 @@ void UInputContextComponent::OnAngle(const FInputActionValue& Value)
 	APC* OwnerCharacter = Cast<APC>(GetOwner());
 	ABasePlayerController* Controller = OwnerCharacter->GetController<ABasePlayerController>();
 
-	if (nullptr != Controller)
+	float MouseX, MouseY;
+	if (Controller->GetMousePosition(MouseX, MouseY))
 	{
-		Controller->UpdateAttackAngle();
+		Controller->SetThrowMousePos(MouseX, MouseY);
 	}
 }
 
@@ -141,10 +142,15 @@ void UInputContextComponent::OnPower(const FInputActionValue& Value)
 	APC* OwnerCharacter = Cast<APC>(GetOwner());
 	ABasePlayerController* Controller = OwnerCharacter->GetController<ABasePlayerController>();
 
-	if (nullptr != Controller)
+	static float Increase = 0.1f;
+	float NewValue = Controller->GetThrowPower();
+	NewValue += Increase;
+
+	if (90.f < NewValue)
 	{
-		Controller->UpdateAttackPower();
+		NewValue = 0.f;
 	}
+	Controller->SetThrowPower(NewValue);
 }
 
 void UInputContextComponent::OnPostPower(const FInputActionValue& Value)

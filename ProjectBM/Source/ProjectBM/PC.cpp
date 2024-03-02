@@ -23,6 +23,7 @@
 #include "AttackComponent.h"
 #include "BaseAnimInstance.h"
 
+
 APC::APC()
 	: Super()
 	, PCController(nullptr)
@@ -85,34 +86,39 @@ void APC::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void APC::OnThrow()
 {
+	FThrowParam Param;
+	Param.Serialize(this);
+
 	if (HasAuthority())
 	{
-		ServerOnThrow_Implementation();
+		ServerOnThrow_Implementation(Param);
 	}
 	else
 	{
-		ServerOnThrow();
+		ServerOnThrow(Param);
 	}
 }
 
-void APC::ServerOnThrow_Implementation()
+void APC::ServerOnThrow_Implementation(FThrowParam Param)
 {
 	// 검증 검증
 
+	Param.IsValid = true;
+
 	// 해당 클라이언트만 처리
-	ClientOnThrow();
+	ClientOnThrow(Param);
 
 	// 멀티 케스팅 처리
-	MulticastOnThrow();
+	MulticastOnThrow(Param);
 }
 
-bool APC::ServerOnThrow_Validate()
+bool APC::ServerOnThrow_Validate(FThrowParam Param)
 {
 	return true;
 }
 
 
-void APC::MulticastOnThrow_Implementation()
+void APC::MulticastOnThrow_Implementation(FThrowParam Param)
 {
 	// 검증 검증
 	UBaseAnimInstance* AnimInstance = Cast<UBaseAnimInstance>(GetMesh()->GetAnimInstance());
@@ -121,9 +127,11 @@ void APC::MulticastOnThrow_Implementation()
 	{
 		AnimInstance->PlayThrow();
 	}
+
+	AttackComponent->SetThrowParam(Param);
 }
 
-void APC::ClientOnThrow_Implementation()
+void APC::ClientOnThrow_Implementation(FThrowParam Param)
 {
 	// 검증 검증
 

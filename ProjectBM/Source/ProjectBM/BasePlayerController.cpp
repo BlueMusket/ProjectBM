@@ -105,6 +105,18 @@ void ABasePlayerController::OnRep_EntryInfo()
 
 }
 
+void ABasePlayerController::SetThrowMousePos(float X, float Y)
+{
+	ThrowMousePosX = X;
+	ThrowMousePosY = Y;
+}
+
+void ABasePlayerController::GetThrowMousePos(float& X, float& Y)
+{
+	X = ThrowMousePosX;
+	Y = ThrowMousePosY;
+}
+
 void ABasePlayerController::OnRep_PlayerState()
 {
 	Super::OnRep_PlayerState();
@@ -112,48 +124,3 @@ void ABasePlayerController::OnRep_PlayerState()
 	// For edge cases where the PlayerState is repped before the Hero is possessed.
 	// CreateHUD();
 }
-
-void ABasePlayerController::UpdateAttackAngle()
-{
-	APCState* State = GetPlayerState<APCState>();
-	if (nullptr == State)
-	{
-		return;
-	}
-
-	static float Increase = 0.1f;
-	float OldValue = State->AttackAngle;
-	OldValue += Increase;
-
-	if (90.f < OldValue)
-	{
-		OldValue = 0.f;
-	}
-
-	State->AttackAngle = OldValue;
-
-}
-
-void ABasePlayerController::UpdateAttackPower()
-{
-	APCState* State = GetPlayerState<APCState>();
-	if (nullptr == State)
-	{
-		return;
-	}
-
-	static float Increase = 0.1f;
-	float OldValue = State->AttackPower;
-	OldValue += Increase;
-
-	if (90.f < OldValue)
-	{
-		OldValue = 0.f;
-	}
-
-	State->AttackPower = OldValue;
-
-	UE_LOG(LogTemp, Log, TEXT("Power : %d"), OldValue);
-
-}
-
