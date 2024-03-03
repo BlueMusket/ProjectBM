@@ -59,6 +59,9 @@ void APC::BeginPlay()
 
 	PCController->UpdateHealthPercent(HealthComponent->GetHealthPercent());
 
+	InputContextComponent->OnPowerTickEvent.AddDynamic(AttackComponent, &UAttackComponent::HandlePowerTickEvent);
+	InputContextComponent->OnAngleTickEvent.AddDynamic(AttackComponent, &UAttackComponent::HandleAngleTickEvent);
+
 #if UE_SERVER
 
 #endif
@@ -86,16 +89,15 @@ void APC::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void APC::OnThrow()
 {
-	FThrowParam Param;
-	Param.Serialize(this);
+	AttackComponent->GetThrowParam().Serialize(this);
 
 	if (HasAuthority())
 	{
-		ServerOnThrow_Implementation(Param);
+		ServerOnThrow_Implementation(AttackComponent->GetThrowParam());
 	}
 	else
 	{
-		ServerOnThrow(Param);
+		ServerOnThrow(AttackComponent->GetThrowParam());
 	}
 }
 

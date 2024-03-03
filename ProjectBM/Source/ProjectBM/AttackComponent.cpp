@@ -6,7 +6,7 @@
 #include "BaseProjectile.h"
 #include "BaseAnimInstance.h"
 #include "BasePlayerController.h"
-#include "GameFramework/ProjectileMovementComponent.h"
+#include "BaseProjectileMovementComponent.h"
 
 // Sets default values for this component's properties
 UAttackComponent::UAttackComponent()
@@ -34,6 +34,25 @@ void UAttackComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// ...
+}
+
+void UAttackComponent::HandlePowerTickEvent(float DeltaTime)
+{
+	float IncreaseRate = ThrowParam.PowerIncreaseRate;
+	float NewValue = ThrowParam.ThrowPower + ( DeltaTime * IncreaseRate);
+
+	if (ThrowParam.MaxPower < NewValue)
+	{
+		NewValue = 0.f;
+	}
+
+	ThrowParam.ThrowPower = NewValue;
+
+	UE_LOG(LogTemp, Log, TEXT("Power : %f"), NewValue);
+}
+
+void UAttackComponent::HandleAngleTickEvent()
+{
 }
 
 
@@ -70,31 +89,34 @@ void UAttackComponent::SpawnProjectile()
 	if (NewProjectile)
 	{
 		// 투사체의 UProjectileMovementComponent 설정
-		UProjectileMovementComponent* ProjectileMovement = NewProjectile->FindComponentByClass<UProjectileMovementComponent>();
+		UBaseProjectileMovementComponent* ProjectileMovement = NewProjectile->FindComponentByClass<UBaseProjectileMovementComponent>();
 		if (ProjectileMovement)
 		{
-			//ProjectileMovement->InitialSpeed = 8000.f;
-			//ProjectileMovement->MaxSpeed = 8000.f;
-			//ProjectileMovement->Velocity = Direction * 8000.f; // 방향과 파워를 곱하여 최종 속도 설정
+			// 초기 속도 설정
+			ProjectileMovement->InitialSpeed = ThrowParam.ThrowPower;
+			ProjectileMovement->MaxSpeed = ThrowParam.ThrowPower;
+			ProjectileMovement->Velocity = FVector(ProjectileMovement->InitialSpeed, 0.f, 0.f);
+
+			ProjectileMovement->RefreshPhysicsLinearVelocity();
 		}
 	}
 
 	//// 발사 방향을 시각화하기 위한 디버그 라인 그리기
-	//FVector LineEnd = ThrowParam.SpawnLocation + (Direction * 1000); // 라인의 길이를 조절하려면 이 값을 변경하세요.
-	//FColor LineColor = FColor::Red; // 라인의 색상
-	//float LineDuration = 5.0f; // 라인이 화면에 표시되는 시간(초)
-	//bool bPersistentLines = false; // 라인이 지속적으로 남을지 여부
+	FVector LineEnd = ThrowParam.SpawnLocation + (ThrowParam.ThrowRotation.Vector() * 1000); // 라인의 길이를 조절하려면 이 값을 변경하세요.
+	FColor LineColor = FColor::Red; // 라인의 색상
+	float LineDuration = 5.0f; // 라인이 화면에 표시되는 시간(초)
+	bool bPersistentLines = false; // 라인이 지속적으로 남을지 여부
 
-	//DrawDebugLine(
-	//	GetWorld(),
-	//	ThrowParam.SpawnLocation,
-	//	LineEnd,
-	//	LineColor,
-	//	bPersistentLines,
-	//	LineDuration,
-	//	0,
-	//	5.0f // 라인의 두께
-	//);
+	DrawDebugLine(
+		GetWorld(),
+		ThrowParam.SpawnLocation,
+		LineEnd,
+		LineColor,
+		bPersistentLines,
+		LineDuration,
+		0,
+		5.0f // 라인의 두께
+	);
 
 	DrawDebugSphere(GetWorld(), ThrowParam.SpawnLocation, 50.0f , 5, FColor::Red, false , 5.0f);
 

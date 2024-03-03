@@ -15,7 +15,7 @@ class PROJECTBM_API ABaseProjectile : public ABaseActor
 	GENERATED_BODY()
 
 public:
-	ABaseProjectile();
+	ABaseProjectile(const FObjectInitializer& ObjectInitializer);
 
 protected:
 	// Called when the game starts or when spawned

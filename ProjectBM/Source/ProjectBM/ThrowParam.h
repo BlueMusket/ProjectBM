@@ -22,13 +22,19 @@ public:
 	bool Serialize(APC* PC);
 
 public:
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, Category = Projectile)
+	float MaxPower;
+
+	UPROPERTY(EditAnywhere, Category = Projectile)
+	float PowerIncreaseRate;
+
+	UPROPERTY(EditAnywhere, Category = Projectile)
 	FVector SpawnLocation; // 투사체 생성 위치
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, Category = Projectile)
 	FRotator ThrowRotation; // 투사체 발사 방향
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, Category = Projectile)
 	float ThrowPower; // 투사체 발사 파워
 
 	UPROPERTY()

@@ -10,6 +10,10 @@
 class UInputComponent;
 struct FInputActionValue;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPowerTickDelegate, float, DeltaTime);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnAngleTickDelegate);
+
+
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class PROJECTBM_API UInputContextComponent : public UActorComponent
 {
@@ -57,4 +61,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
 		class UInputAction* IA_Power;
 
+public:
+	// 델리게이트 선언
+	UPROPERTY(BlueprintAssignable, Category = "Events")
+	FOnPowerTickDelegate OnPowerTickEvent;
+
+	UPROPERTY(BlueprintAssignable, Category = "Events")
+	FOnAngleTickDelegate OnAngleTickEvent;
+
+
+private:
+	bool bIsOnPower;
 };

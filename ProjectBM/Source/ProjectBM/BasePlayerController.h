@@ -44,9 +44,6 @@ public:
 	void SetThrowMousePos(float X, float Y);
 	void GetThrowMousePos(float& X, float& Y);
 
-	void SetThrowPower(float NewPower) { ThrowPower = NewPower; }
-	float GetThrowPower() { return ThrowPower; }
-
 public: // widget
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 	class UWidgetContextComponent* WidgetContext;
@@ -61,5 +58,4 @@ protected:
 private:
 	float ThrowMousePosX;
 	float ThrowMousePosY;
-	float ThrowPower;
 };

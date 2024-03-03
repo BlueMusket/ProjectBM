@@ -8,6 +8,8 @@
 FThrowParam::FThrowParam()
 	: SpawnLocation(FVector())
 	, ThrowRotation(FRotator())
+	, MaxPower(10000.f)
+	, PowerIncreaseRate(10.f)
 	, ThrowPower(0.f)
 	, IsValid(false)
 {
@@ -67,11 +69,6 @@ bool FThrowParam::Serialize(APC* PC)
 			// 발사 방향 계산
 			FVector Direction = (OutLocation - SpawnLocation).GetSafeNormal();
 			ThrowRotation = Direction.Rotation();
-		}
-
-		// power 처리
-		{
-			ThrowPower = Controller->GetThrowPower();
 		}
 
 		result = true;

@@ -11,9 +11,11 @@
 #include "InputAction.h"
 #include "InputTriggers.h"
 #include "PC.h"
+#include "AttackComponent.h"
 
 // Sets default values for this component's properties
 UInputContextComponent::UInputContextComponent()
+	: bIsOnPower(false)
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
@@ -38,8 +40,14 @@ void UInputContextComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+	// 공격 틱 처리
+	if (true == bIsOnPower)
+	{
+		OnPowerTickEvent.Broadcast(DeltaTime);
+	}
 	// ...
 }
+
 void UInputContextComponent::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent);
@@ -63,14 +71,13 @@ void UInputContextComponent::SetupPlayerInputComponent(UInputComponent* PlayerIn
 		EnhancedInputComponent->BindAction(IA_Angle, ETriggerEvent::Triggered, this, &UInputContextComponent::OnAngle);
 
 		EnhancedInputComponent->BindAction(IA_Power, ETriggerEvent::Started, this, &UInputContextComponent::OnPrePower);
-		EnhancedInputComponent->BindAction(IA_Power, ETriggerEvent::Triggered, this, &UInputContextComponent::OnPower);
+		//EnhancedInputComponent->BindAction(IA_Power, ETriggerEvent::Triggered, this, &UInputContextComponent::OnPower);
 		EnhancedInputComponent->BindAction(IA_Power, ETriggerEvent::Completed, this, &UInputContextComponent::OnPostPower);
 	}
 }
 
 void UInputContextComponent::OnMove(const FInputActionValue& Value)
 {
-	
 	FVector2D InputValue = Value.Get<FVector2D>();
 
 	{
@@ -102,7 +109,6 @@ void UInputContextComponent::OnThrow(const FInputActionValue& Value)
 
 void UInputContextComponent::OnAngle(const FInputActionValue& Value)
 {
-	UE_LOG(LogTemp, Log, TEXT("OnAngle"));
 	FVector2D InputValue = Value.Get<FVector2D>();
 
 	APC* OwnerCharacter = Cast<APC>(GetOwner());
@@ -113,11 +119,13 @@ void UInputContextComponent::OnAngle(const FInputActionValue& Value)
 	{
 		Controller->SetThrowMousePos(MouseX, MouseY);
 	}
+
+	// 나중에 UI 처리?
+	//OnAngleTickEvent.Broadcast();
 }
 
 void UInputContextComponent::OnPrePower(const FInputActionValue& Value)
 {
-	UE_LOG(LogTemp, Log, TEXT("OnPrePower"));
 	// 사전 동작 필요하면 작업
 	// 
 	//UE_LOG(LogTemp, Log, TEXT("Powerrr"));
@@ -130,35 +138,20 @@ void UInputContextComponent::OnPrePower(const FInputActionValue& Value)
 	//{
 	//	Controller->UpdateAttackPower();
 	//}
+
+	bIsOnPower = true;
 }
 
 void UInputContextComponent::OnPower(const FInputActionValue& Value)
 {
-
-	UE_LOG(LogTemp, Log, TEXT("OnPower"));
-
-	FVector2D InputValue = Value.Get<FVector2D>();
-
-	APC* OwnerCharacter = Cast<APC>(GetOwner());
-	ABasePlayerController* Controller = OwnerCharacter->GetController<ABasePlayerController>();
-
-	static float Increase = 0.1f;
-	float NewValue = Controller->GetThrowPower();
-	NewValue += Increase;
-
-	if (90.f < NewValue)
-	{
-		NewValue = 0.f;
-	}
-	Controller->SetThrowPower(NewValue);
 }
 
 void UInputContextComponent::OnPostPower(const FInputActionValue& Value)
 {
 
-	UE_LOG(LogTemp, Log, TEXT("OnPostPower"));
-
 	APC* OwnerCharacter = Cast<APC>(GetOwner());
 	OwnerCharacter->OnThrow();
+
+	bIsOnPower = false;
 }
 

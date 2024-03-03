@@ -3,12 +3,12 @@
 
 #include "BaseProjectile.h"
 #include "Components/SphereComponent.h"
-#include "GameFramework/ProjectileMovementComponent.h"
+#include "BaseProjectileMovementComponent.h"
 #include "PC.h"
 #include "HealthComponent.h"
 
-ABaseProjectile::ABaseProjectile()
-	: Super()
+ABaseProjectile::ABaseProjectile(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
 {
 	//PrimaryActorTick.bCanEverTick = true;
 	// 
@@ -29,12 +29,13 @@ ABaseProjectile::ABaseProjectile()
 	RootComponent = SphereComponent;
 
 	// Movement 시작
-	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileComponent"));
+	ProjectileMovement = CreateDefaultSubobject<UBaseProjectileMovementComponent>(TEXT("BaseProjectileComponent"));
 	ProjectileMovement->UpdatedComponent = SphereComponent;
 	ProjectileMovement->ProjectileGravityScale = 1.0f;
 	ProjectileMovement->InitialSpeed = 800.f;
 	ProjectileMovement->MaxSpeed = 800.f;
-	PostInitializeComponents();
+	ProjectileMovement->bAutoActivate = true;  // 자동 활성화
+
 	// 3초 후에 삭제
 	InitialLifeSpan = 10.0f;
 }

@@ -30,14 +30,20 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 public:
-	const FThrowParam& GetThrowParam() { return ThrowParam; }
+	FThrowParam& GetThrowParam() { return ThrowParam; }
 	void SetThrowParam(FThrowParam& Param) { ThrowParam = Param; }
 
+public:
+	UFUNCTION()
+	void HandlePowerTickEvent(float DeltaTime);
+
+	UFUNCTION()
+	void HandleAngleTickEvent();
 
 public:
 	UPROPERTY(EditAnywhere, Category = Projectile)
 	class TSubclassOf<class ABaseProjectile> BP_PlayerProjectile;
 
-private:
+	UPROPERTY(EditAnywhere, Category = Projectile)
 	FThrowParam ThrowParam;
 };
