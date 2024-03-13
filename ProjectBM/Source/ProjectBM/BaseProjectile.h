@@ -35,8 +35,8 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Projectile, meta = ( AllowPrivateAccecc = "true"))
 	class USphereComponent* SphereComponent;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Projectile, meta = (AllowPrivateAccecc = "true"))
-	class UProjectileMovementComponent* ProjectileMovement;
+	/*UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Projectile, meta = (AllowPrivateAccecc = "true"))
+	class UProjectileMovementComponent* ProjectileMovement;*/
 
 protected:
 	UPROPERTY(EditAnywhere, Category = Damage )

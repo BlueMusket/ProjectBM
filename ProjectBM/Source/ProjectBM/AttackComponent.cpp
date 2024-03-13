@@ -98,6 +98,7 @@ void UAttackComponent::SpawnProjectile()
 			ProjectileMovement->Velocity = FVector(ProjectileMovement->InitialSpeed, 0.f, 0.f);
 
 			ProjectileMovement->RefreshPhysicsLinearVelocity();
+			ProjectileMovement->TrajectorySimulating(ThrowParam.SpawnLocation);
 		}
 	}
 

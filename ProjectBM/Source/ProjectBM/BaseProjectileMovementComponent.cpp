@@ -33,3 +33,22 @@ void UBaseProjectileMovementComponent::RefreshPhysicsLinearVelocity()
 		UpdatedPrimitive->SetPhysicsLinearVelocity(Velocity);
 	}
 }
+
+void UBaseProjectileMovementComponent::TrajectorySimulating(const FVector& Location)
+{
+
+	static float gap = 1.0f;
+	static float test = 100;
+	FVector OldVelocity = Velocity;
+	FVector OldLocation = Location;
+
+	for (float step = 0.f; step < test; step += 1.f * gap)
+	{
+		const FVector MoveDelta = ComputeMoveDelta(OldVelocity, step);
+		OldVelocity = ComputeVelocity(OldVelocity, step);
+
+		FVector NewLocation = OldLocation + MoveDelta;
+		DrawDebugSphere(GetWorld(), NewLocation, 10.0f, 5, FColor::Red, false, 5.0f);
+		OldLocation = NewLocation;
+	}
+}
