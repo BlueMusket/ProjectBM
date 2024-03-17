@@ -17,6 +17,11 @@ public:
 	UAttackComponent();
 
 public:
+	UFUNCTION()
+	void SerializeThrowParam(FThrowParam& Param);
+	void DeserializeThrowParam(const FThrowParam& Param);
+
+	UFUNCTION()
 	void OnThrow();
 
 	void SpawnProjectile();
@@ -30,20 +35,16 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 public:
-	FThrowParam& GetThrowParam() { return ThrowParam; }
-	void SetThrowParam(FThrowParam& Param) { ThrowParam = Param; }
 
-public:
-	UFUNCTION()
-	void HandlePowerTickEvent(float DeltaTime);
-
-	UFUNCTION()
-	void HandleAngleTickEvent();
+	void SetThrowPower(float NewThrowPower) { ThrowPower = NewThrowPower; }
+	float GetThrowPower() { return ThrowPower; }
+	void SetThrowRotation(FRotator NewRotation) { ThrowRotation = NewRotation; }
 
 public:
 	UPROPERTY(EditAnywhere, Category = Projectile)
 	class TSubclassOf<class ABaseProjectile> BP_PlayerProjectile;
 
-	UPROPERTY(EditAnywhere, Category = Projectile)
-	FThrowParam ThrowParam;
+private:
+	FRotator ThrowRotation;
+	float ThrowPower;
 };

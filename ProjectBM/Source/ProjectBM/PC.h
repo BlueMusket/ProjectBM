@@ -29,6 +29,13 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 public:
+	void UpdateThrowPower(float DeltaTime);
+	FVector GetThrowLocation();
+
+	void SetThrowPower(float Power);
+	float GetThrowPower();
+	void SetThrowRotation(FRotator Rotation);
+public:
 
 	void OnThrow();
 
@@ -47,8 +54,6 @@ public:
 	void ClientOnThrow(FThrowParam Param);
 	void ClientOnThrow_Implementation(FThrowParam Param);
 
-
-	void SpawnProjectile();
 
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)

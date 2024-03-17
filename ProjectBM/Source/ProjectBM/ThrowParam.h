@@ -19,24 +19,12 @@ public:
 	~FThrowParam();
 
 public:
-	bool Serialize(APC* PC);
-
+	bool IsValid();
 public:
-	UPROPERTY(EditAnywhere, Category = Projectile)
-	float MaxPower;
-
-	UPROPERTY(EditAnywhere, Category = Projectile)
-	float PowerIncreaseRate;
-
-	UPROPERTY(EditAnywhere, Category = Projectile)
-	FVector SpawnLocation; // 투사체 생성 위치
-
-	UPROPERTY(EditAnywhere, Category = Projectile)
+	
+	UPROPERTY()
 	FRotator ThrowRotation; // 투사체 발사 방향
 
-	UPROPERTY(EditAnywhere, Category = Projectile)
-	float ThrowPower; // 투사체 발사 파워
-
 	UPROPERTY()
-	bool IsValid; // 유효한 정보인지
+	float ThrowPower; // 투사체 발사 파워
 };

@@ -7,6 +7,7 @@
 #include "BaseAnimInstance.h"
 #include "BasePlayerController.h"
 #include "BaseProjectileMovementComponent.h"
+#include "PC.h"
 
 // Sets default values for this component's properties
 UAttackComponent::UAttackComponent()
@@ -36,25 +37,17 @@ void UAttackComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	// ...
 }
 
-void UAttackComponent::HandlePowerTickEvent(float DeltaTime)
+void UAttackComponent::SerializeThrowParam(FThrowParam& Param)
 {
-	float IncreaseRate = ThrowParam.PowerIncreaseRate;
-	float NewValue = ThrowParam.ThrowPower + ( DeltaTime * IncreaseRate);
-
-	if (ThrowParam.MaxPower < NewValue)
-	{
-		NewValue = 0.f;
-	}
-
-	ThrowParam.ThrowPower = NewValue;
-
-	UE_LOG(LogTemp, Log, TEXT("Power : %f"), NewValue);
+	Param.ThrowPower = ThrowPower;
+	Param.ThrowRotation = ThrowRotation;
 }
 
-void UAttackComponent::HandleAngleTickEvent()
+void UAttackComponent::DeserializeThrowParam(const FThrowParam& Param)
 {
+	SetThrowPower(Param.ThrowPower);
+	SetThrowRotation(Param.ThrowRotation);
 }
-
 
 void UAttackComponent::OnThrow()
 {
@@ -69,11 +62,6 @@ void UAttackComponent::SpawnProjectile()
 		return;
 	}
 
-	if (false == ThrowParam.IsValid)
-	{
-		return;
-	}
-
 	UWorld* World = GetWorld();
 
 	if (nullptr == World)
@@ -81,10 +69,12 @@ void UAttackComponent::SpawnProjectile()
 		return;
 	}
 
-	FActorSpawnParameters SpawnParams;
-	SpawnParams.Owner = GetOwner();
+	APC* PC = GetOwner<APC>();
 
-	ABaseProjectile* NewProjectile = World->SpawnActor<ABaseProjectile>(BP_PlayerProjectile, ThrowParam.SpawnLocation, ThrowParam.ThrowRotation, SpawnParams);
+	FActorSpawnParameters SpawnParams;
+	SpawnParams.Owner = PC;
+	FVector SpawnLocation = PC->GetThrowLocation();
+	ABaseProjectile* NewProjectile = World->SpawnActor<ABaseProjectile>(BP_PlayerProjectile, SpawnLocation, ThrowRotation, SpawnParams);
 	
 	if (NewProjectile)
 	{
@@ -93,33 +83,12 @@ void UAttackComponent::SpawnProjectile()
 		if (ProjectileMovement)
 		{
 			// 초기 속도 설정
-			ProjectileMovement->InitialSpeed = ThrowParam.ThrowPower;
-			ProjectileMovement->MaxSpeed = ThrowParam.ThrowPower;
+			ProjectileMovement->InitialSpeed = ThrowPower;
+			ProjectileMovement->MaxSpeed = ThrowPower;
 			ProjectileMovement->Velocity = FVector(ProjectileMovement->InitialSpeed, 0.f, 0.f);
 
 			ProjectileMovement->RefreshPhysicsLinearVelocity();
-			ProjectileMovement->TrajectorySimulating(ThrowParam.SpawnLocation);
+			ProjectileMovement->TrajectorySimulating(SpawnLocation);
 		}
 	}
-
-	//// 발사 방향을 시각화하기 위한 디버그 라인 그리기
-	FVector LineEnd = ThrowParam.SpawnLocation + (ThrowParam.ThrowRotation.Vector() * 1000); // 라인의 길이를 조절하려면 이 값을 변경하세요.
-	FColor LineColor = FColor::Red; // 라인의 색상
-	float LineDuration = 5.0f; // 라인이 화면에 표시되는 시간(초)
-	bool bPersistentLines = false; // 라인이 지속적으로 남을지 여부
-
-	DrawDebugLine(
-		GetWorld(),
-		ThrowParam.SpawnLocation,
-		LineEnd,
-		LineColor,
-		bPersistentLines,
-		LineDuration,
-		0,
-		5.0f // 라인의 두께
-	);
-
-	DrawDebugSphere(GetWorld(), ThrowParam.SpawnLocation, 50.0f , 5, FColor::Red, false , 5.0f);
-
-	ThrowParam.IsValid = false;
 }

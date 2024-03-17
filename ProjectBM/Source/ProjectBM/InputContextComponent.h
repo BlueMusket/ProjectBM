@@ -31,15 +31,17 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+
+public:
+	void TickThrowPower(float DeltaTime);
+
 public:
 	void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent);
 	
 	void OnMove(const FInputActionValue& Value);
 	void OnJump(const FInputActionValue& Value);
-	void OnThrow(const FInputActionValue& Value);
 	void OnAngle(const FInputActionValue& Value);
 	void OnPrePower(const FInputActionValue& Value);
-	void OnPower(const FInputActionValue& Value);
 	void OnPostPower(const FInputActionValue& Value);
 
 public:
@@ -53,21 +55,26 @@ public:
 		class UInputAction* IA_Jump;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
-		class UInputAction* IA_Throw;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
 		class UInputAction* IA_Angle;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
 		class UInputAction* IA_Power;
 
 public:
-	// 델리게이트 선언
-	UPROPERTY(BlueprintAssignable, Category = "Events")
-	FOnPowerTickDelegate OnPowerTickEvent;
+	UPROPERTY(EditAnywhere, Category = Projectile)
+		float MaxThrowPower;
 
-	UPROPERTY(BlueprintAssignable, Category = "Events")
-	FOnAngleTickDelegate OnAngleTickEvent;
+	UPROPERTY(EditAnywhere, Category = Projectile)
+		float ThrowPowerIncreaseRate;
+
+
+
+	//// 델리게이트 선언
+	//UPROPERTY(BlueprintAssignable, Category = "Events")
+	//FOnPowerTickDelegate OnPowerTickEvent;
+
+	//UPROPERTY(BlueprintAssignable, Category = "Events")
+	//FOnAngleTickDelegate OnAngleTickEvent;
 
 
 private:

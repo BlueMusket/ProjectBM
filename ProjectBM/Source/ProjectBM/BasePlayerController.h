@@ -34,15 +34,14 @@ public:
 
 public:
 
+	FVector OnScreenLocationFromMouse();
+
 	void UpdateHealthPercent(float HealthPercent);
 
 	// EntryInfo 변경 시 호출될 함수
 	UFUNCTION()
 	void OnRep_EntryInfo();
 
-public:
-	void SetThrowMousePos(float X, float Y);
-	void GetThrowMousePos(float& X, float& Y);
 
 public: // widget
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
@@ -54,8 +53,4 @@ public:
 protected:
 	// 리플리케이션 설정
 	virtual void GetLifetimeReplicatedProps(TArray< FLifetimeProperty >& OutLifetimeProps) const override;
-
-private:
-	float ThrowMousePosX;
-	float ThrowMousePosY;
 };

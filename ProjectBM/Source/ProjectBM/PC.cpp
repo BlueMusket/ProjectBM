@@ -59,9 +59,6 @@ void APC::BeginPlay()
 
 	PCController->UpdateHealthPercent(HealthComponent->GetHealthPercent());
 
-	InputContextComponent->OnPowerTickEvent.AddDynamic(AttackComponent, &UAttackComponent::HandlePowerTickEvent);
-	InputContextComponent->OnAngleTickEvent.AddDynamic(AttackComponent, &UAttackComponent::HandleAngleTickEvent);
-
 #if UE_SERVER
 
 #endif
@@ -87,17 +84,42 @@ void APC::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	}
 }
 
+FVector APC::GetThrowLocation()
+{
+	FVector SpawnLocation = GetMesh()->GetSocketLocation(FName("ProjectileSocket"));
+	SpawnLocation.X = 0.f; // 혹시 모를 X축 처리
+
+	return SpawnLocation;
+}
+
+void APC::SetThrowPower(float Power)
+{
+	AttackComponent->SetThrowPower(Power);
+}
+
+float APC::GetThrowPower()
+{
+	return AttackComponent->GetThrowPower();
+}
+
+void APC::SetThrowRotation(FRotator Rotation)
+{
+	AttackComponent->SetThrowRotation(Rotation);
+}
+
 void APC::OnThrow()
 {
-	AttackComponent->GetThrowParam().Serialize(this);
+	FThrowParam Param;
+
+	AttackComponent->SerializeThrowParam(Param);
 
 	if (HasAuthority())
 	{
-		ServerOnThrow_Implementation(AttackComponent->GetThrowParam());
+		ServerOnThrow_Implementation(Param);
 	}
 	else
 	{
-		ServerOnThrow(AttackComponent->GetThrowParam());
+		ServerOnThrow(Param);
 	}
 }
 
@@ -105,7 +127,6 @@ void APC::ServerOnThrow_Implementation(FThrowParam Param)
 {
 	// 검증 검증
 
-	Param.IsValid = true;
 
 	// 해당 클라이언트만 처리
 	ClientOnThrow(Param);
@@ -122,15 +143,14 @@ bool APC::ServerOnThrow_Validate(FThrowParam Param)
 
 void APC::MulticastOnThrow_Implementation(FThrowParam Param)
 {
-	// 검증 검증
-	UBaseAnimInstance* AnimInstance = Cast<UBaseAnimInstance>(GetMesh()->GetAnimInstance());
+	// 서버값을 사용한다.
+	AttackComponent->DeserializeThrowParam(Param);
 
+	UBaseAnimInstance* AnimInstance = Cast<UBaseAnimInstance>(GetMesh()->GetAnimInstance());
 	if (nullptr != AnimInstance)
 	{
 		AnimInstance->PlayThrow();
 	}
-
-	AttackComponent->SetThrowParam(Param);
 }
 
 void APC::ClientOnThrow_Implementation(FThrowParam Param)
@@ -140,28 +160,6 @@ void APC::ClientOnThrow_Implementation(FThrowParam Param)
 	//SpawnProjectile();
 }
 
-void APC::SpawnProjectile()
-{
-	/*if (nullptr == BP_PlayerProjectile)
-	{
-		return;
-	}
-
-	UWorld* World = GetWorld();
-
-	if (nullptr == World)
-	{
-		return;
-	}
-
-	FActorSpawnParameters SpawnParams;
-	SpawnParams.Owner = this;
-
-	const FVector SpawnLocation = GetMesh()->GetSocketLocation(FName("ProjectileSocket"));
-	const FRotator Rotation = GetActorForwardVector().Rotation();
-
-	ABaseProjectile* NewProjectile = World->SpawnActor<ABaseProjectile>(BP_PlayerProjectile, SpawnLocation, Rotation, SpawnParams);*/
-}
 
 // 인터페이스 호출용
 void APC::OnDeath_Implementation()

@@ -15,7 +15,8 @@
 
 // Sets default values for this component's properties
 UInputContextComponent::UInputContextComponent()
-	: bIsOnPower(false)
+	: MaxThrowPower(1000.f)
+	, ThrowPowerIncreaseRate(100.f)
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
@@ -40,13 +41,35 @@ void UInputContextComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// 공격 틱 처리
 	if (true == bIsOnPower)
 	{
-		OnPowerTickEvent.Broadcast(DeltaTime);
+		TickThrowPower(DeltaTime);
 	}
+
+	/*if (true == bIsOnPower)
+	{
+		OnPowerTickEvent.Broadcast(DeltaTime);
+	}*/
 	// ...
 }
+
+void UInputContextComponent::TickThrowPower(float DeltaTime)
+{
+	APC* PC = GetOwner<APC>();
+
+	float OldThrowPower = PC->GetThrowPower();
+
+	float NewValue = OldThrowPower + (DeltaTime * ThrowPowerIncreaseRate);
+
+	if (MaxThrowPower < NewValue)
+	{
+		NewValue = 0.f;
+	}
+
+	PC->SetThrowPower(NewValue);
+
+}
+
 
 void UInputContextComponent::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -54,8 +77,8 @@ void UInputContextComponent::SetupPlayerInputComponent(UInputComponent* PlayerIn
 
 	if (NULL != EnhancedInputComponent)
 	{
-		APC* OwnerCharacter = Cast<APC>(GetOwner());
-		ABasePlayerController* Controller = OwnerCharacter->GetController<ABasePlayerController>();
+		APC* PC = GetOwner<APC>();
+		ABasePlayerController* Controller = PC->GetController<ABasePlayerController>();
 
 		UEnhancedInputLocalPlayerSubsystem* EnhancedSubSystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(Controller->GetLocalPlayer());
 
@@ -66,12 +89,10 @@ void UInputContextComponent::SetupPlayerInputComponent(UInputComponent* PlayerIn
 		}
 
 		EnhancedInputComponent->BindAction(IA_Move, ETriggerEvent::Triggered, this, &UInputContextComponent::OnMove);
-		EnhancedInputComponent->BindAction(IA_Jump, ETriggerEvent::Started, this, &UInputContextComponent::OnJump); // 임시, 슈팅 종료 이벤트로 들어와야한다.
-		EnhancedInputComponent->BindAction(IA_Throw, ETriggerEvent::Triggered, this, &UInputContextComponent::OnThrow);
+		EnhancedInputComponent->BindAction(IA_Jump, ETriggerEvent::Started, this, &UInputContextComponent::OnJump);
 		EnhancedInputComponent->BindAction(IA_Angle, ETriggerEvent::Triggered, this, &UInputContextComponent::OnAngle);
 
 		EnhancedInputComponent->BindAction(IA_Power, ETriggerEvent::Started, this, &UInputContextComponent::OnPrePower);
-		//EnhancedInputComponent->BindAction(IA_Power, ETriggerEvent::Triggered, this, &UInputContextComponent::OnPower);
 		EnhancedInputComponent->BindAction(IA_Power, ETriggerEvent::Completed, this, &UInputContextComponent::OnPostPower);
 	}
 }
@@ -81,77 +102,50 @@ void UInputContextComponent::OnMove(const FInputActionValue& Value)
 	FVector2D InputValue = Value.Get<FVector2D>();
 
 	{
-		APC* OwnerCharacter = Cast<APC>(GetOwner());
-		ABasePlayerController* Controller = OwnerCharacter->GetController<ABasePlayerController>();
+		APC* PC = GetOwner<APC>();
+		ABasePlayerController* Controller = PC->GetController<ABasePlayerController>();
 
 		const FRotator Rot = Controller->GetControlRotation();
 		const FRotator YawRot(0, Rot.Yaw, 0);
 		const FVector Direction = FRotationMatrix(YawRot).GetUnitAxis(EAxis::X);
-		OwnerCharacter->AddMovementInput(Direction, InputValue.Y);
+		PC->AddMovementInput(Direction, InputValue.Y);
 	}
 }
 
 void UInputContextComponent::OnJump(const FInputActionValue& Value)
 {
-	APC* OwnerCharacter = Cast<APC>(GetOwner());
+	APC* PC = GetOwner<APC>();
 
-	OwnerCharacter->Jump();
+	PC->Jump();
 }
-
-void UInputContextComponent::OnThrow(const FInputActionValue& Value)
-{
-	FVector2D InputValue = Value.Get<FVector2D>();
-
-	APC* OwnerCharacter = Cast<APC>(GetOwner());
-	OwnerCharacter->OnThrow();
-}
-
 
 void UInputContextComponent::OnAngle(const FInputActionValue& Value)
 {
 	FVector2D InputValue = Value.Get<FVector2D>();
 
-	APC* OwnerCharacter = Cast<APC>(GetOwner());
-	ABasePlayerController* Controller = OwnerCharacter->GetController<ABasePlayerController>();
+	APC* PC = GetOwner<APC>();
+	ABasePlayerController* Controller = PC->GetController<ABasePlayerController>();
 
-	float MouseX, MouseY;
-	if (Controller->GetMousePosition(MouseX, MouseY))
-	{
-		Controller->SetThrowMousePos(MouseX, MouseY);
-	}
+	FVector ThrowLocation = PC->GetThrowLocation();
+	FVector MouseLocation = Controller->OnScreenLocationFromMouse();
 
-	// 나중에 UI 처리?
-	//OnAngleTickEvent.Broadcast();
+	// 발사 방향 계산
+	FVector Direction = (MouseLocation - ThrowLocation).GetSafeNormal();
+	FRotator ThrowRotation = Direction.Rotation();
+	
+	PC->SetThrowRotation(ThrowRotation);
 }
 
 void UInputContextComponent::OnPrePower(const FInputActionValue& Value)
 {
-	// 사전 동작 필요하면 작업
-	// 
-	//UE_LOG(LogTemp, Log, TEXT("Powerrr"));
-	//FVector2D InputValue = Value.Get<FVector2D>();
-
-	//APC* OwnerCharacter = Cast<APC>(GetOwner());
-	//ABasePlayerController* Controller = OwnerCharacter->GetController<ABasePlayerController>();
-
-	//if (nullptr != Controller)
-	//{
-	//	Controller->UpdateAttackPower();
-	//}
-
 	bIsOnPower = true;
-}
-
-void UInputContextComponent::OnPower(const FInputActionValue& Value)
-{
 }
 
 void UInputContextComponent::OnPostPower(const FInputActionValue& Value)
 {
-
-	APC* OwnerCharacter = Cast<APC>(GetOwner());
-	OwnerCharacter->OnThrow();
-
 	bIsOnPower = false;
+
+	APC* PC = GetOwner<APC>();
+	PC->OnThrow();
 }
 

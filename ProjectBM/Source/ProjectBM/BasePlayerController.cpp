@@ -70,6 +70,31 @@ void ABasePlayerController::Tick(float DeltaTime)
 	}
 }
 
+FVector ABasePlayerController::OnScreenLocationFromMouse()
+{
+	float MouseX, MouseY;
+	FVector OutLocation;
+	if (GetMousePosition(MouseX, MouseY))
+	{
+		FVector CursorLocation, CursorDirection;
+
+		if (DeprojectScreenPositionToWorld(MouseX, MouseY, CursorLocation, CursorDirection))
+		{
+			// 카메라 위치에서 마우스가 가리키는 방향으로 레이를 쏴서 X = PlaneX 평면과의 교차점을 찾습니다.
+			// 레이의 방정식: P = WorldLocation + t * WorldDirection
+			// 교차점에서 X = PlaneX 이므로, t = (PlaneX - WorldLocation.X) / WorldDirection.X
+			// OutLocation은 이제 X = 0 평면에서 마우스 위치에 해당하는 월드 좌표입니다.
+			if (FMath::Abs(CursorDirection.X) > KINDA_SMALL_NUMBER) // 0으로 나누는 것을 방지
+			{
+				float t = (0 - CursorLocation.X) / CursorDirection.X;
+				OutLocation = CursorLocation + t * CursorDirection;
+			}
+		}
+	}
+
+	return OutLocation;
+}
+
 void ABasePlayerController::UpdateHealthPercent(float HealthPercent)
 {
 	//if (nullptr != HUDWidget)
@@ -103,18 +128,6 @@ void ABasePlayerController::OnPossess(APawn* InPawn)
 void ABasePlayerController::OnRep_EntryInfo()
 {
 
-}
-
-void ABasePlayerController::SetThrowMousePos(float X, float Y)
-{
-	ThrowMousePosX = X;
-	ThrowMousePosY = Y;
-}
-
-void ABasePlayerController::GetThrowMousePos(float& X, float& Y)
-{
-	X = ThrowMousePosX;
-	Y = ThrowMousePosY;
 }
 
 void ABasePlayerController::OnRep_PlayerState()
