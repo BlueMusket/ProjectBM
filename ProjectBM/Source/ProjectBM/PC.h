@@ -35,6 +35,8 @@ public:
 	void SetThrowPower(float Power);
 	float GetThrowPower();
 	void SetThrowRotation(FRotator Rotation);
+
+	void VaryHealth(float Value);
 public:
 
 	void OnThrow();

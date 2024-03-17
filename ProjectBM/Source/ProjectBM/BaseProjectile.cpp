@@ -5,6 +5,7 @@
 #include "Components/SphereComponent.h"
 #include "BaseProjectileMovementComponent.h"
 #include "PC.h"
+#include "EffectActor.h"
 #include "HealthComponent.h"
 
 ABaseProjectile::ABaseProjectile(const FObjectInitializer& ObjectInitializer)
@@ -57,17 +58,36 @@ void ABaseProjectile::OnHit(UPrimitiveComponent* HitComp
 						  , AActor* OtherActor, UPrimitiveComponent* OtherComp
 						  , FVector NormalImpulse, const FHitResult& Hit)
 {
-	APC* PC = Cast<APC>(OtherActor);
-	if ( NULL != PC)
-	{
-		UHealthComponent* HealthComponent = PC->FindComponentByClass<UHealthComponent>();
+	UWorld* World = GetWorld();
 
-		if (NULL != HealthComponent)
-		{
-			HealthComponent->VaryHealth(-Damage);
-		}
-		Destroy();
+	if (nullptr == World)
+	{
+		return;
 	}
+
+	APC* PC = GetOwner<APC>();
+
+	FActorSpawnParameters SpawnParams;
+	SpawnParams.Owner = PC;
+	FVector SpawnLocation = GetActorLocation();
+	AEffectActor* NewEffect = World->SpawnActor<AEffectActor>(BP_EffectActor, SpawnLocation, FRotator(), SpawnParams);
+
+	if (nullptr != NewEffect)
+	{
+		NewEffect->Initialize(FVector(100, 100, 100), 1000);
+	}
+
+	//APC* PC = Cast<APC>(OtherActor);
+	//if ( NULL != PC)
+	//{
+	//	UHealthComponent* HealthComponent = PC->FindComponentByClass<UHealthComponent>();
+
+	//	if (NULL != HealthComponent)
+	//	{
+	//		HealthComponent->VaryHealth(-Damage);
+	//	}
+	//	Destroy();
+	//}
 
 	//UE_LOG("");
 }

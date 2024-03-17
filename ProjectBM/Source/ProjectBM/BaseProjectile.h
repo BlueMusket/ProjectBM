@@ -6,6 +6,7 @@
 #include "BaseActor.h"
 #include "BaseProjectile.generated.h"
 
+class  AEffectActor;
 /**
  * 
  */
@@ -32,8 +33,13 @@ public:
 
 public:
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Projectile, meta = ( AllowPrivateAccecc = "true"))
+	UPROPERTY(EditAnywhere)
+	class TSubclassOf<class AEffectActor> BP_EffectActor;
+
+	UPROPERTY(VisibleAnywhere, meta = ( AllowPrivateAccecc = "true"))
 	class USphereComponent* SphereComponent;
+
+
 
 	/*UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Projectile, meta = (AllowPrivateAccecc = "true"))
 	class UProjectileMovementComponent* ProjectileMovement;*/
