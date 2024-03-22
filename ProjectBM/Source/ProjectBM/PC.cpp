@@ -118,14 +118,15 @@ void APC::OnThrow()
 
 	AttackComponent->SerializeThrowParam(Param);
 
-	if (HasAuthority())
-	{
-		ServerOnThrow_Implementation(Param);
-	}
-	else
-	{
-		ServerOnThrow(Param);
-	}
+	MulticastOnThrow_Implementation(Param);
+	//if (HasAuthority())
+	//{
+	//	ServerOnThrow_Implementation(Param);
+	//}
+	//else
+	//{
+	//	ServerOnThrow(Param);
+	//}
 }
 
 void APC::ServerOnThrow_Implementation(FThrowParam Param)

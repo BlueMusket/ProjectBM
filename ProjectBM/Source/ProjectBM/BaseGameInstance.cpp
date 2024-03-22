@@ -3,10 +3,14 @@
 
 #include "BaseGameInstance.h"
 #include "BasePlayerController.h"
+#include "EffectManager.h"
 
 void UBaseGameInstance::Init()
 {
 	Super::Init();
+
+	// 데이터 초기화 로드를 멀티쓰레드로 할지 고민좀
+	UEffectManager::Get()->Init();
 }
 
 void UBaseGameInstance::SetSessionId(FString SessionIdStr)

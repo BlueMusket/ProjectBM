@@ -11,7 +11,7 @@
 ABaseProjectile::ABaseProjectile(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
-	//PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = true;
 	// 
 	// 충돌용 Component 생성
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
@@ -21,10 +21,10 @@ ABaseProjectile::ABaseProjectile(const FObjectInitializer& ObjectInitializer)
 	SphereComponent->SetCollisionProfileName(FName("BaseProjectile"));
 
 	// 피직스 시뮬
-	SphereComponent->SetSimulatePhysics(true);
+	//SphereComponent->SetSimulatePhysics(true);
 	
 	// 피직스 시뮬은 Hit이벤트를 발생시킨다.
-	SphereComponent->SetNotifyRigidBodyCollision(true);
+	//SphereComponent->SetNotifyRigidBodyCollision(true);
 
 	// 충돌체를 Root로 둔다.
 	RootComponent = SphereComponent;
@@ -76,18 +76,4 @@ void ABaseProjectile::OnHit(UPrimitiveComponent* HitComp
 	{
 		NewEffect->Initialize(FVector(100, 100, 100), 1000);
 	}
-
-	//APC* PC = Cast<APC>(OtherActor);
-	//if ( NULL != PC)
-	//{
-	//	UHealthComponent* HealthComponent = PC->FindComponentByClass<UHealthComponent>();
-
-	//	if (NULL != HealthComponent)
-	//	{
-	//		HealthComponent->VaryHealth(-Damage);
-	//	}
-	//	Destroy();
-	//}
-
-	//UE_LOG("");
 }

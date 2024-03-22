@@ -27,4 +27,7 @@ public:
 
 	UPROPERTY()
 	float ThrowPower; // 투사체 발사 파워
+
+	UPROPERTY()
+	FVector Location; // 투사체 위치
 };

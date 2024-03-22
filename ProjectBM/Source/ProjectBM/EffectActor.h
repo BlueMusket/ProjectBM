@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "BaseActor.h"
 #include "Components/BoxComponent.h"
+#include "NiagaraComponent.h"
 #include "EffectActor.generated.h"
 
 UCLASS()
@@ -41,6 +42,13 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* MeshComponent;
 
+	// Niagara 이펙트 컴포넌트
+	UPROPERTY(VisibleAnywhere)
+	UNiagaraComponent* NiagaraEffectComponent;
+
+	// Niagara 이펙트 컴포넌트
+	UPROPERTY(VisibleAnywhere)
+	int64 EffectId;
 private:
 	bool bIsActive; // 동작하는 중인지
 	float LastTick; // 마지막 틱

@@ -3,10 +3,12 @@
 
 #include "EffectActor.h"
 #include "PC.h"
+#include "EffectManager.h"
 
 // Sets default values
 AEffectActor::AEffectActor(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
+	, EffectId(1) // 데이터화 시키기 전까진 1값
 	, IntervalTick(0.f)
 	, bIsActive(false)
 	, LastTick(0.f)
@@ -21,6 +23,9 @@ AEffectActor::AEffectActor(const FObjectInitializer& ObjectInitializer)
 	// Initialize the static mesh component
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
 	MeshComponent->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+
+	NiagaraEffectComponent = CreateDefaultSubobject<UNiagaraComponent>(TEXT("NiagaraEffectComponent"));
+	NiagaraEffectComponent->SetupAttachment(RootComponent);
 }
 
 void AEffectActor::Initialize(FVector CollisionSize, float LifeSpan)
@@ -51,6 +56,9 @@ void AEffectActor::BeginPlay()
 	
 	// 아직 다른 조건이 없으니 true
 	bIsActive = true;
+	
+	// 이펙트 생성
+	//UEffectManager::Get()->SpawnEffect(EffectId, RootComponent, GetActorLocation(), GetActorRotation(), GetLifeSpan());
 }
 
 // Called every frame

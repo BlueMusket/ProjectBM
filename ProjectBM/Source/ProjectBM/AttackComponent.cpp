@@ -83,9 +83,9 @@ void UAttackComponent::SpawnProjectile()
 		if (ProjectileMovement)
 		{
 			// 초기 속도 설정
-			ProjectileMovement->InitialSpeed = ThrowPower;
-			ProjectileMovement->MaxSpeed = ThrowPower;
-			ProjectileMovement->Velocity = FVector(ProjectileMovement->InitialSpeed, 0.f, 0.f);
+			//ProjectileMovement->InitialSpeed = ThrowPower;
+			//ProjectileMovement->MaxSpeed = ThrowPower;
+			ProjectileMovement->Velocity = FVector(ThrowPower, 0.f, 0.f);
 
 			ProjectileMovement->RefreshPhysicsLinearVelocity();
 			ProjectileMovement->TrajectorySimulating(SpawnLocation);
