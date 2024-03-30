@@ -76,4 +76,6 @@ void ABaseProjectile::OnHit(UPrimitiveComponent* HitComp
 	{
 		NewEffect->Initialize(FVector(100, 100, 100), 1000);
 	}
+
+	Destroy();
 }

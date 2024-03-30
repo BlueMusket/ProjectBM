@@ -26,7 +26,6 @@
 
 APC::APC()
 	: Super()
-	, PCController(nullptr)
 {
 	InputContextComponent = CreateDefaultSubobject<UInputContextComponent>(TEXT("InputContext"));
 	
@@ -57,7 +56,8 @@ void APC::BeginPlay()
 {
 	Super::BeginPlay();
 
-	PCController->UpdateHealthPercent(HealthComponent->GetHealthPercent());
+
+	//GetController<ABasePlayerController>()->UpdateHealthPercent(HealthComponent->GetHealthPercent());
 
 #if UE_SERVER
 
@@ -118,15 +118,14 @@ void APC::OnThrow()
 
 	AttackComponent->SerializeThrowParam(Param);
 
-	MulticastOnThrow_Implementation(Param);
-	//if (HasAuthority())
-	//{
-	//	ServerOnThrow_Implementation(Param);
-	//}
-	//else
-	//{
-	//	ServerOnThrow(Param);
-	//}
+	if (HasAuthority())
+	{
+		ServerOnThrow_Implementation(Param);
+	}
+	else
+	{
+		ServerOnThrow(Param);
+	}
 }
 
 void APC::ServerOnThrow_Implementation(FThrowParam Param)
@@ -172,12 +171,12 @@ void APC::OnDeath_Implementation()
 {
 	//PCController->ShowRestartWidget();
 
-	//UKismetSystemLibrary::QuitGame(this, nullptr, EQuitPreference::Quit, true);
+	UKismetSystemLibrary::QuitGame(this, nullptr, EQuitPreference::Quit, true);
 }
 
 // 인터페이스 호출용
 void APC::OnTakeDamage_Implementation()
 {
-	PCController->UpdateHealthPercent(HealthComponent->GetHealthPercent());
+	GetController<ABasePlayerController>()->UpdateHealthPercent(HealthComponent->GetHealthPercent());
 	//UKismetSystemLibrary::QuitGame(this, nullptr, EQuitPreference::Quit, true);
 }

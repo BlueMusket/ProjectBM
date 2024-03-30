@@ -6,6 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "WidgetContextComponent.generated.h"
 
+class ABasePlayerController;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class PROJECTBM_API UWidgetContextComponent : public UActorComponent
@@ -15,6 +16,7 @@ class PROJECTBM_API UWidgetContextComponent : public UActorComponent
 public:	
 	// Sets default values for this component's properties
 	UWidgetContextComponent();
+	UWidgetContextComponent(ABasePlayerController* Owner);
 
 protected:
 	// Called when the game starts
@@ -24,12 +26,16 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+public:
+	void Init();
+
 
 public: // widget
 	void CreateHUD();
 	void ShowRestartWidget();
 	void HideRestartWidget();
 	void ToggleAdminWidget();
+	void UpdateHealthPercent(float HealthPercent);
 
 public:
 	UPROPERTY(EditDefaultsOnly)
@@ -50,5 +56,8 @@ private: // widget
 
 	UPROPERTY()
 		class UAdminWidget* AdminWidget;
+
+	
+	ABasePlayerController* Controller;
 		
 };

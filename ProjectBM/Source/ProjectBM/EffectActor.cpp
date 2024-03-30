@@ -19,13 +19,8 @@ AEffectActor::AEffectActor(const FObjectInitializer& ObjectInitializer)
 
 	CollisionComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionComponent"));
 	RootComponent = CollisionComponent;
-
+	CollisionComponent->SetCollisionProfileName(FName("BaseEffect"));
 	// Initialize the static mesh component
-	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
-	MeshComponent->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
-
-	NiagaraEffectComponent = CreateDefaultSubobject<UNiagaraComponent>(TEXT("NiagaraEffectComponent"));
-	NiagaraEffectComponent->SetupAttachment(RootComponent);
 }
 
 void AEffectActor::Initialize(FVector CollisionSize, float LifeSpan)
@@ -58,7 +53,7 @@ void AEffectActor::BeginPlay()
 	bIsActive = true;
 	
 	// 이펙트 생성
-	//UEffectManager::Get()->SpawnEffect(EffectId, RootComponent, GetActorLocation(), GetActorRotation(), GetLifeSpan());
+	UEffectManager::Get()->SpawnEffect(EffectId, RootComponent, GetActorLocation(), GetActorRotation(), GetLifeSpan());
 }
 
 // Called every frame
@@ -83,7 +78,7 @@ void AEffectActor::Tick(float DeltaTime)
 
 	{
 		TArray<AActor*> Targets;
-		FindTargets(Targets); // 나중에 TargetType등이 추가되어야함
+		GetOverlappingActors(Targets); // 나중에 TargetType등이 추가되어야함
 
 		for (AActor* Actor : Targets)
 		{

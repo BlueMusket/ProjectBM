@@ -4,6 +4,7 @@
 #include "BasePlayerController.h"
 #include "RestartWidget.h"
 #include "HUDWidget.h"
+#include "AdminWidget.h"
 #include "BaseCharacter.h"
 #include "PCEntryInfo.h"
 #include "WidgetContextComponent.h"
@@ -34,6 +35,19 @@ void ABasePlayerController::BeginPlay()
 	Super::BeginPlay();
 
 	SetShowMouseCursor(true);
+
+
+	if (IsLocalPlayerController())
+	{
+		if (nullptr != BP_HUDWidget)
+		{
+			HUDWidget = CreateWidget<UHUDWidget>(this, BP_HUDWidget);
+			if (nullptr != HUDWidget)
+			{
+				HUDWidget->AddToViewport();
+			}
+		}
+	}
 
 	//ENetRole MyLocalRole = GetLocalRole();
 	//ENetRole MyRemoteRole = GetRemoteRole();
@@ -97,10 +111,17 @@ FVector ABasePlayerController::OnScreenLocationFromMouse()
 
 void ABasePlayerController::UpdateHealthPercent(float HealthPercent)
 {
-	//if (nullptr != HUDWidget)
-	//{
-	//	HUDWidget->UpdateHealthPercent(HealthPercent);
-	//}
+	//WidgetContext->UpdateHealthPercent(HealthPercent);
+
+	if (!IsLocalPlayerController())
+	{
+		return;
+	}
+
+	if (nullptr != HUDWidget)
+	{
+		HUDWidget->UpdateHealthPercent(HealthPercent);
+	}
 }
 
 void ABasePlayerController::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -122,6 +143,8 @@ void ABasePlayerController::OnPossess(APawn* InPawn)
 	//	// Init ASC with PS (Owner) and our new Pawn (AvatarActor)
 	//	PS->GetAbilitySystemComponent()->InitAbilityActorInfo(PS, InPawn);
 	//}
+
+	UpdateHealthPercent(100.f);
 }
 
 

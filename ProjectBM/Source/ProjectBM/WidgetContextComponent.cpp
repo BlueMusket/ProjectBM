@@ -5,10 +5,24 @@
 #include "RestartWidget.h"
 #include "HUDWidget.h"
 #include "AdminWidget.h"
-
+#include "BasePlayerController.h"
+#include "Blueprint/UserWidget.h"
 
 // Sets default values for this component's properties
 UWidgetContextComponent::UWidgetContextComponent()
+{
+	Init();
+}
+
+
+// Sets default values for this component's properties
+UWidgetContextComponent::UWidgetContextComponent(ABasePlayerController* Owner)
+	:Controller(Owner)
+{
+	Init();
+}
+
+void UWidgetContextComponent::Init()
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
@@ -17,10 +31,7 @@ UWidgetContextComponent::UWidgetContextComponent()
 	RestartWidget = nullptr;
 	HUDWidget = nullptr;
 	AdminWidget = nullptr;
-
-	// ...
 }
-
 
 // Called when the game starts
 void UWidgetContextComponent::BeginPlay()
@@ -43,14 +54,14 @@ void UWidgetContextComponent::TickComponent(float DeltaTime, ELevelTick TickType
 
 void UWidgetContextComponent::CreateHUD()
 {
-	if (nullptr != BP_HUDWidget)
-	{
-		//HUDWidget = CreateWidget<UHUDWidget>(this, BP_HUDWidget);
-		//if (nullptr != HUDWidget)
-		//{
-		//	HUDWidget->AddToViewport();
-		//}
-	}
+	//if (nullptr != BP_HUDWidget)
+	//{
+	//	HUDWidget = Controller->CreateWidget<UHUDWidget>(this, BP_HUDWidget);
+	//	if (nullptr != HUDWidget)
+	//	{
+	//		HUDWidget->AddToViewport();
+	//	}
+	//}
 }
 
 void UWidgetContextComponent::ShowRestartWidget()
@@ -94,5 +105,13 @@ void UWidgetContextComponent::ToggleAdminWidget()
 		//{
 		//	AdminWidget->AddToViewport();
 		//}
+	}
+}
+
+void UWidgetContextComponent::UpdateHealthPercent(float HealthPercent)
+{
+	if (nullptr != HUDWidget)
+	{
+		HUDWidget->UpdateHealthPercent(HealthPercent);
 	}
 }

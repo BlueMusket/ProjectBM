@@ -14,7 +14,6 @@
 
 class UInputContextComponent;
 class UAttackComponent;
-class ABasePlayerController;
 
 UCLASS()
 class PROJECTBM_API APC : public ABaseCharacter
@@ -69,9 +68,6 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-private:
-	ABasePlayerController* PCController;
 
 public:
 	virtual void OnDeath_Implementation() override final;

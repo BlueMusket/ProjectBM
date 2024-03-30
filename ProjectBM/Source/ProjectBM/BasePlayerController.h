@@ -31,7 +31,6 @@ public:
 
 	// PlayerState 세팅 반응
 	virtual void OnRep_PlayerState() override;
-
 public:
 
 	FVector OnScreenLocationFromMouse();
@@ -50,6 +49,29 @@ public: // widget
 public:
 	UPROPERTY(ReplicatedUsing = OnRep_EntryInfo, VisibleAnywhere, BlueprintReadOnly, Category = "Player")
 	UPCEntryInfo* PCEntryInfo;
+
+
+public:
+	UPROPERTY(EditDefaultsOnly)
+		TSubclassOf<class URestartWidget> BP_RestartWidget;
+
+	UPROPERTY(EditDefaultsOnly)
+		TSubclassOf<class UHUDWidget> BP_HUDWidget;
+
+	UPROPERTY(EditDefaultsOnly)
+		TSubclassOf<class UAdminWidget> BP_AdminWidget;
+
+private: // widget
+	UPROPERTY()
+		class URestartWidget* RestartWidget;
+
+	UPROPERTY()
+		class UHUDWidget* HUDWidget;
+
+	UPROPERTY()
+		class UAdminWidget* AdminWidget;
+
+
 protected:
 	// 리플리케이션 설정
 	virtual void GetLifetimeReplicatedProps(TArray< FLifetimeProperty >& OutLifetimeProps) const override;
