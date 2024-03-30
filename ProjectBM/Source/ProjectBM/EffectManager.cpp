@@ -78,16 +78,16 @@ bool UEffectManager::SpawnEffect(int64 Key, USceneComponent* AttachToComponent, 
 			break;
 		}
 
-		UNiagaraComponent* NewEffect = UNiagaraFunctionLibrary::SpawnSystemAttached(*EffectTemplate, AttachToComponent, NAME_None, Location, Rotation, EAttachLocation::KeepRelativeOffset, true);
+		UNiagaraComponent* NewEffect = UNiagaraFunctionLibrary::SpawnSystemAttached(*EffectTemplate, AttachToComponent, NAME_None, Location, Rotation, EAttachLocation::KeepWorldPosition, true);
 
 		if (nullptr == NewEffect)
 		{
 			break;
 		}
 
-        NewEffect->SetAutoDestroy(true);
-
         // 따로 생명 주기를 조절해야할지..
+
+        result = true;
 
 	} while (false);
 

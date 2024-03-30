@@ -73,6 +73,7 @@ void UAttackComponent::SpawnProjectile()
 
 	FActorSpawnParameters SpawnParams;
 	SpawnParams.Owner = PC;
+
 	FVector SpawnLocation = PC->GetThrowLocation();
 	ABaseProjectile* NewProjectile = World->SpawnActor<ABaseProjectile>(BP_PlayerProjectile, SpawnLocation, ThrowRotation, SpawnParams);
 	

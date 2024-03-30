@@ -53,7 +53,12 @@ void AEffectActor::BeginPlay()
 	bIsActive = true;
 	
 	// 이펙트 생성
-	UEffectManager::Get()->SpawnEffect(EffectId, RootComponent, GetActorLocation(), GetActorRotation(), GetLifeSpan());
+	bool result = UEffectManager::Get()->SpawnEffect(EffectId, RootComponent, GetActorLocation(), GetActorRotation(), GetLifeSpan());
+
+	if (false == result)
+	{
+		UE_LOG(LogTemp, Log, TEXT("이펙트 생성 실패"));
+	}
 }
 
 // Called every frame
