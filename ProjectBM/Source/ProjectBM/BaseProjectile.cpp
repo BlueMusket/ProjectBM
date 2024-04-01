@@ -13,12 +13,20 @@ ABaseProjectile::ABaseProjectile(const FObjectInitializer& ObjectInitializer)
 {
 	PrimaryActorTick.bCanEverTick = true;
 	// 
+	SphereStaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Sphere"));
+	SphereStaticMeshComponent->SetCollisionProfileName(FName("BaseProjectile"));
+
 	// 충돌용 Component 생성
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
-
-	SphereComponent->SetSphereRadius(35.f);
-	// 
 	SphereComponent->SetCollisionProfileName(FName("BaseProjectile"));
+	SphereComponent->SetSphereRadius(35.f);
+	RootComponent = SphereComponent;
+
+	SphereStaticMeshComponent->SetupAttachment(SphereComponent);
+
+	// Static Mesh 컴포넌트 생성 및 초기화
+
+	// 이 StaticMeshComponent를 액터의 루트 컴포넌트로 설정
 
 	// 피직스 시뮬
 	//SphereComponent->SetSimulatePhysics(true);
@@ -27,8 +35,7 @@ ABaseProjectile::ABaseProjectile(const FObjectInitializer& ObjectInitializer)
 	//SphereComponent->SetNotifyRigidBodyCollision(true);
 
 	// 충돌체를 Root로 둔다.
-	RootComponent = SphereComponent;
-
+	
 	// Movement 시작
 	//ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("BaseProjectileComponent"));
 	//ProjectileMovement->UpdatedComponent = SphereComponent;

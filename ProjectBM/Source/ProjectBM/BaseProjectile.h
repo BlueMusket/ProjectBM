@@ -39,7 +39,9 @@ public:
 	UPROPERTY(VisibleAnywhere, meta = ( AllowPrivateAccecc = "true"))
 	class USphereComponent* SphereComponent;
 
-
+	// Static Mesh 컴포넌트를 저장하는 포인터
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* SphereStaticMeshComponent;
 
 	/*UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Projectile, meta = (AllowPrivateAccecc = "true"))
 	class UProjectileMovementComponent* ProjectileMovement;*/
