@@ -22,11 +22,13 @@ class PROJECTBM_API APC : public ABaseCharacter
 
 public:
 	APC();
-
+	virtual ~APC();
 public:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 public:
 	void UpdateThrowPower(float DeltaTime);
 	FVector GetThrowLocation();
@@ -65,9 +67,6 @@ public:
 
 	UPROPERTY(VisibleAnywhere , BlueprintReadOnly)
 	class UInputContextComponent* InputContextComponent;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 public:
 	virtual void OnDeath_Implementation() override final;

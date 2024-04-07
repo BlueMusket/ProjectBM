@@ -4,6 +4,7 @@
 #include "BaseCharacter.h"
 #include "HealthComponent.h"
 #include "AttackComponent.h"
+#include "ActionContextComponent.h"
 #include "BasePlayerController.h"
 #include "PCEntryInfo.h"
 
@@ -15,6 +16,7 @@ ABaseCharacter::ABaseCharacter()
 
 	// 공격 관리 컴포넌트 추가
 	AttackComponent = CreateDefaultSubobject<UAttackComponent>(TEXT("AttackComponent"));
+	ActionContextComponent = CreateDefaultSubobject<UActionContextComponent>(TEXT("ActionContextComponent"));
 }
 
 // Called when the game starts or when spawned

@@ -9,6 +9,7 @@
 
 class UHealthComponent;
 class UAttackComponent;
+class UActionContextComponent;
 
 UCLASS()
 class PROJECTBM_API ABaseCharacter : public ACharacter, public IBaseCharacterInterface
@@ -40,6 +41,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UAttackComponent* AttackComponent;
 
+	// 액션 처리 컴포넌트
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UActionContextComponent* ActionContextComponent;
 public:
 	virtual void OnDeath_Implementation() override;
 	virtual void OnTakeDamage_Implementation() override;

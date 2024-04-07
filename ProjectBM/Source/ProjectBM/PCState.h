@@ -6,7 +6,6 @@
 #include "GameFramework/PlayerState.h"
 #include "PCState.generated.h"
 
-class CActionContext;
 /**
  * 
  */
@@ -18,19 +17,4 @@ class PROJECTBM_API APCState : public APlayerState
 public:
 	APCState();
 	virtual ~APCState();
-
-public:
-	// 타이머를 시작하는 함수
-	virtual void BeginPlay() override;
-
-public:
-	void StartTimer();
-	void Tick();
-private:
-
-	// 타이머 핸들
-	FTimerHandle TimerHandle;
-
-	CActionContext* ActionContext;
-
 };

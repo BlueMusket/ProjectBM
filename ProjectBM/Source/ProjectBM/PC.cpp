@@ -52,6 +52,10 @@ APC::APC()
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 }
 
+APC::~APC()
+{
+}
+
 void APC::BeginPlay()
 {
 	Super::BeginPlay();
@@ -126,12 +130,19 @@ void APC::OnThrow()
 	{
 		ServerOnThrow(Param);
 	}
+
+
+	// 애니메이션 시작
+	UBaseAnimInstance* AnimInstance = Cast<UBaseAnimInstance>(GetMesh()->GetAnimInstance());
+	if (nullptr != AnimInstance)
+	{
+		AnimInstance->PlayThrow();
+	}
 }
 
 void APC::ServerOnThrow_Implementation(FThrowParam Param)
 {
 	// 검증 검증
-
 
 	// 해당 클라이언트만 처리
 	ClientOnThrow(Param);
@@ -150,12 +161,7 @@ void APC::MulticastOnThrow_Implementation(FThrowParam Param)
 {
 	// 서버값을 사용한다.
 	AttackComponent->DeserializeThrowParam(Param);
-
-	UBaseAnimInstance* AnimInstance = Cast<UBaseAnimInstance>(GetMesh()->GetAnimInstance());
-	if (nullptr != AnimInstance)
-	{
-		AnimInstance->PlayThrow();
-	}
+	AttackComponent->OnThrow();
 }
 
 void APC::ClientOnThrow_Implementation(FThrowParam Param)
