@@ -18,6 +18,6 @@ void UAnim_ProjectileNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSeque
 
 	if (nullptr != AttackComponent)
 	{
-		AttackComponent->OnThrow();
+		//AttackComponent->OnThrow();
 	}
 }

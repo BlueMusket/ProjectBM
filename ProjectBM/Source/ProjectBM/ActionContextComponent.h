@@ -33,9 +33,13 @@ public:
 
 	bool CheckCanAction();
 
+public:
+
+	// 서버에서만 호출
+	void ServerStartThrowAction(FThrowParam Param);
+
 private:
 	int32 StartTick;
-	FThrowParam ThrowParam;
 	bool IsActive;
 
 	CLock Lock;

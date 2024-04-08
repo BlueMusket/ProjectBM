@@ -3,16 +3,18 @@
 
 #include "ActionContextComponent.h"
 #include "BasePlayerController.h"
-#include "ThrowParam.h"
 #include "PC.h"
 #include "Kismet/GameplayStatics.h"
+#include "AttackComponent.h"
 
 UActionContextComponent::UActionContextComponent()
 	: StartTick(0)
-	, ThrowParam()
 	, IsActive(false)
 	, Lock()
 {
+	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
+	// off to improve performance if you don't need them.
+	PrimaryComponentTick.bCanEverTick = true;
 }
 
 UActionContextComponent::~UActionContextComponent()
@@ -60,7 +62,6 @@ void UActionContextComponent::InitAction(int ActiveTick, FThrowParam& Param)
 
 
 		StartTick = currentMiliTick + ActiveTick;
-		ThrowParam = Param;
 
 		Active();
 	}
@@ -71,7 +72,12 @@ void UActionContextComponent::StartAction()
 	{
 		CScopeLock ScopeLock(Lock);
 
+		UAttackComponent* attackComponent = GetOwner()->GetComponentByClass<UAttackComponent>();
 
+		if (nullptr != attackComponent)
+		{
+			attackComponent->OnThrow();
+		}
 	}
 }
 
@@ -98,4 +104,15 @@ bool UActionContextComponent::CheckCanAction()
 	} while (false);
 		
 	return canAction;
+}
+
+void UActionContextComponent::ServerStartThrowAction(FThrowParam Param)
+{
+	// 서버가 아니면 처리 X
+	if (ROLE_Authority != GetOwnerRole())
+	{
+		return;
+	}
+
+	InitAction(100, Param);
 }

@@ -17,6 +17,11 @@ ABaseCharacter::ABaseCharacter()
 	// 공격 관리 컴포넌트 추가
 	AttackComponent = CreateDefaultSubobject<UAttackComponent>(TEXT("AttackComponent"));
 	ActionContextComponent = CreateDefaultSubobject<UActionContextComponent>(TEXT("ActionContextComponent"));
+
+	// 이 액터를 네트워크 상에서 리플리케이트되도록 설정
+	SetReplicates(true);
+	// 움직임도 리플리케이트 되도록 설정
+	SetReplicateMovement(true);
 }
 
 // Called when the game starts or when spawned

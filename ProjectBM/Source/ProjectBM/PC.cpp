@@ -20,6 +20,7 @@
 #include "InputTriggers.h"
 #include "HealthComponent.h"
 #include "InputContextComponent.h"
+#include "ActionContextComponent.h"
 #include "AttackComponent.h"
 #include "BaseAnimInstance.h"
 
@@ -130,19 +131,18 @@ void APC::OnThrow()
 	{
 		ServerOnThrow(Param);
 	}
-
-
-	// 애니메이션 시작
-	UBaseAnimInstance* AnimInstance = Cast<UBaseAnimInstance>(GetMesh()->GetAnimInstance());
-	if (nullptr != AnimInstance)
-	{
-		AnimInstance->PlayThrow();
-	}
 }
 
 void APC::ServerOnThrow_Implementation(FThrowParam Param)
 {
 	// 검증 검증
+
+	// 클라이언트와 데이터 동기화
+	AttackComponent->DeserializeThrowParam(Param);
+
+	// 액션 시작
+	ActionContextComponent->ServerStartThrowAction(Param);
+
 
 	// 해당 클라이언트만 처리
 	ClientOnThrow(Param);
@@ -159,9 +159,12 @@ bool APC::ServerOnThrow_Validate(FThrowParam Param)
 
 void APC::MulticastOnThrow_Implementation(FThrowParam Param)
 {
-	// 서버값을 사용한다.
-	AttackComponent->DeserializeThrowParam(Param);
-	AttackComponent->OnThrow();
+	// 애니메이션 시작
+	UBaseAnimInstance* AnimInstance = Cast<UBaseAnimInstance>(GetMesh()->GetAnimInstance());
+	if (nullptr != AnimInstance)
+	{
+		AnimInstance->PlayThrow();
+	}
 }
 
 void APC::ClientOnThrow_Implementation(FThrowParam Param)
@@ -177,12 +180,17 @@ void APC::OnDeath_Implementation()
 {
 	//PCController->ShowRestartWidget();
 
-	UKismetSystemLibrary::QuitGame(this, nullptr, EQuitPreference::Quit, true);
+	// UKismetSystemLibrary::QuitGame(this, nullptr, EQuitPreference::Quit, true);
 }
 
 // 인터페이스 호출용
 void APC::OnTakeDamage_Implementation()
 {
-	GetController<ABasePlayerController>()->UpdateHealthPercent(HealthComponent->GetHealthPercent());
-	//UKismetSystemLibrary::QuitGame(this, nullptr, EQuitPreference::Quit, true);
+	ABasePlayerController* PcController = GetController<ABasePlayerController>();
+
+	if (nullptr != PcController)
+	{
+		PcController->UpdateHealthPercent(HealthComponent->GetHealthPercent());
+		//UKismetSystemLibrary::QuitGame(this, nullptr, EQuitPreference::Quit, true);
+	}
 }
