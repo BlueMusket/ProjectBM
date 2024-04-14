@@ -25,6 +25,8 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void PostActorCreated() override;
+
 public:
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp
@@ -43,8 +45,11 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* SphereStaticMeshComponent;
 
-	/*UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Projectile, meta = (AllowPrivateAccecc = "true"))
-	class UProjectileMovementComponent* ProjectileMovement;*/
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Projectile, meta = (AllowPrivateAccecc = "true"))
+	class UBaseProjectileMovementComponent* ProjectileMovement;
+
+private:
+	void InitVelocity();
 
 protected:
 	UPROPERTY(EditAnywhere, Category = Damage )

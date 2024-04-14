@@ -38,7 +38,9 @@ public:
 
 	void SetThrowPower(float NewThrowPower) { ThrowPower = NewThrowPower; }
 	float GetThrowPower() { return ThrowPower; }
+
 	void SetThrowRotation(FRotator NewRotation) { ThrowRotation = NewRotation; }
+	FRotator GetThrowRotation() { return ThrowRotation; }
 
 public:
 	UPROPERTY(EditAnywhere, Category = Projectile)

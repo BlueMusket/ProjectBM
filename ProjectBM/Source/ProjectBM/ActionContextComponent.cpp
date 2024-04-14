@@ -7,8 +7,12 @@
 #include "Kismet/GameplayStatics.h"
 #include "AttackComponent.h"
 
+#if UE_EDITOR
+PRAGMA_DISABLE_OPTIMIZATION
+#endif
+
 UActionContextComponent::UActionContextComponent()
-	: StartTick(0)
+	: StartTime()
 	, IsActive(false)
 	, Lock()
 {
@@ -52,7 +56,6 @@ void UActionContextComponent::InitAction(int ActiveTick, FThrowParam& Param)
 	{
 		CScopeLock ScopeLock(Lock);
 
-		int32 currentMiliTick = FDateTime::Now().GetMillisecond();
 
 		// 이미 실행중이라면 다른 처리
 		if (true == GetIsActive())
@@ -60,8 +63,9 @@ void UActionContextComponent::InitAction(int ActiveTick, FThrowParam& Param)
 			return;
 		}
 
+		FTimespan TimeToAdd = FTimespan::FromMilliseconds(ActiveTick);
 
-		StartTick = currentMiliTick + ActiveTick;
+		StartTime = FDateTime::Now() + TimeToAdd;
 
 		Active();
 	}
@@ -93,8 +97,7 @@ bool UActionContextComponent::CheckCanAction()
 			break;
 		}
 
-		int32 currentMiliTick = FDateTime::Now().GetMillisecond();
-		if (currentMiliTick < StartTick)
+		if (FDateTime::Now() < StartTime)
 		{
 			break;
 		}

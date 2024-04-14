@@ -83,19 +83,22 @@ void UAttackComponent::SpawnProjectile()
 		UBaseProjectileMovementComponent* ProjectileMovement = NewProjectile->FindComponentByClass<UBaseProjectileMovementComponent>();
 		if (ProjectileMovement)
 		{
-			// 초기 속도 설정
-			ProjectileMovement->InitialSpeed = ThrowPower;
-			ProjectileMovement->MaxSpeed = ThrowPower;
+			//// 초기 속도 설정
+			//ProjectileMovement->InitialSpeed = ThrowPower;
+			//ProjectileMovement->MaxSpeed = ThrowPower;
 
-			// 속도의 방향을 계산하고, 그 방향으로 1000의 크기를 가진 벡터를 생성합니다.
-			FVector ForceToAdd = ProjectileMovement->Velocity.GetSafeNormal() * ThrowPower;
+			//// 속도의 방향을 계산하고, 그 방향으로 1000의 크기를 가진 벡터를 생성합니다.
+			//FVector ForceToAdd = ThrowRotation.Vector() * ThrowPower;
+			//// 현재 속도에 힘을 더합니다.
+			//FVector NewVelocity = ProjectileMovement->Velocity + ForceToAdd;
+			//NewVelocity.X = 0.f;
 
-			ProjectileMovement->Velocity += ForceToAdd;
+			//ProjectileMovement->Velocity = NewVelocity;
 
-			//ProjectileMovement->SetVelocityInLocalSpace(FVector(ThrowPower, 0.f, 0.f));
+			////ProjectileMovement->SetVelocityInLocalSpace(FVector(ThrowPower, 0.f, 0.f));
 
-			ProjectileMovement->RefreshPhysicsLinearVelocity();
-			ProjectileMovement->TrajectorySimulating(SpawnLocation);
+			//ProjectileMovement->RefreshPhysicsLinearVelocity();
+			//ProjectileMovement->TrajectorySimulating(SpawnLocation);
 		}
 	}
 }

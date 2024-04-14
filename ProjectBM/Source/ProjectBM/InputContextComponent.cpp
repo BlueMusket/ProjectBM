@@ -132,6 +132,13 @@ void UInputContextComponent::OnAngle(const FInputActionValue& Value)
 	// 발사 방향 계산
 	FVector Direction = (MouseLocation - ThrowLocation).GetSafeNormal();
 	FRotator ThrowRotation = Direction.Rotation();
+
+	MouseLocation.X = 0.f;
+
+	FVector Target = MouseLocation + (ThrowRotation.Vector() * 100.f);
+
+	// DrawDebugLine(GetWorld(), MouseLocation, Target, FColor::Red, false , 10);
+	//DrawDebugSphere(GetWorld(), MouseLocation, 10.0f, 5, FColor::Red, false, 5.0f);
 	
 	PC->SetThrowRotation(ThrowRotation);
 }

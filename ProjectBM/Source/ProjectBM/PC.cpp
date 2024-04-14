@@ -112,6 +112,11 @@ void APC::SetThrowRotation(FRotator Rotation)
 	AttackComponent->SetThrowRotation(Rotation);
 }
 
+FRotator APC::GetThrowRotation()
+{
+	return AttackComponent->GetThrowRotation();
+}
+
 void APC::VaryHealth(float Value)
 {
 	HealthComponent->VaryHealth(Value);

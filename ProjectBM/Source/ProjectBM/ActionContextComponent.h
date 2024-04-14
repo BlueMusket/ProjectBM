@@ -39,7 +39,7 @@ public:
 	void ServerStartThrowAction(FThrowParam Param);
 
 private:
-	int32 StartTick;
+	FDateTime StartTime;
 	bool IsActive;
 
 	CLock Lock;

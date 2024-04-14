@@ -6,7 +6,12 @@
 #include "BaseProjectileMovementComponent.h"
 #include "PC.h"
 #include "EffectActor.h"
+#include "AttackComponent.h"
 #include "HealthComponent.h"
+
+#if UE_EDITOR
+PRAGMA_DISABLE_OPTIMIZATION
+#endif
 
 ABaseProjectile::ABaseProjectile(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
@@ -24,25 +29,13 @@ ABaseProjectile::ABaseProjectile(const FObjectInitializer& ObjectInitializer)
 
 	SphereStaticMeshComponent->SetupAttachment(SphereComponent);
 
-	// Static Mesh 컴포넌트 생성 및 초기화
-
-	// 이 StaticMeshComponent를 액터의 루트 컴포넌트로 설정
-
-	// 피직스 시뮬
-	//SphereComponent->SetSimulatePhysics(true);
-	
-	// 피직스 시뮬은 Hit이벤트를 발생시킨다.
-	//SphereComponent->SetNotifyRigidBodyCollision(true);
-
-	// 충돌체를 Root로 둔다.
-	
 	// Movement 시작
-	//ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("BaseProjectileComponent"));
-	//ProjectileMovement->UpdatedComponent = SphereComponent;
-	//ProjectileMovement->ProjectileGravityScale = 1.0f;
-	//ProjectileMovement->InitialSpeed = 800.f;
-	//ProjectileMovement->MaxSpeed = 800.f;
-	//ProjectileMovement->bAutoActivate = true;  // 자동 활성화
+	ProjectileMovement = CreateDefaultSubobject<UBaseProjectileMovementComponent>(TEXT("BaseProjectileMovementComponent"));
+	ProjectileMovement->UpdatedComponent = SphereComponent;
+	ProjectileMovement->ProjectileGravityScale = 1.0f;
+	ProjectileMovement->bAutoActivate = true;  // 자동 활성화
+	ProjectileMovement->InitialSpeed = 0.f;
+	ProjectileMovement->MaxSpeed = 0.f;
 
 	// 3초 후에 삭제
 	InitialLifeSpan = 10.0f;
@@ -59,6 +52,11 @@ void ABaseProjectile::BeginPlay()
 void ABaseProjectile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+void ABaseProjectile::PostActorCreated()
+{
+	InitVelocity();
 }
 
 void ABaseProjectile::OnHit(UPrimitiveComponent* HitComp
@@ -85,4 +83,23 @@ void ABaseProjectile::OnHit(UPrimitiveComponent* HitComp
 	}
 
 	Destroy();
+}
+
+void ABaseProjectile::InitVelocity()
+{
+	APC* PC = GetOwner<APC>();
+
+	if (nullptr == PC)
+	{
+		return;
+	}
+
+	UAttackComponent* AttackComponent = PC->GetComponentByClass<UAttackComponent>();
+
+	if (nullptr != AttackComponent)
+	{
+		float Power = AttackComponent->GetThrowPower();
+
+		ProjectileMovement->Velocity = ProjectileMovement->Velocity.GetSafeNormal() * Power;
+	}
 }
