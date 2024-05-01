@@ -2,12 +2,12 @@
 
 
 #include "AttackComponent.h"
-#include "BaseCharacter.h"
-#include "BaseProjectile.h"
-#include "BaseAnimInstance.h"
-#include "BasePlayerController.h"
+#include "../Character/BaseCharacter.h"
+#include "../Projectile/BaseProjectile.h"
+#include "../Animation/BaseAnimInstance.h"
+#include "../Controller/BasePlayerController.h"
+#include "../Character/PC.h"
 #include "BaseProjectileMovementComponent.h"
-#include "PC.h"
 
 // Sets default values for this component's properties
 UAttackComponent::UAttackComponent()

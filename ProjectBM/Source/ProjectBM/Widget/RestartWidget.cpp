@@ -4,7 +4,7 @@
 #include "RestartWidget.h"
 #include "Kismet/GameplayStatics.h"
 #include "Components/Button.h"
-#include "BasePlayerController.h"
+#include "../Controller/BasePlayerController.h"
 
 void URestartWidget::NativeOnInitialized()
 {

@@ -2,8 +2,8 @@
 
 
 #include "Anim_ProjectileNotify.h"
-#include "PC.h"
-#include "AttackComponent.h"
+#include "../Character/PC.h"
+#include "../Component/AttackComponent.h"
 void UAnim_ProjectileNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation
 								  , const FAnimNotifyEventReference& EventReference)
 {

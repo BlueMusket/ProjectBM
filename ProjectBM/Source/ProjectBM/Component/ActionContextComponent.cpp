@@ -2,14 +2,14 @@
 
 
 #include "ActionContextComponent.h"
-#include "BasePlayerController.h"
-#include "PC.h"
+#include "../Controller/BasePlayerController.h"
+#include "../Character/PC.h"
 #include "Kismet/GameplayStatics.h"
 #include "AttackComponent.h"
 
-#if UE_EDITOR
-PRAGMA_DISABLE_OPTIMIZATION
-#endif
+//#if UE_EDITOR
+//PRAGMA_DISABLE_OPTIMIZATION
+//#endif
 
 UActionContextComponent::UActionContextComponent()
 	: StartTime()

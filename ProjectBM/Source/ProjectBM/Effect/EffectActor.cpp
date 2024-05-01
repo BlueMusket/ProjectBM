@@ -2,8 +2,8 @@
 
 
 #include "EffectActor.h"
-#include "PC.h"
 #include "EffectManager.h"
+#include "../Character/PC.h"
 
 // Sets default values
 AEffectActor::AEffectActor(const FObjectInitializer& ObjectInitializer)

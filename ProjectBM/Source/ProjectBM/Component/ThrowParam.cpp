@@ -2,8 +2,8 @@
 
 
 #include "ThrowParam.h"
-#include "PC.h"
-#include "BasePlayerController.h"
+#include "../Character/PC.h"
+#include "../Controller/BasePlayerController.h"
 
 FThrowParam::FThrowParam()
 	: ThrowRotation(FRotator())

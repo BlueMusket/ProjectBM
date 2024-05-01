@@ -2,11 +2,11 @@
 
 
 #include "BaseCharacter.h"
-#include "HealthComponent.h"
-#include "AttackComponent.h"
-#include "ActionContextComponent.h"
-#include "BasePlayerController.h"
-#include "PCEntryInfo.h"
+#include "../Component/HealthComponent.h"
+#include "../Component/AttackComponent.h"
+#include "../Component/ActionContextComponent.h"
+#include "../Controller/BasePlayerController.h"
+#include "../Network/PCEntryInfo.h"
 
 ABaseCharacter::ABaseCharacter()
 	: Super()

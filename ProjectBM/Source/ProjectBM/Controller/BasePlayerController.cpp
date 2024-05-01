@@ -2,14 +2,14 @@
 
 
 #include "BasePlayerController.h"
-#include "RestartWidget.h"
-#include "HUDWidget.h"
-#include "AdminWidget.h"
-#include "BaseCharacter.h"
-#include "PCEntryInfo.h"
-#include "WidgetContextComponent.h"
+#include "../Widget/RestartWidget.h"
+#include "../Widget/HUDWidget.h"
+#include "../Widget/AdminWidget.h"
+#include "../Character/BaseCharacter.h"
+#include "../Network/PCEntryInfo.h"
+#include "../Component/WidgetContextComponent.h"
+#include "../Network/PCState.h"
 #include "Net/UnrealNetwork.h"
-#include "PCState.h"
 
 ABasePlayerController::ABasePlayerController(const FObjectInitializer& ObjectInitializer/* = FObjectInitializer::Get()*/)
 	: Super(ObjectInitializer)

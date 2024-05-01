@@ -2,16 +2,16 @@
 
 
 #include "BaseProjectile.h"
+#include "../Component/BaseProjectileMovementComponent.h"
+#include "../Character/PC.h"
+#include "../Effect/EffectActor.h"
+#include "../Component/AttackComponent.h"
+#include "../Component/HealthComponent.h"
 #include "Components/SphereComponent.h"
-#include "BaseProjectileMovementComponent.h"
-#include "PC.h"
-#include "EffectActor.h"
-#include "AttackComponent.h"
-#include "HealthComponent.h"
 
-#if UE_EDITOR
-PRAGMA_DISABLE_OPTIMIZATION
-#endif
+//#if UE_EDITOR
+//PRAGMA_DISABLE_OPTIMIZATION
+//#endif
 
 ABaseProjectile::ABaseProjectile(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)

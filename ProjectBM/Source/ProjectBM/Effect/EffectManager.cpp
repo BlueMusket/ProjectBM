@@ -6,7 +6,7 @@
 #include "NiagaraFunctionLibrary.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Engine/DataTable.h"
-#include "EffectDataTable.h"
+#include "Data/EffectDataTable.h"
 
 UEffectManager* UEffectManager::Instance = nullptr;
 

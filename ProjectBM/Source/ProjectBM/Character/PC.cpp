@@ -11,18 +11,18 @@
 #include "Animation/AnimInstance.h"
 #include "Kismet/KismetSystemLibrary.h"
 
-#include "BasePlayerController.h"
-#include "BaseProjectile.h"
+#include "../Controller/BasePlayerController.h"
+#include "../Projectile/BaseProjectile.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubSystems.h"
 #include "InputMappingContext.h"
 #include "InputAction.h"
 #include "InputTriggers.h"
-#include "HealthComponent.h"
-#include "InputContextComponent.h"
-#include "ActionContextComponent.h"
-#include "AttackComponent.h"
-#include "BaseAnimInstance.h"
+#include "../Component/HealthComponent.h"
+#include "../Component/InputContextComponent.h"
+#include "../Component/ActionContextComponent.h"
+#include "../Component/AttackComponent.h"
+#include "../Animation/BaseAnimInstance.h"
 
 
 APC::APC()

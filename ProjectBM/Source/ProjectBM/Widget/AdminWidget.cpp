@@ -2,7 +2,7 @@
 
 
 #include "AdminWidget.h"
-#include "BasePlayerController.h"
+#include "../Controller/BasePlayerController.h"
 #include "BaseGameInstance.h"
 #include "Components/Button.h"
 

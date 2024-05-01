@@ -3,7 +3,7 @@
 
 #include "LobbyMatchWidget.h"
 #include "Components/Button.h"
-#include "BasePlayerController.h"
+#include "../Controller/BasePlayerController.h"
 
 void ULobbyMatchWidget::NativeOnInitialized()
 {

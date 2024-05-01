@@ -2,10 +2,10 @@
 
 
 #include "WidgetContextComponent.h"
-#include "RestartWidget.h"
-#include "HUDWidget.h"
-#include "AdminWidget.h"
-#include "BasePlayerController.h"
+#include "../Widget/RestartWidget.h"
+#include "../Widget/HUDWidget.h"
+#include "../Widget/AdminWidget.h"
+#include "../Controller/BasePlayerController.h"
 #include "Blueprint/UserWidget.h"
 
 // Sets default values for this component's properties

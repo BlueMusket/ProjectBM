@@ -2,8 +2,8 @@
 
 
 #include "BaseGameInstance.h"
-#include "BasePlayerController.h"
-#include "EffectManager.h"
+#include "Controller/BasePlayerController.h"
+#include "Effect/EffectManager.h"
 
 void UBaseGameInstance::Init()
 {

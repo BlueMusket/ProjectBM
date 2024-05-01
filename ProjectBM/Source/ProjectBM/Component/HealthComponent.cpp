@@ -2,7 +2,7 @@
 
 
 #include "HealthComponent.h"
-#include "BaseCharacterInterface.h" 
+#include "Character/BaseCharacterInterface.h" 
 #include "GameFramework/Actor.h"
 
 // Sets default values for this component's properties

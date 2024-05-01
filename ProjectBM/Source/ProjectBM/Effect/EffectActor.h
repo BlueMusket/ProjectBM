@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BaseActor.h"
+#include "../Actor/BaseActor.h"
 #include "Components/BoxComponent.h"
 #include "NiagaraComponent.h"
 #include "EffectActor.generated.h"

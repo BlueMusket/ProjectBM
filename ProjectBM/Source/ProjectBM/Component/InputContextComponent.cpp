@@ -4,13 +4,13 @@
 #include "InputContextComponent.h"
 #include "Components/InputComponent.h"
 
-#include "BasePlayerController.h"
+#include "../Controller/BasePlayerController.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubSystems.h"
 #include "InputMappingContext.h"
 #include "InputAction.h"
 #include "InputTriggers.h"
-#include "PC.h"
+#include "../Character/PC.h"
 #include "AttackComponent.h"
 
 // Sets default values for this component's properties

@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "ThrowParam.h"
-#include "Lock.h"
+#include "../Base/Lock.h"
 #include "ActionContextComponent.generated.h"
 /**
  * 

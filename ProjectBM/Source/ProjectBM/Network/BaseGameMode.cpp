@@ -3,7 +3,7 @@
 
 #include "BaseGameMode.h"
 #include "EntryBuilder.h"
-#include "BasePlayerController.h"
+#include "../Controller/BasePlayerController.h"
 
 ABaseGameMode::ABaseGameMode(const FObjectInitializer& ObjectInitializer)
     : Super(ObjectInitializer)
