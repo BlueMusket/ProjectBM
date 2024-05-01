@@ -3,7 +3,7 @@
 
 #include "AdminWidget.h"
 #include "../Controller/BasePlayerController.h"
-#include "BaseGameInstance.h"
+#include "../BaseGameInstance.h"
 #include "Components/Button.h"
 
 void UAdminWidget::NativeOnInitialized()

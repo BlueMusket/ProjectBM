@@ -2,7 +2,7 @@
 
 
 #include "EntryBuilder.h"
-#include "Controller/BasePlayerController.h"
+#include "../Controller/BasePlayerController.h"
 #include "Misc/DefaultValueHelper.h"
 
 CEntryBuilder::CEntryBuilder(ABasePlayerController* Target)
