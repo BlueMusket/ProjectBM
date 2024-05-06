@@ -13,11 +13,30 @@ UCLASS()
 class PROJECTBM_API UHUDWidget : public UUserWidget
 {
 	GENERATED_BODY()
+
+public:
+	virtual void NativeOnInitialized() override;
+
 public:
 	void UpdateHealthPercent(float HealthPercent);
+
+protected:
+	UFUNCTION()
+	void ZoomInOutButtonClicked();
 
 public:
 	UPROPERTY(meta = (BindWidget))
 	class UProgressBar* HealthBar;
 
+	UPROPERTY(meta = (BindWidget))
+	class UButton* ZoomInOutButton;
+
+	UPROPERTY(meta = (BindWidget))
+	class UTextBlock* ZoomText;
+
+private:
+	void SetText();
+
+private:
+	bool IsZoomIn;
 };

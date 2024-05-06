@@ -18,9 +18,9 @@ class PROJECTBM_API UCameraMovement : public UObject
 	GENERATED_BODY()
 
 public:
-	virtual void Start(const FCameraMovementParam& Param);
+	virtual void Start(FCameraMovementParam& Param);
 		// Tick 함수 오버라이드
-	virtual void HeartBeat(float DeltaTime, UCameraComponent* CameraComponent);
+	virtual void Heartbeat(float DeltaTime, UCameraComponent* CameraComponent);
 	
 	virtual bool IsFinish(UCameraComponent* CameraComponent);
 };

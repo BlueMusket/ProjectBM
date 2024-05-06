@@ -25,12 +25,12 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 public:
-	void StartMovement(const FCameraMovementParam& Param);
+	void StartMovement(FCameraMovementParam& Param);
 
 public:
 	// Map to store camera movement types
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera Movements")
-	TMap<int, UCameraMovement*> CameraMovements;
+	TMap<ECameraMovementType, UCameraMovement*> CameraMovements;
 
 private:
 	UCameraComponent* PcCamaraComponent;

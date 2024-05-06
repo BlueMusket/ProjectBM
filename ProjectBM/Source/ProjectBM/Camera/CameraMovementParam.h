@@ -6,6 +6,12 @@
 #include "CameraMovementParam.generated.h"
 
 
+UENUM()
+enum class ECameraMovementType : uint8
+{
+	CAMERA_MOVEMENT_TYPE_FOV = 0,
+	CAMERA_MOVEMENT_TYPE_MAX,
+};
 
 /**
  * 
@@ -23,6 +29,6 @@ public:
 	static const int INT_PARAM_MAX = 5;
 
 public:
-	
+	ECameraMovementType MovementType;
 	TArray<int> ParamArray;
 };
