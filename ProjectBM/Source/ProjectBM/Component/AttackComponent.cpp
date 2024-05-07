@@ -98,7 +98,7 @@ void UAttackComponent::SpawnProjectile()
 			////ProjectileMovement->SetVelocityInLocalSpace(FVector(ThrowPower, 0.f, 0.f));
 
 			//ProjectileMovement->RefreshPhysicsLinearVelocity();
-			//ProjectileMovement->TrajectorySimulating(SpawnLocation);
+			ProjectileMovement->TrajectorySimulating(SpawnLocation);
 		}
 	}
 }

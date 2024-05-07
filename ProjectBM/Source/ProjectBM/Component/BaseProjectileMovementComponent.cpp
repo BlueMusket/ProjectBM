@@ -3,6 +3,11 @@
 
 #include "BaseProjectileMovementComponent.h"
 
+
+#if UE_EDITOR
+PRAGMA_DISABLE_OPTIMIZATION
+#endif
+
 void UBaseProjectileMovementComponent::RefreshPhysicsLinearVelocity()
 {
 	if (bInitialVelocityInLocalSpace)
@@ -36,16 +41,14 @@ void UBaseProjectileMovementComponent::RefreshPhysicsLinearVelocity()
 
 void UBaseProjectileMovementComponent::TrajectorySimulating(const FVector& Location)
 {
-
-	static float gap = 1.0f;
-	static float test = 100;
+	static float deltaTick = 0.3f;
 	FVector OldVelocity = Velocity;
 	FVector OldLocation = Location;
 
-	for (float step = 0.f; step < test; step += 1.f * gap)
+	for (int i = 0; i < 50; ++i)
 	{
-		const FVector MoveDelta = ComputeMoveDelta(OldVelocity, step);
-		OldVelocity = ComputeVelocity(OldVelocity, step);
+		const FVector MoveDelta = ComputeMoveDelta(OldVelocity, deltaTick);
+		OldVelocity = ComputeVelocity(OldVelocity, deltaTick);
 
 		FVector NewLocation = OldLocation + MoveDelta;
 		DrawDebugSphere(GetWorld(), NewLocation, 10.0f, 5, FColor::Red, false, 5.0f);
