@@ -16,7 +16,7 @@ class PROJECTBM_API UBaseGameInstance : public UGameInstance
 	
 public:
 	virtual void Init() override;
-
+	virtual void Shutdown() override;
 public:
 	int GetCmdSessionId() { return CmdSessionId; }
 

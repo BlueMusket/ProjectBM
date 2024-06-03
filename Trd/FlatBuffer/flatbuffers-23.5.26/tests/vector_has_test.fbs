@@ -1,0 +1,10 @@
+﻿namespace Swift.Tests;
+
+table Vectors
+{
+  none:[ulong];
+  empty:[ulong];
+  array:[ulong];
+}
+
+root_type Vectors;

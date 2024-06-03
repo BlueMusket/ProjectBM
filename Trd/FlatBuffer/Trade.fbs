@@ -1,0 +1,29 @@
+﻿table FCT_Login
+{
+ name:string;
+ pwd:string;
+}
+
+root_type FCT_Login;
+
+table FTQ_Login
+{
+ name:string;
+ pwd:string;
+}
+
+root_type FTQ_Login;
+
+table FCT_Ping
+{
+ data:[ubyte];
+}
+
+root_type FCT_Ping;
+
+table FTC_Pong
+{
+ data:[ubyte];
+}
+
+root_type FTC_Pong;

@@ -1,0 +1,5 @@
+﻿include "valid_test2.fbs";
+
+namespace A;
+
+table X {}

@@ -4,9 +4,9 @@
 #include "BaseProjectileMovementComponent.h"
 
 
-#if UE_EDITOR
-PRAGMA_DISABLE_OPTIMIZATION
-#endif
+//#if UE_EDITOR
+//PRAGMA_DISABLE_OPTIMIZATION
+//#endif
 
 void UBaseProjectileMovementComponent::RefreshPhysicsLinearVelocity()
 {

@@ -4,13 +4,24 @@
 #include "BaseGameInstance.h"
 #include "Controller/BasePlayerController.h"
 #include "Effect/EffectManager.h"
+#include "Network/NetworkCore.h"
 
 void UBaseGameInstance::Init()
 {
 	Super::Init();
 
+	// 로그인 서버와 연결
+	CNetworkCore::Get()->Connect(TEXT("127.0.0.1"), 13480);
+
 	// 데이터 초기화 로드를 멀티쓰레드로 할지 고민좀
 	UEffectManager::Get()->Init();
+}
+
+void UBaseGameInstance::Shutdown()
+{
+	Super::Shutdown();
+
+	CNetworkCore::Get()->Shutdown();
 }
 
 void UBaseGameInstance::SetSessionId(FString SessionIdStr)
