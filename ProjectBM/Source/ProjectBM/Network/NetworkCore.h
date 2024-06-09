@@ -6,23 +6,6 @@
 #include "Sockets.h"
 #include "CoreMinimal.h"
 
-
-class FWorkerThread : public FRunnable
-{
-public:
-	FWorkerThread(FSocket* InSocket);
-	virtual ~FWorkerThread();
-
-	virtual bool Init() override;
-	virtual uint32 Run() override;
-	virtual void Stop() override;
-	FString ReceiveMessage();
-private:
-	FSocket* Socket;
-	FRunnableThread* Thread;
-	bool bStopThread;
-};
-
 /**
  * 
  */
@@ -32,8 +15,8 @@ class PROJECTBM_API CNetworkCore
 
 private:
 	FSocket* Socket;
-	TUniquePtr<FWorkerThread> WorkerThread;
-	bool bIsConnected;
+	bool IsRunning;
+	bool IsConnected;
 
 public:
 	~CNetworkCore();
@@ -41,7 +24,8 @@ public:
 	void Shutdown();
 	bool Connect(const FString& IPAddress, int32 Port);
 	bool Send(const TArray<uint8>& Data);
-
+	bool CheckRunning() { return IsRunning; }
+	void SetRunning(bool Value) { IsRunning = Value; }
 
 public:
 	// 싱글톤 인스턴스 접근용 정적 메서드

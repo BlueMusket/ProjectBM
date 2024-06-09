@@ -11,6 +11,8 @@ void UBaseGameInstance::Init()
 	Super::Init();
 
 	// 로그인 서버와 연결
+	CNetworkCore::Get()->SetRunning(true);
+
 	CNetworkCore::Get()->Connect(TEXT("127.0.0.1"), 13480);
 
 	// 데이터 초기화 로드를 멀티쓰레드로 할지 고민좀
@@ -21,7 +23,7 @@ void UBaseGameInstance::Shutdown()
 {
 	Super::Shutdown();
 
-	CNetworkCore::Get()->Shutdown();
+	CNetworkCore::Get()->SetRunning(false);
 }
 
 void UBaseGameInstance::SetSessionId(FString SessionIdStr)

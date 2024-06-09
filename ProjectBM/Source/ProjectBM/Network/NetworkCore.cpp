@@ -6,6 +6,25 @@
 #include "SocketSubsystem.h"
 #include "Networking.h"
 
+#if UE_EDITOR
+PRAGMA_DISABLE_OPTIMIZATION
+#endif
+
+#define MAX_PACKET_SIZE 1024
+
+typedef unsigned short PacketSize_t;
+typedef unsigned short PacketId_t;
+typedef unsigned char CompressType_t;
+typedef unsigned char EncryptionType_t;
+
+struct FPacketHeader
+{
+    PacketSize_t m_Size;
+    PacketId_t m_Id;
+    CompressType_t m_CompressType;
+    EncryptionType_t m_EncryptionType;
+};
+
 
 class FRecvTask : public FNonAbandonableTask
 {
@@ -14,8 +33,64 @@ public:
 
     void DoWork()
     {
-       // 예시 작업: 일정 시간 동안 대기
-        FPlatformProcess::Sleep(1.0f);
+        // 연결이 완료 될 때 까지 대기
+        while (Owner->CheckRunning())
+        {
+            if (nullptr == Socket)
+            {
+                break;
+            }
+
+            ESocketConnectionState State = Socket->GetConnectionState();
+            if (SCS_Connected == State)
+            {
+                break;
+            }
+
+            FPlatformProcess::Sleep(1.0f);
+        }
+
+        uint8* BufferHeader = new uint8[MAX_PACKET_SIZE];
+
+        int LeftByte = 0;
+        // recv 시작
+        while (Owner->CheckRunning())
+        {
+            if (nullptr == Socket)
+            {
+                break;
+            }
+
+            uint32 Size;
+
+            while (Socket->HasPendingData(Size))
+            {
+                int32 ReadByte = 0;
+                Socket->Recv(&BufferHeader[LeftByte], sizeof(BufferHeader) - LeftByte, ReadByte);
+
+                int total = LeftByte + ReadByte;
+                int handled = 0;
+
+                uint8* Buffer = BufferHeader;
+
+                // byte 처리
+                while (handled < total)
+                {
+                    // FlatBuffer
+
+                    LeftByte -= handled;
+                }
+
+                // byte 이동
+                memmove(BufferHeader, BufferHeader + handled, total - handled);
+			}
+        }
+
+        Socket->Close();
+        ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->DestroySocket(Socket);
+
+        Owner->Shutdown();
+
         UE_LOG(LogTemp, Warning, TEXT("Async task completed"));
     }
 
@@ -26,7 +101,6 @@ public:
 
 private:
     FSocket* Socket;
-
     CNetworkCore* Owner;
 };
 
@@ -39,8 +113,13 @@ public:
     void DoWork()
     {
         // 연결이 완료 될 때 까지 대기
-        while (true)
+        while (Owner->CheckRunning())
         {
+            if (nullptr == Socket)
+            {
+                return;
+            }
+
             ESocketConnectionState State = Socket->GetConnectionState();
             if (SCS_Connected == State)
             {
@@ -50,16 +129,12 @@ public:
             FPlatformProcess::Sleep(1.0f);
         }
 
-        // recv 시작
-        while (true)
+        // 연결이 완료 될 때 까지 대기
+        while (Owner->CheckRunning())
         {
-            if (Socket && Socket->Wait(ESocketWaitConditions::WaitForRead, FTimespan::FromSeconds(1.0)))
+            if (nullptr == Socket)
             {
-                FString ReceivedMessage = ReceiveMessage();
-                if (!ReceivedMessage.IsEmpty())
-                {
-                    UE_LOG(LogTemp, Log, TEXT("Received message: %s"), *ReceivedMessage);
-                }
+                break;
             }
         }
 
@@ -69,25 +144,6 @@ public:
     FORCEINLINE TStatId GetStatId() const
     {
         RETURN_QUICK_DECLARE_CYCLE_STAT(FPingTask, STATGROUP_ThreadPoolAsyncTasks);
-    }
-
-    FString ReceiveMessage()
-    {
-        TArray<uint8> ReceivedData;
-        uint32 Size;
-        FString ReceivedString;
-
-        while (Socket->HasPendingData(Size))
-        {
-            ReceivedData.SetNumUninitialized(FMath::Min(Size, 65507u));
-
-            int32 Read = 0;
-            Socket->Recv(ReceivedData.GetData(), ReceivedData.Num(), Read);
-
-            ReceivedString += FString(ANSI_TO_TCHAR(reinterpret_cast<const char*>(ReceivedData.GetData())));
-        }
-
-        return ReceivedString;
     }
 
 
@@ -112,12 +168,13 @@ CNetworkCore* CNetworkCore::Get()
 
 
 CNetworkCore::CNetworkCore()
-    : Socket(nullptr), bIsConnected(false)
+    : Socket(nullptr), IsConnected(false), IsRunning(false)
 {
 }
 
 CNetworkCore::~CNetworkCore()
 {
+    SetRunning(false);
     Shutdown();
 }
 
@@ -139,9 +196,9 @@ bool CNetworkCore::Connect(const FString& IPAddress, int32 Port)
     (new FAutoDeleteAsyncTask<FRecvTask>(this, Socket))->StartBackgroundTask();
     (new FAutoDeleteAsyncTask<FPingTask>(this, Socket))->StartBackgroundTask();
 
-    bIsConnected = Socket->Connect(*Addr);
+    IsConnected = Socket->Connect(*Addr);
 
-    if (bIsConnected)
+    if (IsConnected)
     {
         UE_LOG(LogTemp, Log, TEXT("Connected to server"));
     }
@@ -153,23 +210,22 @@ bool CNetworkCore::Connect(const FString& IPAddress, int32 Port)
     
     ESocketErrors LastError = SocketSubsystem->GetLastErrorCode();
 
-    return bIsConnected;
+    return IsConnected;
 }
 
 void CNetworkCore::Shutdown()
 {
     if (Socket)
     {
-        Socket->Close();
-        ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->DestroySocket(Socket);
         Socket = nullptr;
     }
-    bIsConnected = false;
+
+    IsConnected = false;
 }
 
 bool CNetworkCore::Send(const TArray<uint8>& Data)
 {
-    if (!bIsConnected || !Socket)
+    if (!IsConnected || !Socket)
     {
         return false;
     }
