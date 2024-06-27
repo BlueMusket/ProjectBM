@@ -1,0 +1,38 @@
+﻿  pch.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\AllocComponent.h(7,2): warning C4267: 'return': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  AsyncDispatcher.cpp
+D:\Programming\Unreal\ProjectBM\Server\Network\AsyncDispatcher.cpp(33,39): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Programming\Unreal\ProjectBM\Server\Network\AsyncDispatcher.cpp(33,39): warning C4267: '초기화 중': 'size_t'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  AsyncEvent.cpp
+  AsyncEventSink.cpp
+  AsyncTask.cpp
+  AsyncTcpComponent.cpp
+D:\Programming\Unreal\ProjectBM\Server\Network\AsyncTcpComponent.h(16,2): warning C4267: 'return': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  AsyncTcpEvent.cpp
+  AsyncTcpEventSink.cpp
+  Builder.cpp
+  Handler.cpp
+  HandlerRegistry.cpp
+  Iocp.cpp
+  ListenSystem.cpp
+  MarshalerComponent.cpp
+D:\Programming\Unreal\ProjectBM\Server\Network\MarshalerComponent.h(8,2): warning C4267: 'return': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  NetworkAppManager.cpp
+  Packet.cpp
+  PacketBase.cpp
+  PacketHandler.cpp
+  PacketReader.cpp
+  PacketRegistry.cpp
+  PacketWriter.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  Peer.cpp
+D:\Programming\Unreal\ProjectBM\Server\Network\AsyncTcpComponent.h(16,2): warning C4267: 'return': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Programming\Unreal\ProjectBM\Server\Network\MarshalerComponent.h(8,2): warning C4267: 'return': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  PeerFacade.cpp
+  PeerListener.cpp
+D:\Programming\Unreal\ProjectBM\Server\Network\AsyncTcpComponent.h(16,2): warning C4267: 'return': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  SendPolicy.cpp
+  Socket.cpp
+  코드를 생성하고 있습니다...
+  Network.vcxproj -> D:\Programming\Unreal\ProjectBM\Server\immediate\Lib\Debug\Network\Network.lib

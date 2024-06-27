@@ -1,0 +1,25 @@
+﻿  AllocComponent.cpp
+D:\Programming\Server\HoseoServer\HoseoServer\Core\Base\AllocComponent.cpp(2,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  AppManager.cpp
+D:\Programming\Server\HoseoServer\HoseoServer\Core\Base\AppManager.cpp(10,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  Atomic.cpp
+D:\Programming\Server\HoseoServer\HoseoServer\Core\Base\Atomic.cpp(2,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  Component.cpp
+D:\Programming\Server\HoseoServer\HoseoServer\Core\Base\Component.cpp(11,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  Entity.cpp
+D:\Programming\Server\HoseoServer\HoseoServer\Core\Base\Entity.cpp(15,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  MemoryEntity.cpp
+D:\Programming\Server\HoseoServer\HoseoServer\Core\Base\MemoryEntity.cpp(14,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  MemorySystem.cpp
+D:\Programming\Server\HoseoServer\HoseoServer\Core\Base\MemorySystem.cpp(12,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  Singleton.cpp
+D:\Programming\Server\HoseoServer\HoseoServer\Core\Base\Singleton.cpp(2,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  System.cpp
+D:\Programming\Server\HoseoServer\HoseoServer\Core\Base\System.cpp(2,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  Task.cpp
+D:\Programming\Server\HoseoServer\HoseoServer\Core\Base\Task.cpp(17,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  TaskComponent.cpp
+D:\Programming\Server\HoseoServer\HoseoServer\Core\Base\TaskComponent.cpp(3,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  Thread.cpp
+D:\Programming\Server\HoseoServer\HoseoServer\Core\Base\Thread.cpp(31,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  코드를 생성하고 있습니다...

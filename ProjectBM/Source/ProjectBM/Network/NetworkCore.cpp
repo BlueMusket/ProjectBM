@@ -5,6 +5,7 @@
 #include "Async/AsyncWork.h"
 #include "SocketSubsystem.h"
 #include "Networking.h"
+#include "FlatHandler.h"
 
 #if UE_EDITOR
 PRAGMA_DISABLE_OPTIMIZATION
@@ -33,6 +34,11 @@ public:
 
     void DoWork()
     {
+        CFlatHandler handler;
+        uint8_t* buffer = handler.Pack();
+        handler.UnPack(buffer);
+
+
         // 연결이 완료 될 때 까지 대기
         while (Owner->CheckRunning())
         {
@@ -180,6 +186,7 @@ CNetworkCore::~CNetworkCore()
 
 bool CNetworkCore::Connect(const FString& IPAddress, int32 Port)
 {
+
     ISocketSubsystem* SocketSubsystem = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM);
     TSharedRef<FInternetAddr> Addr = SocketSubsystem->CreateInternetAddr();
 

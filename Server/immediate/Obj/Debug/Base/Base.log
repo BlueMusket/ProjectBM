@@ -1,0 +1,20 @@
+﻿  pch.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\AllocComponent.h(7,2): warning C4267: 'return': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  AllocComponent.cpp
+  AppManager.cpp
+  Atomic.cpp
+  CInputEvent.cpp
+  Component.cpp
+  Entity.cpp
+  InputSystem.cpp
+  Lock.cpp
+  MemoryEntity.cpp
+  MemorySystem.cpp
+  Singleton.cpp
+  System.cpp
+  Task.cpp
+  TaskComponent.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\TaskComponent.h(6,2): warning C4267: 'return': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Thread.cpp
+  코드를 생성하고 있습니다...
+  Base.vcxproj -> D:\Programming\Unreal\ProjectBM\Server\immediate\Lib\Debug\Base\Base.lib

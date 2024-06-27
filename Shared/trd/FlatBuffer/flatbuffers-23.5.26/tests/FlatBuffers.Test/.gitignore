@@ -1,0 +1,4 @@
+﻿dotnet-install.sh
+.dotnet_tmp/
+.tmp/
+packages/

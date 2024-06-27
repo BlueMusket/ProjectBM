@@ -1,0 +1,1 @@
+﻿flatc --csharp Trade.fbs
