@@ -1,0 +1,29 @@
+﻿  pch.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\AllocComponent.h(7,2): warning C4267: 'return': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  AllocComponent.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\AllocComponent.cpp(2,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  AppManager.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\AppManager.cpp(10,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  Atomic.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\Atomic.cpp(2,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  CInputEvent.cpp
+  Component.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\Component.cpp(11,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  Entity.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\Entity.cpp(15,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  InputSystem.cpp
+  Lock.cpp
+  MemoryEntity.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\MemoryEntity.cpp(14,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  MemorySystem.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\MemorySystem.cpp(11,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  Singleton.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\Singleton.cpp(2,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  System.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\System.cpp(2,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  Task.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\Task.cpp(17,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  TaskComponent.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\TaskComponent.cpp(3,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?
+  Thread.cpp
+D:\Programming\Unreal\ProjectBM\Server\Base\Thread.cpp(31,1): fatal error C1010: 미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "pch.h"'을(를) 소스에 추가하시겠습니까?

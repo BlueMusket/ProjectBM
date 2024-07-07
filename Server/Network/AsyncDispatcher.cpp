@@ -30,7 +30,7 @@ void CAsyncDispatcher::Start()
 
 void CAsyncDispatcher::Join()
 {
-	const int count = m_ThreadList.size();
+	const int count = (int)m_ThreadList.size();
 
 	for (auto thread : m_ThreadList)
 	{

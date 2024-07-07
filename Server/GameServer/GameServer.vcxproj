@@ -109,7 +109,7 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)immediate\Lib\$(Configuration)\$(MSBuildProjectName)\</OutDir>
     <IntDir>$(SolutionDir)immediate\Obj\$(Configuration)\$(MSBuildProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir);$(SolutionDir)..\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)immediate\Lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development_Editor|x64'">
@@ -202,12 +202,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CG_LoginHandler.cpp" />
+    <ClCompile Include="GamePacket.cpp" />
+    <ClCompile Include="GamePacketHandlerSetup.cpp" />
+    <ClCompile Include="Lobby.cpp" />
     <ClCompile Include="GameServerAppManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OneOnOne.cpp" />
+    <ClCompile Include="OneOnOneRule.cpp" />
+    <ClCompile Include="Rule.cpp" />
+    <ClCompile Include="Zone.cpp" />
+    <ClCompile Include="ZoneFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CG_LoginHandler.h" />
+    <ClInclude Include="GamePacket.h" />
+    <ClInclude Include="GamePacketHandlerSetup.h" />
+    <ClInclude Include="Lobby.h" />
     <ClInclude Include="GameServerAppManager.h" />
+    <ClInclude Include="OneOnOne.h" />
+    <ClInclude Include="OneOnOneRule.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Rule.h" />
+    <ClInclude Include="Zone.h" />
+    <ClInclude Include="ZoneFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Shared.vcxproj">

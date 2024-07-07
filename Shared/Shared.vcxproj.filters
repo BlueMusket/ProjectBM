@@ -18,10 +18,10 @@
     <ClInclude Include="pch.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="FlatHandler.h">
+    <ClInclude Include="SharedPacket.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Trade_generated.h">
+    <ClInclude Include="Shared_generated.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClCompile Include="pch.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="FlatHandler.cpp">
+    <ClCompile Include="SharedPacket.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

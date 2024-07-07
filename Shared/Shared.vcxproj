@@ -181,7 +181,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
@@ -192,6 +192,9 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PreBuildEvent>
+      <Command>start "" "$(MSBuildProjectDirectory)\MakePacket.bat" $(SolutionDir) $(MSBuildProjectDirectory)\</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Development_Editor|x64'">
     <ClCompile>
@@ -233,12 +236,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="FlatHandler.h" />
+    <ClInclude Include="SharedPacket.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Trade_generated.h" />
+    <ClInclude Include="Shared_generated.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FlatHandler.cpp" />
+    <ClCompile Include="SharedPacket.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Development_Editor|Win32'">Create</PrecompiledHeader>

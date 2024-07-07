@@ -10,8 +10,8 @@ class CFlatHandler
 public:
 	CFlatHandler();
 	~CFlatHandler();
-//
-//public:
-//	uint8_t* Pack();
-//	void UnPack(uint8_t* buffer);
+
+public:
+	uint8_t* Pack();
+	void UnPack(uint8_t* buffer);
 };

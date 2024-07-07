@@ -23,7 +23,7 @@ public:\
 	name() : CComponent() { Init(); } \
 	virtual ~name() {} \
 	static std::string	GetName() { return #name; }\
-	static int			GetHash() { return std::hash<std::string>()(#name); } \
+	static int			GetHash() { return (int)std::hash<std::string>()(#name); } \
 	static CComponent* GetClone() \
 	{ \
 		return new name(); \

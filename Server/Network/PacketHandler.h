@@ -14,11 +14,11 @@ public:
 
 
 
-#define PACKET_HANDLER_CLASS(name)\
+#define PACKET_HANDLER_FOUNDATION(name)\
 class name##Handler : public CPacketHandler\
 {\
 public:\
-	name##Handler() {} \
+	name##Handler() : CPacketHandler() {} \
 	virtual ~name##Handler() {} \
 	static std::string	GetName() { return #name; }\
 	static int			GetHash() { return std::hash<std::string>()(#name); } \

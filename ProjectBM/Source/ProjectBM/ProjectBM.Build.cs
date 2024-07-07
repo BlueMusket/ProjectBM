@@ -27,10 +27,11 @@ public class ProjectBM : ModuleRules
 
 		// Add the path to the include directory for your library
 		PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "../../../Shared"));
+		//PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "../../ThirdParty/Shared/include"));
+		PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "../../ThirdParty/Shared/lib/x64/Shared.lib"));
         // Add the library
         if (Target.Configuration == UnrealTargetConfiguration.Debug)
 		{
-			PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "../../ThirdParty/Shared/lib/x64/Shared.lib"));
 		}
 		else
 		{

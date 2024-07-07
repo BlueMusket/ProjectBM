@@ -3,6 +3,7 @@
 #include "AsyncTcpEventSink.h"
 
 class CSendPolicy;
+class CLoginPolicy;
 class CSocket;
 class CAsyncTcpEvent;
 
@@ -43,5 +44,6 @@ public:
 
 private:
 	CSendPolicy* m_SendPolicy;
+	CLoginPolicy* m_LoginPolicy;
 };
 

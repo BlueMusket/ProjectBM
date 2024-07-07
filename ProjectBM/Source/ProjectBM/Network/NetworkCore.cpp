@@ -7,9 +7,9 @@
 #include "Networking.h"
 #include "FlatHandler.h"
 
-#if UE_EDITOR
-PRAGMA_DISABLE_OPTIMIZATION
-#endif
+//#if UE_EDITOR
+//PRAGMA_DISABLE_OPTIMIZATION
+//#endif
 
 #define MAX_PACKET_SIZE 1024
 

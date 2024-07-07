@@ -4,6 +4,7 @@
 #include "AsyncTcpEvent.h"
 #include "AsyncDispatcher.h"
 #include "SendPolicy.h"
+#include "Server/LoginPolicy.h"
 #include "PeerFacade.h"
 
 CPeer::CPeer()
@@ -12,6 +13,7 @@ CPeer::CPeer()
 	InsertComponent<CMarshalerComponent>();
 
 	m_SendPolicy = New(CSendPolicy);
+	m_LoginPolicy = New(CLoginPolicy);
 }
 
 CPeer::~CPeer()

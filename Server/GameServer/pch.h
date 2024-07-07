@@ -9,4 +9,12 @@
 
 // 여기에 미리 컴파일하려는 헤더 추가
 #include "Base/MemoryUtil.h"
+
+#include <string>
+
+#include "Network/PacketWriter.h"
+#include "Network/PacketReader.h"
+
+#include "Shared/SharedPacket.h"
+
 #endif //PCH_H

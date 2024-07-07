@@ -24,10 +24,14 @@ public:
 public:\
 	name() : CPacketBase() {} \
 	virtual ~name() {} \
+	enum E##name { e##name = __LINE__ };\
 	static std::string	GetName() { return #name; }\
 	static int			GetHash() { return std::hash<std::string>()(#name); }\
-	static PacketType	GetType() { return Type; }
-	
+	static PacketType	GetPacketType() { return Type; }\
+	static E##name GetEnum() { return e##name; }\
+public:\
+	virtual uint8_t* Pack() final; \
+	virtual void UnPack(uint8_t* buffer) final;
 
 template <typename T>
 struct IsPod { enum { Value = std::is_arithmetic<T>::value || std::is_enum<T>::value }; };

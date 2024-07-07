@@ -4,8 +4,12 @@ template<typename T>
 class CSingleton
 {
 protected:
-	CSingleton() {};
+	CSingleton() { Setup(); };
 	virtual ~CSingleton() {};
+
+
+	virtual void Setup() {};
+
 
 public:
 	static T* GetInstance()

@@ -1,0 +1,29 @@
+﻿table FCG_Login
+{
+ name:string;
+ pwd:string;
+}
+
+root_type FCG_Login;
+
+table FGC_Login
+{
+ name:string;
+ pwd:string;
+}
+
+root_type FGC_Login;
+
+table FCG_Ping
+{
+ data:[ubyte];
+}
+
+root_type FCG_Ping;
+
+table FGC_Pong
+{
+ data:[ubyte];
+}
+
+root_type FGC_Pong;
