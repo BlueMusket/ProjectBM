@@ -1,29 +1,63 @@
-﻿table FCG_Login
-{
- name:string;
- pwd:string;
+﻿// 로그인 요청을 나타내는 테이블
+table FCG_Login {
+  name: string; // 사용자 이름
+  pwd: string;  // 비밀번호
 }
 
 root_type FCG_Login;
 
-table FGC_Login
-{
- name:string;
- pwd:string;
+// 로그인 응답을 나타내는 테이블
+table FGC_Login {
+  result: int; // 결과 코드 (예: 0 = 성공, 1 = 실패)
 }
 
 root_type FGC_Login;
 
-table FCG_Ping
-{
- data:[ubyte];
+// Ping 요청을 나타내는 테이블
+table FCG_Ping {
+  data: [ubyte]; // 데이터 바이트 배열
 }
 
 root_type FCG_Ping;
 
-table FGC_Pong
-{
- data:[ubyte];
+// Pong 응답을 나타내는 테이블
+table FGC_Pong {
+  data: [ubyte]; // 데이터 바이트 배열
 }
 
 root_type FGC_Pong;
+
+// PC 정보를 나타내는 테이블
+table FGC_PcInfo {
+  data: [ubyte]; // 데이터 바이트 배열
+}
+
+root_type FGC_PcInfo;
+
+// 로드 완료를 나타내는 테이블
+table FCG_LoadComplete {
+  data: [ubyte]; // 데이터 바이트 배열
+}
+
+root_type FCG_LoadComplete;
+
+// 매칭 시작을 나타내는 테이블
+table FCG_StartMatching {
+  data: [ubyte]; // 데이터 바이트 배열
+}
+
+root_type FCG_StartMatching;
+
+// PC 이동을 나타내는 테이블 (요청)
+table FCG_PcMove {
+  data: [ubyte]; // 데이터 바이트 배열
+}
+
+root_type FCG_PcMove;
+
+// PC 이동을 나타내는 테이블 (응답)
+table FGC_PcMove {
+  data: [ubyte]; // 데이터 바이트 배열
+}
+
+root_type FGC_PcMove;

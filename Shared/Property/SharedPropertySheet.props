@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <ExternalIncludePath>$(SolutionDir);$(IncludePath);$(ExternalIncludePath)</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)..\ProjectBM\ThirdParty\FlatBuffer\flatbuffers-23.5.26\include;$(SolutionDir);$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)..\ProjectBM\ThirdParty\Shared\lib\$(LibrariesArchitecture)</OutDir>
+    <IntDir>$(SolutionDir)..\Immediate\Obj\$(Configuration)\$(MSBuildProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

@@ -25,6 +25,21 @@ struct FCG_PingBuilder;
 struct FGC_Pong;
 struct FGC_PongBuilder;
 
+struct FGC_PcInfo;
+struct FGC_PcInfoBuilder;
+
+struct FCG_LoadComplete;
+struct FCG_LoadCompleteBuilder;
+
+struct FCG_StartMatching;
+struct FCG_StartMatchingBuilder;
+
+struct FCG_PcMove;
+struct FCG_PcMoveBuilder;
+
+struct FGC_PcMove;
+struct FGC_PcMoveBuilder;
+
 struct FCG_Login FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef FCG_LoginBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
@@ -93,21 +108,14 @@ inline ::flatbuffers::Offset<FCG_Login> CreateFCG_LoginDirect(
 struct FGC_Login FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef FGC_LoginBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
-    VT_NAME = 4,
-    VT_PWD = 6
+    VT_RESULT = 4
   };
-  const ::flatbuffers::String *name() const {
-    return GetPointer<const ::flatbuffers::String *>(VT_NAME);
-  }
-  const ::flatbuffers::String *pwd() const {
-    return GetPointer<const ::flatbuffers::String *>(VT_PWD);
+  int32_t result() const {
+    return GetField<int32_t>(VT_RESULT, 0);
   }
   bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
-           VerifyOffset(verifier, VT_NAME) &&
-           verifier.VerifyString(name()) &&
-           VerifyOffset(verifier, VT_PWD) &&
-           verifier.VerifyString(pwd()) &&
+           VerifyField<int32_t>(verifier, VT_RESULT, 4) &&
            verifier.EndTable();
   }
 };
@@ -116,11 +124,8 @@ struct FGC_LoginBuilder {
   typedef FGC_Login Table;
   ::flatbuffers::FlatBufferBuilder &fbb_;
   ::flatbuffers::uoffset_t start_;
-  void add_name(::flatbuffers::Offset<::flatbuffers::String> name) {
-    fbb_.AddOffset(FGC_Login::VT_NAME, name);
-  }
-  void add_pwd(::flatbuffers::Offset<::flatbuffers::String> pwd) {
-    fbb_.AddOffset(FGC_Login::VT_PWD, pwd);
+  void add_result(int32_t result) {
+    fbb_.AddElement<int32_t>(FGC_Login::VT_RESULT, result, 0);
   }
   explicit FGC_LoginBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
@@ -135,24 +140,10 @@ struct FGC_LoginBuilder {
 
 inline ::flatbuffers::Offset<FGC_Login> CreateFGC_Login(
     ::flatbuffers::FlatBufferBuilder &_fbb,
-    ::flatbuffers::Offset<::flatbuffers::String> name = 0,
-    ::flatbuffers::Offset<::flatbuffers::String> pwd = 0) {
+    int32_t result = 0) {
   FGC_LoginBuilder builder_(_fbb);
-  builder_.add_pwd(pwd);
-  builder_.add_name(name);
+  builder_.add_result(result);
   return builder_.Finish();
-}
-
-inline ::flatbuffers::Offset<FGC_Login> CreateFGC_LoginDirect(
-    ::flatbuffers::FlatBufferBuilder &_fbb,
-    const char *name = nullptr,
-    const char *pwd = nullptr) {
-  auto name__ = name ? _fbb.CreateString(name) : 0;
-  auto pwd__ = pwd ? _fbb.CreateString(pwd) : 0;
-  return CreateFGC_Login(
-      _fbb,
-      name__,
-      pwd__);
 }
 
 struct FCG_Ping FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
@@ -257,33 +248,288 @@ inline ::flatbuffers::Offset<FGC_Pong> CreateFGC_PongDirect(
       data__);
 }
 
-inline const FGC_Pong *GetFGC_Pong(const void *buf) {
-  return ::flatbuffers::GetRoot<FGC_Pong>(buf);
+struct FGC_PcInfo FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
+  typedef FGC_PcInfoBuilder Builder;
+  enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
+    VT_DATA = 4
+  };
+  const ::flatbuffers::Vector<uint8_t> *data() const {
+    return GetPointer<const ::flatbuffers::Vector<uint8_t> *>(VT_DATA);
+  }
+  bool Verify(::flatbuffers::Verifier &verifier) const {
+    return VerifyTableStart(verifier) &&
+           VerifyOffset(verifier, VT_DATA) &&
+           verifier.VerifyVector(data()) &&
+           verifier.EndTable();
+  }
+};
+
+struct FGC_PcInfoBuilder {
+  typedef FGC_PcInfo Table;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_data(::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data) {
+    fbb_.AddOffset(FGC_PcInfo::VT_DATA, data);
+  }
+  explicit FGC_PcInfoBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
+        : fbb_(_fbb) {
+    start_ = fbb_.StartTable();
+  }
+  ::flatbuffers::Offset<FGC_PcInfo> Finish() {
+    const auto end = fbb_.EndTable(start_);
+    auto o = ::flatbuffers::Offset<FGC_PcInfo>(end);
+    return o;
+  }
+};
+
+inline ::flatbuffers::Offset<FGC_PcInfo> CreateFGC_PcInfo(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data = 0) {
+  FGC_PcInfoBuilder builder_(_fbb);
+  builder_.add_data(data);
+  return builder_.Finish();
 }
 
-inline const FGC_Pong *GetSizePrefixedFGC_Pong(const void *buf) {
-  return ::flatbuffers::GetSizePrefixedRoot<FGC_Pong>(buf);
+inline ::flatbuffers::Offset<FGC_PcInfo> CreateFGC_PcInfoDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    const std::vector<uint8_t> *data = nullptr) {
+  auto data__ = data ? _fbb.CreateVector<uint8_t>(*data) : 0;
+  return CreateFGC_PcInfo(
+      _fbb,
+      data__);
 }
 
-inline bool VerifyFGC_PongBuffer(
+struct FCG_LoadComplete FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
+  typedef FCG_LoadCompleteBuilder Builder;
+  enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
+    VT_DATA = 4
+  };
+  const ::flatbuffers::Vector<uint8_t> *data() const {
+    return GetPointer<const ::flatbuffers::Vector<uint8_t> *>(VT_DATA);
+  }
+  bool Verify(::flatbuffers::Verifier &verifier) const {
+    return VerifyTableStart(verifier) &&
+           VerifyOffset(verifier, VT_DATA) &&
+           verifier.VerifyVector(data()) &&
+           verifier.EndTable();
+  }
+};
+
+struct FCG_LoadCompleteBuilder {
+  typedef FCG_LoadComplete Table;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_data(::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data) {
+    fbb_.AddOffset(FCG_LoadComplete::VT_DATA, data);
+  }
+  explicit FCG_LoadCompleteBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
+        : fbb_(_fbb) {
+    start_ = fbb_.StartTable();
+  }
+  ::flatbuffers::Offset<FCG_LoadComplete> Finish() {
+    const auto end = fbb_.EndTable(start_);
+    auto o = ::flatbuffers::Offset<FCG_LoadComplete>(end);
+    return o;
+  }
+};
+
+inline ::flatbuffers::Offset<FCG_LoadComplete> CreateFCG_LoadComplete(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data = 0) {
+  FCG_LoadCompleteBuilder builder_(_fbb);
+  builder_.add_data(data);
+  return builder_.Finish();
+}
+
+inline ::flatbuffers::Offset<FCG_LoadComplete> CreateFCG_LoadCompleteDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    const std::vector<uint8_t> *data = nullptr) {
+  auto data__ = data ? _fbb.CreateVector<uint8_t>(*data) : 0;
+  return CreateFCG_LoadComplete(
+      _fbb,
+      data__);
+}
+
+struct FCG_StartMatching FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
+  typedef FCG_StartMatchingBuilder Builder;
+  enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
+    VT_DATA = 4
+  };
+  const ::flatbuffers::Vector<uint8_t> *data() const {
+    return GetPointer<const ::flatbuffers::Vector<uint8_t> *>(VT_DATA);
+  }
+  bool Verify(::flatbuffers::Verifier &verifier) const {
+    return VerifyTableStart(verifier) &&
+           VerifyOffset(verifier, VT_DATA) &&
+           verifier.VerifyVector(data()) &&
+           verifier.EndTable();
+  }
+};
+
+struct FCG_StartMatchingBuilder {
+  typedef FCG_StartMatching Table;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_data(::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data) {
+    fbb_.AddOffset(FCG_StartMatching::VT_DATA, data);
+  }
+  explicit FCG_StartMatchingBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
+        : fbb_(_fbb) {
+    start_ = fbb_.StartTable();
+  }
+  ::flatbuffers::Offset<FCG_StartMatching> Finish() {
+    const auto end = fbb_.EndTable(start_);
+    auto o = ::flatbuffers::Offset<FCG_StartMatching>(end);
+    return o;
+  }
+};
+
+inline ::flatbuffers::Offset<FCG_StartMatching> CreateFCG_StartMatching(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data = 0) {
+  FCG_StartMatchingBuilder builder_(_fbb);
+  builder_.add_data(data);
+  return builder_.Finish();
+}
+
+inline ::flatbuffers::Offset<FCG_StartMatching> CreateFCG_StartMatchingDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    const std::vector<uint8_t> *data = nullptr) {
+  auto data__ = data ? _fbb.CreateVector<uint8_t>(*data) : 0;
+  return CreateFCG_StartMatching(
+      _fbb,
+      data__);
+}
+
+struct FCG_PcMove FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
+  typedef FCG_PcMoveBuilder Builder;
+  enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
+    VT_DATA = 4
+  };
+  const ::flatbuffers::Vector<uint8_t> *data() const {
+    return GetPointer<const ::flatbuffers::Vector<uint8_t> *>(VT_DATA);
+  }
+  bool Verify(::flatbuffers::Verifier &verifier) const {
+    return VerifyTableStart(verifier) &&
+           VerifyOffset(verifier, VT_DATA) &&
+           verifier.VerifyVector(data()) &&
+           verifier.EndTable();
+  }
+};
+
+struct FCG_PcMoveBuilder {
+  typedef FCG_PcMove Table;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_data(::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data) {
+    fbb_.AddOffset(FCG_PcMove::VT_DATA, data);
+  }
+  explicit FCG_PcMoveBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
+        : fbb_(_fbb) {
+    start_ = fbb_.StartTable();
+  }
+  ::flatbuffers::Offset<FCG_PcMove> Finish() {
+    const auto end = fbb_.EndTable(start_);
+    auto o = ::flatbuffers::Offset<FCG_PcMove>(end);
+    return o;
+  }
+};
+
+inline ::flatbuffers::Offset<FCG_PcMove> CreateFCG_PcMove(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data = 0) {
+  FCG_PcMoveBuilder builder_(_fbb);
+  builder_.add_data(data);
+  return builder_.Finish();
+}
+
+inline ::flatbuffers::Offset<FCG_PcMove> CreateFCG_PcMoveDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    const std::vector<uint8_t> *data = nullptr) {
+  auto data__ = data ? _fbb.CreateVector<uint8_t>(*data) : 0;
+  return CreateFCG_PcMove(
+      _fbb,
+      data__);
+}
+
+struct FGC_PcMove FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
+  typedef FGC_PcMoveBuilder Builder;
+  enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
+    VT_DATA = 4
+  };
+  const ::flatbuffers::Vector<uint8_t> *data() const {
+    return GetPointer<const ::flatbuffers::Vector<uint8_t> *>(VT_DATA);
+  }
+  bool Verify(::flatbuffers::Verifier &verifier) const {
+    return VerifyTableStart(verifier) &&
+           VerifyOffset(verifier, VT_DATA) &&
+           verifier.VerifyVector(data()) &&
+           verifier.EndTable();
+  }
+};
+
+struct FGC_PcMoveBuilder {
+  typedef FGC_PcMove Table;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_data(::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data) {
+    fbb_.AddOffset(FGC_PcMove::VT_DATA, data);
+  }
+  explicit FGC_PcMoveBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
+        : fbb_(_fbb) {
+    start_ = fbb_.StartTable();
+  }
+  ::flatbuffers::Offset<FGC_PcMove> Finish() {
+    const auto end = fbb_.EndTable(start_);
+    auto o = ::flatbuffers::Offset<FGC_PcMove>(end);
+    return o;
+  }
+};
+
+inline ::flatbuffers::Offset<FGC_PcMove> CreateFGC_PcMove(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data = 0) {
+  FGC_PcMoveBuilder builder_(_fbb);
+  builder_.add_data(data);
+  return builder_.Finish();
+}
+
+inline ::flatbuffers::Offset<FGC_PcMove> CreateFGC_PcMoveDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    const std::vector<uint8_t> *data = nullptr) {
+  auto data__ = data ? _fbb.CreateVector<uint8_t>(*data) : 0;
+  return CreateFGC_PcMove(
+      _fbb,
+      data__);
+}
+
+inline const FGC_PcMove *GetFGC_PcMove(const void *buf) {
+  return ::flatbuffers::GetRoot<FGC_PcMove>(buf);
+}
+
+inline const FGC_PcMove *GetSizePrefixedFGC_PcMove(const void *buf) {
+  return ::flatbuffers::GetSizePrefixedRoot<FGC_PcMove>(buf);
+}
+
+inline bool VerifyFGC_PcMoveBuffer(
     ::flatbuffers::Verifier &verifier) {
-  return verifier.VerifyBuffer<FGC_Pong>(nullptr);
+  return verifier.VerifyBuffer<FGC_PcMove>(nullptr);
 }
 
-inline bool VerifySizePrefixedFGC_PongBuffer(
+inline bool VerifySizePrefixedFGC_PcMoveBuffer(
     ::flatbuffers::Verifier &verifier) {
-  return verifier.VerifySizePrefixedBuffer<FGC_Pong>(nullptr);
+  return verifier.VerifySizePrefixedBuffer<FGC_PcMove>(nullptr);
 }
 
-inline void FinishFGC_PongBuffer(
+inline void FinishFGC_PcMoveBuffer(
     ::flatbuffers::FlatBufferBuilder &fbb,
-    ::flatbuffers::Offset<FGC_Pong> root) {
+    ::flatbuffers::Offset<FGC_PcMove> root) {
   fbb.Finish(root);
 }
 
-inline void FinishSizePrefixedFGC_PongBuffer(
+inline void FinishSizePrefixedFGC_PcMoveBuffer(
     ::flatbuffers::FlatBufferBuilder &fbb,
-    ::flatbuffers::Offset<FGC_Pong> root) {
+    ::flatbuffers::Offset<FGC_PcMove> root) {
   fbb.FinishSizePrefixed(root);
 }
 
