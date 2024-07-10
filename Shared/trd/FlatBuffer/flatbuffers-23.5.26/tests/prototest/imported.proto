@@ -1,5 +1,0 @@
-﻿package proto.test;
-
-message ImportedMessage {
-    optional int32 a = 26;
-}

@@ -3,7 +3,7 @@
 
 bool CAppManager::Setup()
 {
-	bool result = true;
+	bool result = __super::Setup();
 
 	return result;
 }

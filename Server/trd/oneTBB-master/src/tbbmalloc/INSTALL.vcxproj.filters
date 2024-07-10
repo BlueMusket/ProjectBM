@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\6faf9fa053282a2f5fda88ace4525047\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{B72F8309-BA92-3D22-9EC2-2E5FA3E7DA28}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

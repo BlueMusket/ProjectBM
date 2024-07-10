@@ -1,7 +1,0 @@
-﻿table NativeInlineTable {
-  a: int;
-}
-
-table TestNativeInlineTable {
-  t: [NativeInlineTable] (native_inline);
-}

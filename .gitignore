@@ -78,3 +78,7 @@ ProjectBM/Config/
 ProjectBM/Saved/
 ProjectBM/enc_temp_folder/
 ProjectBM/Build/
+Immediate/
+ProjectBM/ThirdParty/Shared/lib/x64/Shared.idb
+ProjectBM/ThirdParty/Shared/lib/x64/Shared.pdb
+Server/trd/oneTBB-master/x64/

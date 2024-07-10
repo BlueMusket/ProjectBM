@@ -66,6 +66,7 @@ void CPeerListener::OnAcceptEvent(CAsyncTcpEvent* tcpEvent)
 
 	g_AsyncDispatcher::GetInstance()->Associate(newPeer, newPeer->GetSocket());
 
+
 	// 이벤트 다시 재활용한다.
 	tcpEvent->SetSocket(nullptr);
 	tcpEvent->CleanBuffer();

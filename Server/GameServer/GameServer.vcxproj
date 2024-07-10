@@ -110,7 +110,8 @@
     <OutDir>$(SolutionDir)immediate\Lib\$(Configuration)\$(MSBuildProjectName)\</OutDir>
     <IntDir>$(SolutionDir)immediate\Obj\$(Configuration)\$(MSBuildProjectName)\</IntDir>
     <IncludePath>$(SolutionDir);$(SolutionDir)..\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)immediate\Lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)immediate\Lib\$(Configuration)\;$(SolutionDir)\trd\oneTBB-master\lib\;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(SolutionDir)trd\oneTBB-master\include;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development_Editor|x64'">
     <LinkIncremental>true</LinkIncremental>

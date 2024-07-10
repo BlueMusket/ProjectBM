@@ -2,6 +2,7 @@
 #include "Network/AsyncDispatcher.h"
 #include "Network/ListenSystem.h"
 #include "Server/ServerListener.h"
+#include "GamePacketHandlerSetup.h"
 
 CGameServerAppManager::CGameServerAppManager()
 {
@@ -20,7 +21,7 @@ bool CGameServerAppManager::Setup()
     }
     // 핸들러 추가
     {
-        //TradeServerHandlerSetup::Setup();
+        GamePacketHandlerSetup::Setup();
     }
 
     g_AsyncDispatcher::GetInstance()->Start();

@@ -82,6 +82,7 @@
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="CInputEvent.h" />
     <ClInclude Include="Lock.h" />
+    <ClInclude Include="BitBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -130,6 +131,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Lock.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BitBase.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

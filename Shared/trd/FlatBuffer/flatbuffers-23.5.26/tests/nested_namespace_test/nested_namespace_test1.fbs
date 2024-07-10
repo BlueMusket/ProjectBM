@@ -1,3 +1,0 @@
-﻿namespace NamespaceB;
-
-enum Color:byte { Red, Green, Blue }

@@ -163,6 +163,7 @@
     <ClInclude Include="AllocComponent.h" />
     <ClInclude Include="AppManager.h" />
     <ClInclude Include="Atomic.h" />
+    <ClInclude Include="BitBase.h" />
     <ClInclude Include="CInputEvent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Delegate.h" />
@@ -184,6 +185,7 @@
     <ClCompile Include="AllocComponent.cpp" />
     <ClCompile Include="AppManager.cpp" />
     <ClCompile Include="Atomic.cpp" />
+    <ClCompile Include="BitBase.cpp" />
     <ClCompile Include="CInputEvent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Entity.cpp" />

@@ -1,0 +1,13 @@
+﻿  1>Building Custom Rule D:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master/src/tbbmalloc/CMakeLists.txt
+  backend.cpp
+  backref.cpp
+  frontend.cpp
+  large_objects.cpp
+  tbbmalloc.cpp
+  itt_notify.cpp
+     D:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master/msvc_19.29_cxx_64_md_release/tbbmalloc.lib 라이브러리 및 D:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master/msvc_19.29_cxx_64_md_release/tbbmalloc.exp 개체를 생성하고 있습니다.
+  코드를 생성하고 있습니다.
+  Previous IPDB not found, fall back to full compilation.
+  All 865 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  코드를 생성했습니다.
+  tbbmalloc.vcxproj -> D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\msvc_19.29_cxx_64_md_release\tbbmalloc.dll

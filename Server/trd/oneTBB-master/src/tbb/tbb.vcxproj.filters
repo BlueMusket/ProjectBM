@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\address_waiter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\allocator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\arena.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\arena_slot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\concurrent_bounded_queue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\dynamic_link.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\exception.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\governor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\global_control.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\itt_notify.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\market.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\tcm_adaptor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\misc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\misc_ex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\observer_proxy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\parallel_pipeline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\private_server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\profiling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\rml_tbb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\rtm_mutex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\rtm_rw_mutex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\semaphore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\small_object_pool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\task.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\task_dispatcher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\task_group_context.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\thread_dispatcher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\thread_request_serializer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\threading_control.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\version.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\queuing_rw_mutex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\tbb.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{C2A39FFE-794E-3A3A-A848-08BA9A8D0944}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

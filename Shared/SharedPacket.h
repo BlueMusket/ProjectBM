@@ -10,5 +10,6 @@ class CG_Login : public CPacketBase
 PACKET_FOUNDATION(CG_Login, PacketType::NO_DELAY)
 
 public:
-	int m_Num;
+	std::string m_Name;
+	std::string m_Pwd;
 };

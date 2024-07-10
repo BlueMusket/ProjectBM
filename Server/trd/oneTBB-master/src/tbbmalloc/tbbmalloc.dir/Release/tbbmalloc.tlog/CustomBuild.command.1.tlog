@@ -1,0 +1,10 @@
+^D:\PROGRAMMING\UNREAL\PROJECTBM\SERVER\TRD\ONETBB-MASTER\SRC\TBBMALLOC\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master -BD:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master --check-stamp-file D:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master/src/tbbmalloc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

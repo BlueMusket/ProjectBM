@@ -1,3 +1,0 @@
-﻿namespace NamespaceA.NamespaceB;
-
-enum Color:byte { Purple }

@@ -8,7 +8,7 @@ protected:
 	virtual ~CSingleton() {};
 
 
-	virtual void Setup() {};
+	virtual bool Setup() { return true; };
 
 
 public:

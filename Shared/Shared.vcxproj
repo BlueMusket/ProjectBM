@@ -107,7 +107,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(MSBuildProjectDirectory)\trd\FlatBuffer\flatbuffers-23.5.26\include;$(SolutionDir);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\ProjectBM\ThirdParty\FlatBuffer\flatbuffers-23.5.26\include;$(SolutionDir);$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)..\ProjectBM\ThirdParty\Shared\lib\$(LibrariesArchitecture)</OutDir>
     <IntDir>$(SolutionDir)..\Immediate\Obj\$(Configuration)\$(MSBuildProjectName)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>

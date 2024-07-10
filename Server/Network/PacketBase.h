@@ -15,7 +15,6 @@ public:
 	virtual ~CPacketBase() {};
 
 public:
-public:
 	virtual uint8_t* Pack() = 0;
 	virtual void UnPack(uint8_t* buffer) = 0;
 };
@@ -24,11 +23,11 @@ public:
 public:\
 	name() : CPacketBase() {} \
 	virtual ~name() {} \
-	enum E##name { e##name = __LINE__ };\
+	enum { e##name = __LINE__ };\
 	static std::string	GetName() { return #name; }\
-	static int			GetHash() { return std::hash<std::string>()(#name); }\
+	static int			GetHash() { return (int)std::hash<std::string>()(#name); }\
 	static PacketType	GetPacketType() { return Type; }\
-	static E##name GetEnum() { return e##name; }\
+	static int GetEnum() { return (int)e##name; }\
 public:\
 	virtual uint8_t* Pack() final; \
 	virtual void UnPack(uint8_t* buffer) final;

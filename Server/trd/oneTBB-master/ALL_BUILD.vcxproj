@@ -1,0 +1,764 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7EB963AC-932A-320D-966D-3CDFE44CC465}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master -BD:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master --check-stamp-file D:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.26\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported\CMakeLists-CXX.txt.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported\foo.cpp;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported\main.cpp;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Tasking-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.26\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.26\Templates\CPackConfig.cmake.in;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\3.26.0-rc5\CMakeCXXCompiler.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\3.26.0-rc5\CMakeRCCompiler.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\3.26.0-rc5\CMakeSystem.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\compilers\MSVC.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\config_generation.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\hwloc_detection.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\memcheck.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\packaging.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\resumable_tasks.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\sanitize.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\test_spec.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\utils.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\vars_utils.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master -BD:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master --check-stamp-file D:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.26\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported\CMakeLists-CXX.txt.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported\foo.cpp;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported\main.cpp;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Tasking-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.26\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.26\Templates\CPackConfig.cmake.in;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\3.26.0-rc5\CMakeCXXCompiler.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\3.26.0-rc5\CMakeRCCompiler.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\3.26.0-rc5\CMakeSystem.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\compilers\MSVC.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\config_generation.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\hwloc_detection.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\memcheck.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\packaging.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\resumable_tasks.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\sanitize.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\test_spec.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\utils.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\vars_utils.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master -BD:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master --check-stamp-file D:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.26\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported\CMakeLists-CXX.txt.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported\foo.cpp;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported\main.cpp;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Tasking-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.26\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.26\Templates\CPackConfig.cmake.in;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\3.26.0-rc5\CMakeCXXCompiler.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\3.26.0-rc5\CMakeRCCompiler.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\3.26.0-rc5\CMakeSystem.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\compilers\MSVC.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\config_generation.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\hwloc_detection.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\memcheck.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\packaging.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\resumable_tasks.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\sanitize.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\test_spec.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\utils.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\vars_utils.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master -BD:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master --check-stamp-file D:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.26\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported\CMakeLists-CXX.txt.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported\foo.cpp;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIPOSupported\main.cpp;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Tasking-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.26\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.26\Templates\CPackConfig.cmake.in;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\3.26.0-rc5\CMakeCXXCompiler.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\3.26.0-rc5\CMakeRCCompiler.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\3.26.0-rc5\CMakeSystem.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\compilers\MSVC.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\config_generation.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\hwloc_detection.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\memcheck.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\packaging.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\resumable_tasks.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\sanitize.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\test_spec.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\utils.cmake;D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\cmake\vars_utils.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\ZERO_CHECK.vcxproj">
+      <Project>{26CB5D90-5070-317A-949D-B2DBE41DA787}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\_test_malloc_atexit.vcxproj">
+      <Project>{C9E37F6B-FABD-3CAC-AD93-A0C940685CB9}</Project>
+      <Name>_test_malloc_atexit</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\_test_malloc_lib_unload.vcxproj">
+      <Project>{E19DA06E-F3BE-3EDF-8424-B5B47E5C755A}</Project>
+      <Name>_test_malloc_lib_unload</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\_test_malloc_used_by_lib.vcxproj">
+      <Project>{486637C7-49C3-3304-86F2-B2AEFC7F5887}</Project>
+      <Name>_test_malloc_used_by_lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_allocators.vcxproj">
+      <Project>{0B4D80C3-5CED-3E58-9D8C-D7D19DC65B6D}</Project>
+      <Name>conformance_allocators</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_arena_constraints.vcxproj">
+      <Project>{C8B21B76-9736-3D88-BF6D-08B21AF83253}</Project>
+      <Name>conformance_arena_constraints</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_async_node.vcxproj">
+      <Project>{9304304D-47A5-321C-9CB8-76B0B7B593BC}</Project>
+      <Name>conformance_async_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_blocked_range.vcxproj">
+      <Project>{26F83575-4D8C-32B5-A4E3-CB7270345964}</Project>
+      <Name>conformance_blocked_range</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_blocked_range2d.vcxproj">
+      <Project>{6F7D195B-5A12-3AF5-917B-08BA38D87A44}</Project>
+      <Name>conformance_blocked_range2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_blocked_range3d.vcxproj">
+      <Project>{B9D4B049-A465-38D6-8295-FE7B25990DF9}</Project>
+      <Name>conformance_blocked_range3d</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_blocked_rangeNd.vcxproj">
+      <Project>{9953ECF3-4FF7-371A-AF84-7FD2FA0C650C}</Project>
+      <Name>conformance_blocked_rangeNd</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_broadcast_node.vcxproj">
+      <Project>{B4C1760D-2C5E-3288-80F5-A99080AAF96F}</Project>
+      <Name>conformance_broadcast_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_buffer_node.vcxproj">
+      <Project>{B3F0C960-A62E-3BAB-BC88-EFCA198D73F0}</Project>
+      <Name>conformance_buffer_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_collaborative_call_once.vcxproj">
+      <Project>{385FFC20-831E-3047-B3DE-2F6796600ADD}</Project>
+      <Name>conformance_collaborative_call_once</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_combinable.vcxproj">
+      <Project>{59CE2E03-F68F-3F6C-847F-86D71F5CF505}</Project>
+      <Name>conformance_combinable</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_composite_node.vcxproj">
+      <Project>{E6D1BF56-12D0-3C0D-BE92-820126344CC8}</Project>
+      <Name>conformance_composite_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_concurrent_hash_map.vcxproj">
+      <Project>{DEB7B51D-5E75-3EF3-891B-602B6362356E}</Project>
+      <Name>conformance_concurrent_hash_map</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_concurrent_lru_cache.vcxproj">
+      <Project>{76D3BC89-1E98-3A19-9E15-5769B79B1BDE}</Project>
+      <Name>conformance_concurrent_lru_cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_concurrent_map.vcxproj">
+      <Project>{700E9132-1B6D-3257-A0DE-4EF5AA12ED17}</Project>
+      <Name>conformance_concurrent_map</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_concurrent_priority_queue.vcxproj">
+      <Project>{0BFD5C79-651C-35AB-BCF8-7C35BDA75854}</Project>
+      <Name>conformance_concurrent_priority_queue</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_concurrent_queue.vcxproj">
+      <Project>{606DCD0D-15C2-3699-BFCD-236F261184A0}</Project>
+      <Name>conformance_concurrent_queue</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_concurrent_set.vcxproj">
+      <Project>{4A433B08-A05D-3BA5-B1F2-47E9150262A0}</Project>
+      <Name>conformance_concurrent_set</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_concurrent_unordered_map.vcxproj">
+      <Project>{E4DBD8F1-A5D2-33D1-A7A3-A21137006DC7}</Project>
+      <Name>conformance_concurrent_unordered_map</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_concurrent_unordered_set.vcxproj">
+      <Project>{256F09F5-9C9C-33E9-8251-B4877507C156}</Project>
+      <Name>conformance_concurrent_unordered_set</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_concurrent_vector.vcxproj">
+      <Project>{283D573F-1506-30D8-876E-3FEBF5B77FE1}</Project>
+      <Name>conformance_concurrent_vector</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_continue_node.vcxproj">
+      <Project>{99B6A14E-3334-3E7D-BA7A-EB80CA516409}</Project>
+      <Name>conformance_continue_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_enumerable_thread_specific.vcxproj">
+      <Project>{4A1DA40F-8E0C-397B-BDE8-8403F180B02F}</Project>
+      <Name>conformance_enumerable_thread_specific</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_function_node.vcxproj">
+      <Project>{48AF6D3B-9F1D-300D-8F1C-B22FD9D1E658}</Project>
+      <Name>conformance_function_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_global_control.vcxproj">
+      <Project>{2C2CAD57-1FCC-32E6-A98D-F61723279014}</Project>
+      <Name>conformance_global_control</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_graph.vcxproj">
+      <Project>{6203FA85-B1A1-38C0-8FCF-5F8552AB312B}</Project>
+      <Name>conformance_graph</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_indexer_node.vcxproj">
+      <Project>{B0D8FBB3-F9E8-3F66-86BF-D84AEF56521F}</Project>
+      <Name>conformance_indexer_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_input_node.vcxproj">
+      <Project>{DB271F19-2E67-3E45-852D-D2A491CA6F3A}</Project>
+      <Name>conformance_input_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_join_node.vcxproj">
+      <Project>{2AD6F13F-5044-3F0F-9105-754D51279E54}</Project>
+      <Name>conformance_join_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_limiter_node.vcxproj">
+      <Project>{7EEB8E48-8A62-37D6-B098-C79E1D2D9DAE}</Project>
+      <Name>conformance_limiter_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_multifunction_node.vcxproj">
+      <Project>{0CE02346-4950-3487-863B-886B75F8899B}</Project>
+      <Name>conformance_multifunction_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_mutex.vcxproj">
+      <Project>{56FDFB25-92CA-331D-BAD8-3BA5CBB3F91B}</Project>
+      <Name>conformance_mutex</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_overwrite_node.vcxproj">
+      <Project>{E3100DDF-71D0-3F3E-998E-AF93F4A77177}</Project>
+      <Name>conformance_overwrite_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_parallel_for.vcxproj">
+      <Project>{10213C31-45C5-3ED2-BFB7-6AB064416D06}</Project>
+      <Name>conformance_parallel_for</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_parallel_for_each.vcxproj">
+      <Project>{F97CDE20-1F38-3B19-8C34-2DEE74809564}</Project>
+      <Name>conformance_parallel_for_each</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_parallel_invoke.vcxproj">
+      <Project>{4F35A2A7-BCB8-313A-A9D8-40D9A48D1251}</Project>
+      <Name>conformance_parallel_invoke</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_parallel_pipeline.vcxproj">
+      <Project>{9EBE7355-90DE-3F2F-BA86-7BBAEFDB8361}</Project>
+      <Name>conformance_parallel_pipeline</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_parallel_reduce.vcxproj">
+      <Project>{3BE8CEC6-3B75-3B07-B95E-37E027ED34BE}</Project>
+      <Name>conformance_parallel_reduce</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_parallel_scan.vcxproj">
+      <Project>{B9FB1C8F-4BF9-3E37-8EED-997723A14E34}</Project>
+      <Name>conformance_parallel_scan</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_parallel_sort.vcxproj">
+      <Project>{CE342AF9-46FE-31E5-A657-E7D2343AD453}</Project>
+      <Name>conformance_parallel_sort</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_priority_queue_node.vcxproj">
+      <Project>{DA1D0603-F2BE-333C-A265-14FC7BAF750A}</Project>
+      <Name>conformance_priority_queue_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_queue_node.vcxproj">
+      <Project>{F40FE9BB-A6FC-30C2-8049-FFB59577D360}</Project>
+      <Name>conformance_queue_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_resumable_tasks.vcxproj">
+      <Project>{E5F81CA5-79DB-38EC-83BD-257C399416D6}</Project>
+      <Name>conformance_resumable_tasks</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_sequencer_node.vcxproj">
+      <Project>{A0874100-E01E-35C8-8CDC-14FDFD966F23}</Project>
+      <Name>conformance_sequencer_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_split_node.vcxproj">
+      <Project>{ED372BD9-A7B1-3CBF-AFF4-B9ADCC86DD47}</Project>
+      <Name>conformance_split_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_task_arena.vcxproj">
+      <Project>{BE261A71-78CF-38F3-9881-871D5405945B}</Project>
+      <Name>conformance_task_arena</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_task_group.vcxproj">
+      <Project>{A9DE0E50-E07F-356C-AAF8-7234CA09B96A}</Project>
+      <Name>conformance_task_group</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_task_group_context.vcxproj">
+      <Project>{C4D864FE-040C-3CED-A016-F475E278D47E}</Project>
+      <Name>conformance_task_group_context</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_tick_count.vcxproj">
+      <Project>{2725C53D-63AD-3ED0-A393-99821862D5C5}</Project>
+      <Name>conformance_tick_count</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_version.vcxproj">
+      <Project>{2C790595-D190-30BF-BE5A-70DFBD01B3C9}</Project>
+      <Name>conformance_version</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\conformance_write_once_node.vcxproj">
+      <Project>{48300DC6-3215-3B93-A46B-0B904A9F48CE}</Project>
+      <Name>conformance_write_once_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbb\tbb.vcxproj">
+      <Project>{80C6A033-F7DB-30A0-9F0F-1FAA94D5EA12}</Project>
+      <Name>tbb</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbbmalloc\tbbmalloc.vcxproj">
+      <Project>{607AFECA-4F6E-33A2-AC6C-A3541C57F1AE}</Project>
+      <Name>tbbmalloc</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\src\tbbmalloc_proxy\tbbmalloc_proxy.vcxproj">
+      <Project>{5399EBB3-C8FD-3CE3-A2AE-EC0DF4277326}</Project>
+      <Name>tbbmalloc_proxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_allocators.vcxproj">
+      <Project>{075A62FC-B9C9-3358-925C-2AB390981DAA}</Project>
+      <Name>test_allocators</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_arena_constraints.vcxproj">
+      <Project>{0E8788D0-B5C8-3FD4-8DD6-4E9ECAE10B21}</Project>
+      <Name>test_arena_constraints</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_arena_priorities.vcxproj">
+      <Project>{3F80466E-288C-342C-8776-555CFA279BFD}</Project>
+      <Name>test_arena_priorities</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_async_node.vcxproj">
+      <Project>{5E6B15C3-8E79-3538-BBA6-B492B3FD5EEC}</Project>
+      <Name>test_async_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_blocked_range.vcxproj">
+      <Project>{66D9FCF4-E3E6-3B94-A2A4-AC3E14AA2BE4}</Project>
+      <Name>test_blocked_range</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_broadcast_node.vcxproj">
+      <Project>{DFBF9972-A8AB-3F1A-984A-EE50FCE65632}</Project>
+      <Name>test_broadcast_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_buffer_node.vcxproj">
+      <Project>{1BB5DB7F-DAD4-35EA-805B-FBF59187549A}</Project>
+      <Name>test_buffer_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_collaborative_call_once.vcxproj">
+      <Project>{7DF252AC-3851-3BCE-B1F1-684AD8106AA4}</Project>
+      <Name>test_collaborative_call_once</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_composite_node.vcxproj">
+      <Project>{B8552B33-704D-3C1D-96CE-BD1205C95C97}</Project>
+      <Name>test_composite_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_concurrent_hash_map.vcxproj">
+      <Project>{23B0694A-8222-36FD-91F9-4E18992159C4}</Project>
+      <Name>test_concurrent_hash_map</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_concurrent_lru_cache.vcxproj">
+      <Project>{4AC8610C-46E0-3C6B-9650-5B392F6E1C86}</Project>
+      <Name>test_concurrent_lru_cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_concurrent_map.vcxproj">
+      <Project>{4C5EF388-C73C-3D60-8E7E-22E7AFEEE7B5}</Project>
+      <Name>test_concurrent_map</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_concurrent_monitor.vcxproj">
+      <Project>{784B7CAB-E658-3D07-AB98-89BAC33CEBC4}</Project>
+      <Name>test_concurrent_monitor</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_concurrent_priority_queue.vcxproj">
+      <Project>{A1D3A352-C956-32E1-B8AA-C8F7AD5AC923}</Project>
+      <Name>test_concurrent_priority_queue</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_concurrent_queue.vcxproj">
+      <Project>{D92CD90D-49CA-328F-A96C-45D7E4FE9AA4}</Project>
+      <Name>test_concurrent_queue</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_concurrent_queue_whitebox.vcxproj">
+      <Project>{4A709C43-C5B8-3D65-B513-5DC8EA67B119}</Project>
+      <Name>test_concurrent_queue_whitebox</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_concurrent_set.vcxproj">
+      <Project>{B9DE2C70-04B4-31A0-A10F-239589DF06E9}</Project>
+      <Name>test_concurrent_set</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_concurrent_unordered_map.vcxproj">
+      <Project>{F1449B60-D9AE-3F68-A1F8-79CCAB000637}</Project>
+      <Name>test_concurrent_unordered_map</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_concurrent_unordered_set.vcxproj">
+      <Project>{7B97E8AD-E175-366C-8BBA-00C3E857D6C9}</Project>
+      <Name>test_concurrent_unordered_set</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_concurrent_vector.vcxproj">
+      <Project>{3836B3E5-6C71-38D8-B05D-DB5C0DF109CE}</Project>
+      <Name>test_concurrent_vector</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_continue_node.vcxproj">
+      <Project>{3597E485-5EBC-327C-8B15-08A77E5694A9}</Project>
+      <Name>test_continue_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_dynamic_link.vcxproj">
+      <Project>{B552B73E-3EB1-32E5-919F-F286E250F909}</Project>
+      <Name>test_dynamic_link</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_eh_algorithms.vcxproj">
+      <Project>{94431F4D-BB5F-3820-A0F1-4F088A80AC33}</Project>
+      <Name>test_eh_algorithms</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_eh_flow_graph.vcxproj">
+      <Project>{0A923547-7990-3553-AEB8-6C00C2AEAEA3}</Project>
+      <Name>test_eh_flow_graph</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_eh_thread.vcxproj">
+      <Project>{0BBA1342-D136-32E3-B031-86C35A3C3534}</Project>
+      <Name>test_eh_thread</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_enumerable_thread_specific.vcxproj">
+      <Project>{787C4019-A19E-396B-845B-68D023B9051D}</Project>
+      <Name>test_enumerable_thread_specific</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_environment_whitebox.vcxproj">
+      <Project>{4B2CB744-1901-36CE-BB50-97BBD6499954}</Project>
+      <Name>test_environment_whitebox</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_flow_graph.vcxproj">
+      <Project>{CFF99B65-3CF4-3624-ADE2-1D6F4100338A}</Project>
+      <Name>test_flow_graph</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_flow_graph_priorities.vcxproj">
+      <Project>{4F7DF624-FC5D-3BD7-81C0-F915ECC6D0E4}</Project>
+      <Name>test_flow_graph_priorities</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_flow_graph_whitebox.vcxproj">
+      <Project>{D1C0CE66-D400-33B9-9B84-9C2BFACDD010}</Project>
+      <Name>test_flow_graph_whitebox</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_function_node.vcxproj">
+      <Project>{34F0E6CF-5DA4-3F74-94D7-201A791FCDB4}</Project>
+      <Name>test_function_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_global_control.vcxproj">
+      <Project>{D9DE8E2C-B4A8-3FB3-B41C-774E8E4FF5F9}</Project>
+      <Name>test_global_control</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_handle_perror.vcxproj">
+      <Project>{2053109C-5439-3409-91EE-C0793D882950}</Project>
+      <Name>test_handle_perror</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_hw_concurrency.vcxproj">
+      <Project>{58CDDBBD-8094-39AA-9BC6-B1AF01E1AF58}</Project>
+      <Name>test_hw_concurrency</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_implicit_linkage_on_windows.vcxproj">
+      <Project>{04B800B7-B91E-3C66-BAC7-63D3BA489277}</Project>
+      <Name>test_implicit_linkage_on_windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_indexer_node.vcxproj">
+      <Project>{8367B091-DE67-3E02-96DE-292A6C172717}</Project>
+      <Name>test_indexer_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_input_node.vcxproj">
+      <Project>{F458C93B-B18B-312D-8111-95E6E86439BA}</Project>
+      <Name>test_input_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_intrusive_list.vcxproj">
+      <Project>{A242502E-A5B0-3E82-A740-68EC87B9E390}</Project>
+      <Name>test_intrusive_list</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_join_node.vcxproj">
+      <Project>{AA2EADCB-5B35-3A0E-8F82-E6AB318D18F5}</Project>
+      <Name>test_join_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_join_node_key_matching.vcxproj">
+      <Project>{1D679355-6426-38FF-89BA-0FA2DBD81EA2}</Project>
+      <Name>test_join_node_key_matching</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_join_node_key_matching_n_args.vcxproj">
+      <Project>{BAE71916-4FA2-362D-AECD-C16422B00A26}</Project>
+      <Name>test_join_node_key_matching_n_args</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_join_node_msg_key_matching.vcxproj">
+      <Project>{B3FDCC82-84E4-3A85-9E76-1092EE33746C}</Project>
+      <Name>test_join_node_msg_key_matching</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_join_node_msg_key_matching_n_args.vcxproj">
+      <Project>{1744C414-DE73-35C8-8540-7BB859CE5F2C}</Project>
+      <Name>test_join_node_msg_key_matching_n_args</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_join_node_preview.vcxproj">
+      <Project>{092FB9C0-929E-3309-BAD6-12C256E68A42}</Project>
+      <Name>test_join_node_preview</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_limiter_node.vcxproj">
+      <Project>{894FFA50-8178-3C80-A592-9C4BC11D11F7}</Project>
+      <Name>test_limiter_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_malloc_atexit.vcxproj">
+      <Project>{E81DB96A-DE65-3D29-8677-8BE4EA2F5DC9}</Project>
+      <Name>test_malloc_atexit</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_malloc_compliance.vcxproj">
+      <Project>{B46FB496-DA61-3A27-89B8-44D516597AE1}</Project>
+      <Name>test_malloc_compliance</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_malloc_init_shutdown.vcxproj">
+      <Project>{C1D90510-57F9-3B5F-81F3-620402CDD498}</Project>
+      <Name>test_malloc_init_shutdown</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_malloc_lib_unload.vcxproj">
+      <Project>{2D25E4A3-F735-3030-9CF5-291533B8A84F}</Project>
+      <Name>test_malloc_lib_unload</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_malloc_new_handler.vcxproj">
+      <Project>{1177B484-DD6F-3726-B842-124F4FBE851B}</Project>
+      <Name>test_malloc_new_handler</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_malloc_overload.vcxproj">
+      <Project>{15E6DEEA-DBBC-3663-83BD-69DC3C738BE2}</Project>
+      <Name>test_malloc_overload</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_malloc_overload_disable.vcxproj">
+      <Project>{371F1537-9BA7-372B-8C13-27E55C585473}</Project>
+      <Name>test_malloc_overload_disable</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_malloc_pools.vcxproj">
+      <Project>{7D28CE91-3C75-35BE-8D83-27A268C7C3A5}</Project>
+      <Name>test_malloc_pools</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_malloc_pure_c.vcxproj">
+      <Project>{40C8508B-3178-3F67-9810-5C3056831902}</Project>
+      <Name>test_malloc_pure_c</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_malloc_regression.vcxproj">
+      <Project>{B10123E9-7A07-3DB7-AD98-BC108CA11119}</Project>
+      <Name>test_malloc_regression</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_malloc_shutdown_hang.vcxproj">
+      <Project>{802DEEAC-1213-3A1E-9243-E06C88426F79}</Project>
+      <Name>test_malloc_shutdown_hang</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_malloc_used_by_lib.vcxproj">
+      <Project>{2D46091E-4717-3131-92B4-26C211213776}</Project>
+      <Name>test_malloc_used_by_lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_malloc_whitebox.vcxproj">
+      <Project>{7C66811C-7558-3A40-BC8A-BE9B1EB96BF2}</Project>
+      <Name>test_malloc_whitebox</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_multifunction_node.vcxproj">
+      <Project>{FEE11BA6-B5F7-33E6-AD14-6F743CEDE248}</Project>
+      <Name>test_multifunction_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_mutex.vcxproj">
+      <Project>{2E856CBF-7973-364F-A32A-FED8A76AE889}</Project>
+      <Name>test_mutex</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_numa_dist.vcxproj">
+      <Project>{BEDA6083-D259-3C4D-B033-03BD9264B510}</Project>
+      <Name>test_numa_dist</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_openmp.vcxproj">
+      <Project>{CFC52979-8DEC-318F-B134-691972D41339}</Project>
+      <Name>test_openmp</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_overwrite_node.vcxproj">
+      <Project>{0697C697-D24A-3CA6-AF8B-DD88734BACFA}</Project>
+      <Name>test_overwrite_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_parallel_for.vcxproj">
+      <Project>{F062336F-3596-3C7A-AB30-CAE92A5D8128}</Project>
+      <Name>test_parallel_for</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_parallel_for_each.vcxproj">
+      <Project>{A2EB9892-B5D9-3426-9A69-8DBD6A585242}</Project>
+      <Name>test_parallel_for_each</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_parallel_invoke.vcxproj">
+      <Project>{E91710A3-4CE0-37FE-BDBA-9AA33CF5CB76}</Project>
+      <Name>test_parallel_invoke</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_parallel_pipeline.vcxproj">
+      <Project>{61AA0FA2-EDE2-381B-B6DF-B287809577A0}</Project>
+      <Name>test_parallel_pipeline</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_parallel_reduce.vcxproj">
+      <Project>{21422A27-CB8A-3836-B0EF-1684867B5C15}</Project>
+      <Name>test_parallel_reduce</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_parallel_scan.vcxproj">
+      <Project>{BDD09B0F-B9CE-3182-8D14-451268C94BC1}</Project>
+      <Name>test_parallel_scan</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_parallel_sort.vcxproj">
+      <Project>{F3B0B9AF-EB4C-3F95-8F1C-4397933F1E1D}</Project>
+      <Name>test_parallel_sort</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_partitioner.vcxproj">
+      <Project>{3F63D81A-4B2F-31E8-A17D-D521ADE1908C}</Project>
+      <Name>test_partitioner</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_priority_queue_node.vcxproj">
+      <Project>{6A906E0F-A43D-307A-A350-26F8B936210B}</Project>
+      <Name>test_priority_queue_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_profiling.vcxproj">
+      <Project>{4110EC98-C037-3CA6-A60C-842EBB712111}</Project>
+      <Name>test_profiling</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_queue_node.vcxproj">
+      <Project>{C70F84CD-6E6B-3185-8A94-F02616EC4506}</Project>
+      <Name>test_queue_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_resumable_tasks.vcxproj">
+      <Project>{D8E59331-259B-346B-9E6A-122B5ED9F9F6}</Project>
+      <Name>test_resumable_tasks</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_scalable_allocator.vcxproj">
+      <Project>{9C844103-FE20-3671-BE79-B2C9D3184FA4}</Project>
+      <Name>test_scalable_allocator</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_scheduler_mix.vcxproj">
+      <Project>{24D991BA-AB75-3934-B93E-1D5B7E076344}</Project>
+      <Name>test_scheduler_mix</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_semaphore.vcxproj">
+      <Project>{63AD16C2-51EF-3A9A-A297-7A9F8E3416C4}</Project>
+      <Name>test_semaphore</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_sequencer_node.vcxproj">
+      <Project>{6210BF12-E12D-3639-8B84-C6B8A0028306}</Project>
+      <Name>test_sequencer_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_split_node.vcxproj">
+      <Project>{EC888C54-98F1-3659-BA71-653AF9907FAF}</Project>
+      <Name>test_split_node</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_tagged_msg.vcxproj">
+      <Project>{F067264F-940E-3048-85B0-5ECC5B876522}</Project>
+      <Name>test_tagged_msg</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_task.vcxproj">
+      <Project>{DF101F42-1777-3152-B5A8-23BDDB4DE96D}</Project>
+      <Name>test_task</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_task_arena.vcxproj">
+      <Project>{1862629D-B82E-3F33-87DF-655CB73FE2BA}</Project>
+      <Name>test_task_arena</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_task_group.vcxproj">
+      <Project>{94F9C105-767F-38D0-9810-6FE23CAA80B7}</Project>
+      <Name>test_task_group</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_tbb_fork.vcxproj">
+      <Project>{648A0845-FA83-32EF-AA7D-C7C708AFEEF2}</Project>
+      <Name>test_tbb_fork</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_tbb_header.vcxproj">
+      <Project>{42AC6D89-B08E-39E2-8A58-A1CF4D06C834}</Project>
+      <Name>test_tbb_header</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_tick_count.vcxproj">
+      <Project>{B0D56D48-9BE2-39A0-89FB-691432CECF11}</Project>
+      <Name>test_tick_count</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\test\test_write_once_node.vcxproj">
+      <Project>{5CE0F81D-187F-3AB6-87A3-A9300173B35D}</Project>
+      <Name>test_write_once_node</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

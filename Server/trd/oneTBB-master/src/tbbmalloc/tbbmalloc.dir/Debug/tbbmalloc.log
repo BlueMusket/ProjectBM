@@ -1,0 +1,10 @@
+﻿  1>Building Custom Rule D:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master/src/tbbmalloc/CMakeLists.txt
+  backend.cpp
+  backref.cpp
+  frontend.cpp
+  large_objects.cpp
+  tbbmalloc.cpp
+  itt_notify.cpp
+  코드를 생성하고 있습니다...
+     D:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master/msvc_19.29_cxx_64_md_debug/tbbmalloc_debug.lib 라이브러리 및 D:/Programming/Unreal/ProjectBM/Server/trd/oneTBB-master/msvc_19.29_cxx_64_md_debug/tbbmalloc_debug.exp 개체를 생성하고 있습니다.
+  tbbmalloc.vcxproj -> D:\Programming\Unreal\ProjectBM\Server\trd\oneTBB-master\msvc_19.29_cxx_64_md_debug\tbbmalloc_debug.dll
