@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <IncludePath>$(SolutionDir);$(SolutionDir)..\;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)trd\oneTBB-master\include;$(ExternalIncludePath)</ExternalIncludePath>
+    <LibraryPath>$(SolutionDir)immediate\Lib\$(Configuration)\;$(SolutionDir)\trd\oneTBB-master\lib\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)immediate\Lib\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)immediate\Obj\$(Configuration)\$(MSBuildProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <ForcedIncludeFiles>pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

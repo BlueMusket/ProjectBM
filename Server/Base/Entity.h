@@ -2,9 +2,6 @@
 
 //#include "Component.h"
 
-#include <unordered_map>
-#include <string>
-
 class CComponent;
 
 /// <summary>

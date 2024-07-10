@@ -1,5 +1,4 @@
 ﻿#pragma once
-#include <cstdarg>
 
 #include "System.h"
 #include "MemoryEntity.h"
