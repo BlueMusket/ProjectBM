@@ -1,10 +1,5 @@
 ﻿#pragma once
 
-#include <WinSock2.h>
-
-#pragma comment(lib, "ws2_32.lib")
-#pragma comment(lib,"mswsock.lib")
-
 class CAsyncTcpEventSink;
 
 class CIocp

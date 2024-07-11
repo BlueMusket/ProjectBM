@@ -1,6 +1,5 @@
 #pragma once
 #include <windows.h>
-
 class CLock
 {
 	friend class CScopeLock;
@@ -44,4 +43,3 @@ public:
 private:
 	CLock* m_Lock;
 };
-

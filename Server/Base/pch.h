@@ -8,7 +8,22 @@
 
 // 공용 헤더
 // window 기본 헤더
+#define WIN32_LEAN_AND_MEAN
+#define _WINSOCKAPI_
+#include <WinSock2.h>
+#include <winsock.h>
+#include <WS2tcpip.h>
+#include <mswsock.h>
+#include <stdio.h>
+#include <windows.h>
+
+#pragma comment(lib, "ws2_32.lib")
+#pragma comment(lib,"mswsock.lib")
+
+
 #include <unordered_map>
+#include <unordered_set>
+
 #include <string>
 #include <vector>
 
@@ -16,6 +31,7 @@
 #include "tbb/concurrent_hash_map.h"
 
 // 커스텀 헤더
+#include "BaseDef.h"
 #include "MemoryUtil.h"
 #include "Lock.h"
 #include "BitBase.h"

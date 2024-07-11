@@ -1,11 +1,5 @@
 ﻿#pragma once
 
-#define _WINSOCKAPI_
-#include <windows.h>
-#include <WinSock2.h>
-#include <winsock.h>
-#include <MSWSock.h>
-
 // 네트워크 세팅 관련
 namespace Network
 {

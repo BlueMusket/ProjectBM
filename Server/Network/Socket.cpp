@@ -1,16 +1,6 @@
 ﻿#include "Socket.h"
 #include "AsyncTcpEvent.h"
 
-#define WIN32_LEAN_AND_MEAN
-
-#include <winsock2.h>
-#include <ws2tcpip.h>
-#include <mswsock.h>
-#include <stdio.h>
-
-// Need to link with Ws2_32.lib
-#pragma comment(lib, "Ws2_32.lib")
-
 namespace Network
 {
 	// 소켓 통신에 사용할 함수 포인터 모음

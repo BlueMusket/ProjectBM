@@ -167,9 +167,11 @@
     <ClInclude Include="AllocComponent.h" />
     <ClInclude Include="AppManager.h" />
     <ClInclude Include="Atomic.h" />
+    <ClInclude Include="BaseDef.h" />
     <ClInclude Include="BitBase.h" />
     <ClInclude Include="CInputEvent.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="DeadLockDetector.h" />
     <ClInclude Include="Delegate.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="InputSystem.h" />
@@ -192,6 +194,7 @@
     <ClCompile Include="BitBase.cpp" />
     <ClCompile Include="CInputEvent.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="DeadLockDetector.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="Lock.cpp" />

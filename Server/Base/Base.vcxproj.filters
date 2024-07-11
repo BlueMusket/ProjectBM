@@ -83,6 +83,10 @@
     <ClInclude Include="CInputEvent.h" />
     <ClInclude Include="Lock.h" />
     <ClInclude Include="BitBase.h" />
+    <ClInclude Include="DeadLockDetector.h" />
+    <ClInclude Include="BaseDef.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -134,6 +138,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="BitBase.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DeadLockDetector.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
