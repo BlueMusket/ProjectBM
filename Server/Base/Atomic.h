@@ -6,6 +6,7 @@ class CAtomic
 {
 public:
     CAtomic(T initValue) : m_Value(initValue) {}
+    CAtomic() : {}
 
 public:
     void  Store(T newValue)
@@ -13,7 +14,7 @@ public:
         m_Value.store(newValue);
     }
 
-    T Get() const
+    T Load() const
     {
         return m_Value.load();
     }
@@ -26,19 +27,19 @@ public:
         return m_Value.compare_exchange_strong(expectedValue, newValue);
     }
 
+    // Increase 함수
+    T Increase(T value = 1) 
+    {
+        return m_Value.fetch_add(value);
+    }
+
+    // Decrease 함수
+    T Decrease(T value = 1) 
+    {
+        return m_Value.fetch_sub(value);
+    }
+
 private:
     std::atomic<T> m_Value;
-
-    template<typename T, typename Func>
-    bool TryExchangeWith(T value, T comparand, const Func& func)
-    {
-        //CScopedTryExchange scopedTryExchange(*this, value, comparand);
-        //if (scopedTryExchange)
-        {
-            func();
-            return true;
-        }
-        return false;
-    }
 };
 

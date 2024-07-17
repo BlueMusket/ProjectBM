@@ -1,15 +1,11 @@
-﻿#pragma once
-#include "Network/Peer.h"
+#pragma once
+#include "Server/ServerPeer.h"
 
-class CLoginPolicy;
-/// <summary>
-/// 서버Peer
-/// </summary>
-class CServerPeer : public CPeer
+class CGamePeer : public CServerPeer
 {
 public:
-    CServerPeer();
-    virtual ~CServerPeer();
+    CGamePeer();
+    virtual ~CGamePeer();
 
 public:
     /// <summary>
@@ -26,8 +22,5 @@ public:
     /// </summary>
     /// <param name="tcpEvent"> accept 시 받은 이벤트 </param>
     virtual void OnAccepted(CAsyncTcpEvent* tcpEvent) override;
-
-private:
-	CLoginPolicy* m_LoginPolicy;
 };
 

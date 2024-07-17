@@ -26,12 +26,16 @@
 
 #include <string>
 #include <vector>
+#include <array>
 
 // lib 헤더
+// TBB
 #include "tbb/concurrent_hash_map.h"
+#include "tbb/concurrent_unordered_set.h"
+#include "tbb/concurrent_queue.h"
+#include "tbb/concurrent_priority_queue.h"
 
 // 커스텀 헤더
-#include "BaseDef.h"
 #include "MemoryUtil.h"
 #include "Lock.h"
 #include "BitBase.h"

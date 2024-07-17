@@ -37,6 +37,15 @@
     <Filter Include="Task">
       <UniqueIdentifier>{dfad9956-3aa6-47d8-b706-5941818700d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PacketHandler">
+      <UniqueIdentifier>{daf92dad-bd1f-43cf-9c56-2dc5ceff1db1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Packet">
+      <UniqueIdentifier>{671358a8-7f6d-40fa-b302-ea3e3c693b48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Policy">
+      <UniqueIdentifier>{736dad1b-84dc-4655-bc82-afcac7cd11dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -57,12 +66,6 @@
     <ClInclude Include="AsyncTcpEvent.h">
       <Filter>Event</Filter>
     </ClInclude>
-    <ClInclude Include="PacketBase.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="AsyncTask.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="AsyncEvent.h">
       <Filter>Event</Filter>
     </ClInclude>
@@ -78,44 +81,53 @@
     <ClInclude Include="MarshalerComponent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="PacketHandler.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="PacketRegistry.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Packet.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="PacketWriter.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="NetworkAppManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Builder.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Handler.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>PacketHandler</Filter>
     </ClInclude>
     <ClInclude Include="HandlerRegistry.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>PacketHandler</Filter>
     </ClInclude>
-    <ClInclude Include="PeerListener.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="PacketHandler.h">
+      <Filter>PacketHandler</Filter>
     </ClInclude>
-    <ClInclude Include="ListenSystem.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Packet.h">
+      <Filter>Packet</Filter>
     </ClInclude>
-    <ClInclude Include="PeerFacade.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="PacketBase.h">
+      <Filter>Packet</Filter>
     </ClInclude>
     <ClInclude Include="PacketReader.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketRegistry.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketWriter.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PeerFacade.h">
+      <Filter>Peer</Filter>
+    </ClInclude>
+    <ClInclude Include="PeerListener.h">
+      <Filter>Peer</Filter>
     </ClInclude>
     <ClInclude Include="SendPolicy.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Policy</Filter>
+    </ClInclude>
+    <ClInclude Include="ListenSystem.h">
+      <Filter>Peer</Filter>
+    </ClInclude>
+    <ClInclude Include="AsyncTask.h">
+      <Filter>Task</Filter>
+    </ClInclude>
+    <ClInclude Include="PeerRegister.h">
+      <Filter>Peer</Filter>
+    </ClInclude>
+    <ClInclude Include="PeerDef.h">
+      <Filter>Peer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -137,9 +149,6 @@
     <ClCompile Include="AsyncTcpEvent.cpp">
       <Filter>Event</Filter>
     </ClCompile>
-    <ClCompile Include="AsyncTask.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="AsyncEvent.cpp">
       <Filter>Event</Filter>
     </ClCompile>
@@ -155,47 +164,50 @@
     <ClCompile Include="MarshalerComponent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="PacketHandler.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="PacketRegistry.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Packet.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="NetworkAppManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Builder.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Handler.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>PacketHandler</Filter>
     </ClCompile>
     <ClCompile Include="HandlerRegistry.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>PacketHandler</Filter>
     </ClCompile>
-    <ClCompile Include="PeerListener.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="PacketHandler.cpp">
+      <Filter>PacketHandler</Filter>
     </ClCompile>
-    <ClCompile Include="ListenSystem.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="PeerFacade.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="PacketReader.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Packet.cpp">
+      <Filter>Packet</Filter>
     </ClCompile>
     <ClCompile Include="PacketBase.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketReader.cpp">
+      <Filter>Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketRegistry.cpp">
+      <Filter>Packet</Filter>
     </ClCompile>
     <ClCompile Include="PacketWriter.cpp">
-      <Filter>헤더 파일</Filter>
+      <Filter>Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="PeerFacade.cpp">
+      <Filter>Peer</Filter>
+    </ClCompile>
+    <ClCompile Include="PeerListener.cpp">
+      <Filter>Peer</Filter>
     </ClCompile>
     <ClCompile Include="SendPolicy.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Policy</Filter>
+    </ClCompile>
+    <ClCompile Include="ListenSystem.cpp">
+      <Filter>Peer</Filter>
+    </ClCompile>
+    <ClCompile Include="AsyncTask.cpp">
+      <Filter>Task</Filter>
+    </ClCompile>
+    <ClCompile Include="PeerRegister.cpp">
+      <Filter>Peer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

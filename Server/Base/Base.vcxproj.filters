@@ -9,25 +9,28 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\Thread">
+    <Filter Include="Lock">
+      <UniqueIdentifier>{99098142-b1e9-4473-806d-778c52399dc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thread">
       <UniqueIdentifier>{b5463de4-467a-4c64-8e81-41bc76ad7401}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Task">
+    <Filter Include="Task">
       <UniqueIdentifier>{9e32925f-ff2d-4ed1-a5fe-4cf325a28bb3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Memory">
-      <UniqueIdentifier>{723df40c-d6ce-4d8d-8b5d-1cfa2804240b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Pool">
+    <Filter Include="Pool">
       <UniqueIdentifier>{87af4c6c-2cc6-4a43-8a6b-255a534234df}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\ECS">
-      <UniqueIdentifier>{a1a5c5db-d47c-44ed-8854-5504ffa07729}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Pattern">
+    <Filter Include="Pattern">
       <UniqueIdentifier>{576ef60e-a06a-4d4a-ada5-d3c7e6f498ef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Atomic">
+    <Filter Include="Memory">
+      <UniqueIdentifier>{723df40c-d6ce-4d8d-8b5d-1cfa2804240b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS">
+      <UniqueIdentifier>{a1a5c5db-d47c-44ed-8854-5504ffa07729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Atomic">
       <UniqueIdentifier>{758f8c7e-87e8-49b6-90d0-8fc48b5ff77a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -36,15 +39,14 @@
       <Filter>소스 파일</Filter>
     </ClInclude>
     <ClInclude Include="TaskComponent.h">
-      <Filter>소스 파일\Task</Filter>
+      <Filter>Task</Filter>
     </ClInclude>
     <ClInclude Include="Thread.h">
-      <Filter>소스 파일\Thread</Filter>
+      <Filter>Thread</Filter>
     </ClInclude>
     <ClInclude Include="Task.h">
-      <Filter>소스 파일\Task</Filter>
+      <Filter>Task</Filter>
     </ClInclude>
-    <ClInclude Include="Atomic.h" />
     <ClInclude Include="Delegate.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
@@ -53,94 +55,97 @@
     </ClInclude>
     <ClInclude Include="AppManager.h" />
     <ClInclude Include="MemoryUtil.hpp">
-      <Filter>소스 파일\Memory</Filter>
+      <Filter>Memory</Filter>
     </ClInclude>
     <ClInclude Include="MemoryUtil.h">
-      <Filter>소스 파일\Memory</Filter>
+      <Filter>Memory</Filter>
     </ClInclude>
     <ClInclude Include="MemorySystem.h">
-      <Filter>소스 파일\Memory</Filter>
+      <Filter>Memory</Filter>
     </ClInclude>
     <ClInclude Include="MemoryEntity.h">
-      <Filter>소스 파일\Memory</Filter>
+      <Filter>Memory</Filter>
     </ClInclude>
     <ClInclude Include="AllocComponent.h">
-      <Filter>소스 파일\Memory</Filter>
+      <Filter>Memory</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
-      <Filter>소스 파일\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>소스 파일\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="System.h">
-      <Filter>소스 파일\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
-      <Filter>소스 파일\Pattern</Filter>
+      <Filter>Pattern</Filter>
     </ClInclude>
-    <ClInclude Include="InputSystem.h" />
-    <ClInclude Include="CInputEvent.h" />
-    <ClInclude Include="Lock.h" />
     <ClInclude Include="BitBase.h" />
-    <ClInclude Include="DeadLockDetector.h" />
     <ClInclude Include="BaseDef.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
+    <ClInclude Include="DeadLockDetector.h">
+      <Filter>Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="Lock.h">
+      <Filter>Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="Atomic.h">
+      <Filter>Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="TaskComponent.cpp">
-      <Filter>소스 파일\Task</Filter>
+      <Filter>Task</Filter>
     </ClCompile>
     <ClCompile Include="Thread.cpp">
-      <Filter>소스 파일\Thread</Filter>
+      <Filter>Thread</Filter>
     </ClCompile>
     <ClCompile Include="Task.cpp">
-      <Filter>소스 파일\Task</Filter>
-    </ClCompile>
-    <ClCompile Include="Atomic.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Task</Filter>
     </ClCompile>
     <ClCompile Include="MemorySystem.cpp">
-      <Filter>소스 파일\Memory</Filter>
+      <Filter>Memory</Filter>
     </ClCompile>
     <ClCompile Include="MemoryEntity.cpp">
-      <Filter>소스 파일\Memory</Filter>
+      <Filter>Memory</Filter>
     </ClCompile>
     <ClCompile Include="AllocComponent.cpp">
-      <Filter>소스 파일\Memory</Filter>
+      <Filter>Memory</Filter>
     </ClCompile>
     <ClCompile Include="AppManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="System.cpp">
-      <Filter>소스 파일\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
-      <Filter>소스 파일\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClCompile>
     <ClCompile Include="Component.cpp">
-      <Filter>소스 파일\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClCompile>
     <ClCompile Include="Singleton.cpp">
-      <Filter>소스 파일\Pattern</Filter>
-    </ClCompile>
-    <ClCompile Include="InputSystem.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="CInputEvent.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Lock.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Pattern</Filter>
     </ClCompile>
     <ClCompile Include="BitBase.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="DeadLockDetector.cpp">
+      <Filter>Lock</Filter>
+    </ClCompile>
+    <ClCompile Include="Lock.cpp">
+      <Filter>Lock</Filter>
+    </ClCompile>
+    <ClCompile Include="Atomic.cpp">
+      <Filter>Lock</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

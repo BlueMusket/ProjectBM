@@ -169,17 +169,16 @@
     <ClInclude Include="Atomic.h" />
     <ClInclude Include="BaseDef.h" />
     <ClInclude Include="BitBase.h" />
-    <ClInclude Include="CInputEvent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="DeadLockDetector.h" />
     <ClInclude Include="Delegate.h" />
     <ClInclude Include="Entity.h" />
-    <ClInclude Include="InputSystem.h" />
     <ClInclude Include="Lock.h" />
     <ClInclude Include="MemoryEntity.h" />
     <ClInclude Include="MemorySystem.h" />
     <ClInclude Include="MemoryUtil.h" />
     <ClInclude Include="MemoryUtil.hpp" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="System.h" />
@@ -192,14 +191,13 @@
     <ClCompile Include="AppManager.cpp" />
     <ClCompile Include="Atomic.cpp" />
     <ClCompile Include="BitBase.cpp" />
-    <ClCompile Include="CInputEvent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DeadLockDetector.cpp" />
     <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="Lock.cpp" />
     <ClCompile Include="MemoryEntity.cpp" />
     <ClCompile Include="MemorySystem.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

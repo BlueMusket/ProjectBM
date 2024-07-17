@@ -1,10 +1,11 @@
 ﻿#include "PeerListener.h"
 
-#include "Network/AsyncDispatcher.h"
-//#include "Network/AsyncEvent.h"
-#include "Network/AsyncTcpComponent.h"
-#include "Network/AsyncTcpEvent.h"
-#include "Network/Socket.h"
+#include "AsyncDispatcher.h"
+//#include "AsyncEvent.h"
+#include "AsyncTcpComponent.h"
+#include "AsyncTcpEvent.h"
+#include "Socket.h"
+#include "PeerRegister.h"
 
 CPeerListener::CPeerListener()
 {
@@ -57,6 +58,10 @@ void CPeerListener::PostAccept(CAsyncTcpEvent* acceptEvent)
 	}
 }
 
+/// <summary>
+/// Accept 이벤트를 받았을 때 호출됩니다.
+/// </summary>
+/// <param name="tcpEvent"> TCP 이벤트 객체 </param>
 void CPeerListener::OnAcceptEvent(CAsyncTcpEvent* tcpEvent)
 {
 	CPeer* newPeer = CreatePeer();
@@ -65,6 +70,8 @@ void CPeerListener::OnAcceptEvent(CAsyncTcpEvent* tcpEvent)
 	newPeer->OnAccepted(tcpEvent);
 
 	g_AsyncDispatcher::GetInstance()->Associate(newPeer, newPeer->GetSocket());
+
+	g_PeerRegister::GetInstance()->AddPeer(newPeer);
 
 
 	// 이벤트 다시 재활용한다.

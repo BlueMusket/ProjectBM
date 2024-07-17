@@ -22,6 +22,12 @@
     <Filter Include="System">
       <UniqueIdentifier>{9aaf7237-2f6b-4fbe-99eb-70821b7ad1b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Login">
+      <UniqueIdentifier>{56ba9a84-4371-4726-af97-c86cec22157d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Link">
+      <UniqueIdentifier>{6e2c6b45-ea4a-4e3d-82e3-a57f812cc248}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -30,20 +36,17 @@
     <ClInclude Include="ServerAppManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="ServerListener.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="LinkPolicy.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="ServerPeer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="PeerRegister.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Link</Filter>
     </ClInclude>
     <ClInclude Include="LoginPolicy.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Login</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerPeer.h">
+      <Filter>Peer</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerListener.h">
+      <Filter>Peer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -53,20 +56,17 @@
     <ClCompile Include="ServerAppManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="ServerListener.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="LinkPolicy.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="ServerPeer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="PeerRegister.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Link</Filter>
     </ClCompile>
     <ClCompile Include="LoginPolicy.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Login</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerPeer.cpp">
+      <Filter>Peer</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerListener.cpp">
+      <Filter>Peer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

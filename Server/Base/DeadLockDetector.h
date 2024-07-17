@@ -1,5 +1,6 @@
 #pragma once
 #include "Singleton.h"
+#include "BaseDef.h"
 
 class CDeadLockDetector : public CSingleton<CDeadLockDetector>
 {

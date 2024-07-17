@@ -174,7 +174,6 @@
     <ClInclude Include="AsyncTcpComponent.h" />
     <ClInclude Include="AsyncTcpEvent.h" />
     <ClInclude Include="AsyncTcpEventSink.h" />
-    <ClInclude Include="Builder.h" />
     <ClInclude Include="Handler.h" />
     <ClInclude Include="HandlerRegistry.h" />
     <ClInclude Include="Iocp.h" />
@@ -189,8 +188,10 @@
     <ClInclude Include="PacketWriter.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Peer.h" />
+    <ClInclude Include="PeerDef.h" />
     <ClInclude Include="PeerFacade.h" />
     <ClInclude Include="PeerListener.h" />
+    <ClInclude Include="PeerRegister.h" />
     <ClInclude Include="SendPolicy.h" />
     <ClInclude Include="Socket.h" />
   </ItemGroup>
@@ -202,7 +203,6 @@
     <ClCompile Include="AsyncTcpComponent.cpp" />
     <ClCompile Include="AsyncTcpEvent.cpp" />
     <ClCompile Include="AsyncTcpEventSink.cpp" />
-    <ClCompile Include="Builder.cpp" />
     <ClCompile Include="Handler.cpp" />
     <ClCompile Include="HandlerRegistry.cpp" />
     <ClCompile Include="Iocp.cpp" />
@@ -224,6 +224,7 @@
     <ClCompile Include="Peer.cpp" />
     <ClCompile Include="PeerFacade.cpp" />
     <ClCompile Include="PeerListener.cpp" />
+    <ClCompile Include="PeerRegister.cpp" />
     <ClCompile Include="SendPolicy.cpp" />
     <ClCompile Include="Socket.cpp" />
   </ItemGroup>

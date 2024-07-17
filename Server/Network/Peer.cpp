@@ -7,17 +7,43 @@
 #include "Server/LoginPolicy.h"
 #include "PeerFacade.h"
 
+
+std::atomic<int> CPeer::s_InstanceCount = 0;
+
+namespace
+{	
+	std::atomic<PeerId_t> s_IdIndexer = DEFAULT_PEER_ID;
+	PeerId_t GetNextId()
+	{
+		return s_IdIndexer.fetch_add(1);
+	}
+}
+
 CPeer::CPeer()
+	: m_Id(GetNextId())
+	, m_RefCount(0)
+	, m_Self(nullptr)
 {
+	// 각 요소를 0으로 초기화
+	for (auto& refCount : m_RefCountArray) 
+	{
+		refCount.Store(0);
+	}
+
 	InsertComponent<CAsyncTcpComponent>();
 	InsertComponent<CMarshalerComponent>();
 
 	m_SendPolicy = New(CSendPolicy);
-	m_LoginPolicy = New(CLoginPolicy);
+
+	s_InstanceCount.fetch_add(1);
+
+	m_Self = CPeerPtr(this, CObject::SafeDelete);
 }
 
 CPeer::~CPeer()
 {
+	s_InstanceCount.fetch_add(-1);
+	m_Self.reset();
 }
 
 void CPeer::OnReceiveEvent(bool result, int ioByteSize, CAsyncTcpEvent* tcpEvent)
@@ -47,7 +73,6 @@ void CPeer::OnReceiveEvent(bool result, int ioByteSize, CAsyncTcpEvent* tcpEvent
 		memmove(tcpEvent->GetBuffer(), tcpEvent->GetBuffer() + handled, total - handled);
 
 		tcpEvent->SetProceedingSize(total - handled);
-
 	}
 	else
 	{
@@ -100,4 +125,52 @@ void CPeer::Disconnect()
 	}
 
 	component->Disconnect();
+}
+
+/// <summary>
+/// 피어 ID를 가져옵니다.
+/// </summary>
+/// <returns> 피어 ID </returns>
+PeerId_t CPeer::GetId() const
+{
+	return m_Id;
+}
+
+/// <summary>
+/// 특정 타입의 참조 카운트를 증가시킵니다.
+/// </summary>
+/// <param name="type"> 참조 타입 </param>
+void CPeer::IncreaseRefCount(PeerRefType type)
+{
+	m_RefCountArray[type].Increase();
+	m_RefCount.Increase();
+}
+
+/// <summary>
+/// 특정 타입의 참조 카운트를 감소시킵니다.
+/// </summary>
+/// <param name="type"> 참조 타입 </param>
+void CPeer::DecreaseRefCount(PeerRefType type)
+{
+	m_RefCountArray[type].Decrease();
+	m_RefCount.Decrease(1);
+}
+
+/// <summary>
+/// 특정 타입의 참조 카운트를 가져옵니다.
+/// </summary>
+/// <param name="type"> 참조 타입 </param>
+/// <returns> 참조 카운트 </returns>
+int CPeer::GetRefCount(PeerRefType type/* = PEER_REF_TYPE_MAX*/) const
+{
+	return PEER_REF_TYPE_MAX == type ? m_RefCount.Load() : m_RefCountArray[type].Load();
+}
+
+/// <summary>
+/// 자신에 대한 shared_ptr를 반환합니다.
+/// </summary>
+/// <returns> shared_ptr로 된 자신 </returns>
+CPeerPtr CPeer::GetSelf()
+{
+	return m_Self;
 }

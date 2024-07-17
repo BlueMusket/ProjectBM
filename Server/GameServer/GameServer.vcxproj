@@ -213,6 +213,8 @@
     <ClCompile Include="CG_LoginHandler.cpp" />
     <ClCompile Include="GamePacket.cpp" />
     <ClCompile Include="GamePacketHandlerSetup.cpp" />
+    <ClCompile Include="GamePeer.cpp" />
+    <ClCompile Include="GamePeerListener.cpp" />
     <ClCompile Include="Lobby.cpp" />
     <ClCompile Include="GameServerAppManager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -226,6 +228,8 @@
     <ClInclude Include="CG_LoginHandler.h" />
     <ClInclude Include="GamePacket.h" />
     <ClInclude Include="GamePacketHandlerSetup.h" />
+    <ClInclude Include="GamePeer.h" />
+    <ClInclude Include="GamePeerListener.h" />
     <ClInclude Include="Lobby.h" />
     <ClInclude Include="GameServerAppManager.h" />
     <ClInclude Include="OneOnOne.h" />
@@ -244,6 +248,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Network\Network.vcxproj">
       <Project>{d6caf8e9-9604-4ba2-8136-a6bb4abc9db4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Query\Query.vcxproj">
+      <Project>{ba5c877d-1294-423a-bc68-798c40a70422}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Server\Server.vcxproj">
       <Project>{2fc3d6e8-1c27-4d27-9b9d-11a4f84b9ae2}</Project>

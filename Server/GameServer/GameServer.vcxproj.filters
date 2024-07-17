@@ -16,30 +16,21 @@
     <Filter Include="PacketHandler">
       <UniqueIdentifier>{9ec323e2-86be-4538-87d1-58ba30f5bcf4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Zone">
+      <UniqueIdentifier>{16362364-7ee3-4a3c-bd01-d65d086546c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zone\Rule">
+      <UniqueIdentifier>{dbd98541-7221-4d0f-a604-f6da4b721592}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Peer">
+      <UniqueIdentifier>{3188faeb-21a7-411c-8428-d28e7aa5c646}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="GameServerAppManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="ZoneFactory.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Zone.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Lobby.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="OneOnOne.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Rule.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="OneOnOneRule.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="GamePacket.cpp">
@@ -51,6 +42,30 @@
     <ClCompile Include="CG_LoginHandler.cpp">
       <Filter>PacketHandler</Filter>
     </ClCompile>
+    <ClCompile Include="Zone.cpp">
+      <Filter>Zone</Filter>
+    </ClCompile>
+    <ClCompile Include="ZoneFactory.cpp">
+      <Filter>Zone</Filter>
+    </ClCompile>
+    <ClCompile Include="Lobby.cpp">
+      <Filter>Zone</Filter>
+    </ClCompile>
+    <ClCompile Include="OneOnOne.cpp">
+      <Filter>Zone</Filter>
+    </ClCompile>
+    <ClCompile Include="Rule.cpp">
+      <Filter>Zone\Rule</Filter>
+    </ClCompile>
+    <ClCompile Include="OneOnOneRule.cpp">
+      <Filter>Zone\Rule</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePeer.cpp">
+      <Filter>Peer</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePeerListener.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameServerAppManager.h">
@@ -58,24 +73,6 @@
     </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>소스 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="ZoneFactory.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Zone.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Lobby.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="OneOnOne.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Rule.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="OneOnOneRule.h">
-      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="GamePacket.h">
       <Filter>헤더 파일</Filter>
@@ -85,6 +82,30 @@
     </ClInclude>
     <ClInclude Include="CG_LoginHandler.h">
       <Filter>PacketHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="Lobby.h">
+      <Filter>Zone</Filter>
+    </ClInclude>
+    <ClInclude Include="OneOnOne.h">
+      <Filter>Zone</Filter>
+    </ClInclude>
+    <ClInclude Include="Zone.h">
+      <Filter>Zone</Filter>
+    </ClInclude>
+    <ClInclude Include="ZoneFactory.h">
+      <Filter>Zone</Filter>
+    </ClInclude>
+    <ClInclude Include="Rule.h">
+      <Filter>Zone\Rule</Filter>
+    </ClInclude>
+    <ClInclude Include="OneOnOneRule.h">
+      <Filter>Zone\Rule</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePeer.h">
+      <Filter>Peer</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePeerListener.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

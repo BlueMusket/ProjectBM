@@ -27,7 +27,7 @@ public:
 	/// <summary>
 	/// Accept 이벤트를 받았을때 호출함
 	/// </summary>
-	/// <param name="acceptEvent"></param>
+	/// <param name="acceptEvent"> 인자 설명 </param>
 	void OnAccepted(CAsyncTcpEvent* acceptEvent);
 private:
 	CSocket* m_Socket;

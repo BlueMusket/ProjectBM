@@ -1,6 +1,13 @@
-
+#include "Network/Peer.h"
 int main()
 {
-	tbb::concurrent_hash_map<int, int> tester;
+	typedef std::shared_ptr<CPeer> CPeerPtr;
+	CPeer* peer = New(CPeer);
+
+	CPeerPtr tester = std::make_shared<CPeer>();
+
+	delete peer;
+	tester.use_count();
+
 	return 0;
 }

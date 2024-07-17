@@ -1,18 +1,27 @@
 ﻿#pragma once
-
+#include "Base/Object.h"
 #include "AsyncTcpEventSink.h"
+#include "PeerDef.h"
 
 class CSendPolicy;
-class CLoginPolicy;
 class CSocket;
 class CAsyncTcpEvent;
+class CPeer;
 
-class CPeer : public CAsyncTcpEventSink
+typedef std::shared_ptr<CPeer> CPeerPtr;
+class CPeer : public CAsyncTcpEventSink, public CObject
 {
 public:
 	CPeer();
 	virtual ~CPeer();
 
+private:
+	PeerId_t m_Id; ///< 피어 ID
+	CPeerPtr m_Self; ///< 자신의 Shared
+	std::array<CAtomic<int>, PEER_REF_TYPE_MAX> m_RefCountArray; ///< 참조 카운트 배열
+	CAtomic<int> m_RefCount; ///< 전체 참조 카운트
+
+	CSendPolicy* m_SendPolicy;
 public:
 
 	/// <summary>
@@ -38,12 +47,40 @@ public:
 	CSocket* GetSocket();
 	void SetSocket(CSocket* socket);
 
-public:
-
 	void Disconnect();
 
-private:
-	CSendPolicy* m_SendPolicy;
-	CLoginPolicy* m_LoginPolicy;
-};
+public:
+	/// <summary>
+	/// 피어 ID를 가져옵니다.
+	/// </summary>
+	/// <returns> 피어 ID </returns>
+	PeerId_t GetId() const;
 
+	/// <summary>
+	/// 특정 타입의 참조 카운트를 증가시킵니다.
+	/// </summary>
+	/// <param name="type"> 참조 타입 </param>
+	void IncreaseRefCount(PeerRefType type);
+
+	/// <summary>
+	/// 특정 타입의 참조 카운트를 감소시킵니다.
+	/// </summary>
+	/// <param name="type"> 참조 타입 </param>
+	void DecreaseRefCount(PeerRefType type);
+
+	/// <summary>
+	/// 특정 타입의 참조 카운트를 가져옵니다.
+	/// </summary>
+	/// <param name="type"> 참조 타입 </param>
+	/// <returns> 참조 카운트 </returns>
+	int GetRefCount(PeerRefType type = PEER_REF_TYPE_MAX) const;
+
+	/// <summary>
+	 /// 자신에 대한 shared_ptr를 반환합니다.
+	 /// </summary>
+	 /// <returns> shared_ptr로 된 자신 </returns>
+	CPeerPtr GetSelf();
+
+private:
+	static std::atomic<int> s_InstanceCount; ///< Peer의 수
+};
