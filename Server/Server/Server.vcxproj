@@ -171,6 +171,7 @@
     <ClInclude Include="ServerAppManager.h" />
     <ClInclude Include="ServerListener.h" />
     <ClInclude Include="ServerPeer.h" />
+    <ClInclude Include="TimerShard.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LinkPolicy.cpp" />
@@ -184,6 +185,7 @@
     <ClCompile Include="ServerAppManager.cpp" />
     <ClCompile Include="ServerListener.cpp" />
     <ClCompile Include="ServerPeer.cpp" />
+    <ClCompile Include="TimerShard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Base\Base.vcxproj">
