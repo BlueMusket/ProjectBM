@@ -170,11 +170,9 @@
     <ClInclude Include="AsyncDispatcher.h" />
     <ClInclude Include="AsyncEvent.h" />
     <ClInclude Include="AsyncEventSink.h" />
-    <ClInclude Include="AsyncTask.h" />
     <ClInclude Include="AsyncTcpComponent.h" />
     <ClInclude Include="AsyncTcpEvent.h" />
     <ClInclude Include="AsyncTcpEventSink.h" />
-    <ClInclude Include="AsyncTimerEvent.h" />
     <ClInclude Include="Handler.h" />
     <ClInclude Include="HandlerRegistry.h" />
     <ClInclude Include="Iocp.h" />
@@ -200,11 +198,9 @@
     <ClCompile Include="AsyncDispatcher.cpp" />
     <ClCompile Include="AsyncEvent.cpp" />
     <ClCompile Include="AsyncEventSink.cpp" />
-    <ClCompile Include="AsyncTask.cpp" />
     <ClCompile Include="AsyncTcpComponent.cpp" />
     <ClCompile Include="AsyncTcpEvent.cpp" />
     <ClCompile Include="AsyncTcpEventSink.cpp" />
-    <ClCompile Include="AsyncTimerEvent.cpp" />
     <ClCompile Include="Handler.cpp" />
     <ClCompile Include="HandlerRegistry.cpp" />
     <ClCompile Include="Iocp.cpp" />

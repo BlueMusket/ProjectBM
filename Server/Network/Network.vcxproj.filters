@@ -120,17 +120,11 @@
     <ClInclude Include="ListenSystem.h">
       <Filter>Peer</Filter>
     </ClInclude>
-    <ClInclude Include="AsyncTask.h">
-      <Filter>Task</Filter>
-    </ClInclude>
     <ClInclude Include="PeerRegister.h">
       <Filter>Peer</Filter>
     </ClInclude>
     <ClInclude Include="PeerDef.h">
       <Filter>Peer</Filter>
-    </ClInclude>
-    <ClInclude Include="AsyncTimerEvent.h">
-      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -206,14 +200,8 @@
     <ClCompile Include="ListenSystem.cpp">
       <Filter>Peer</Filter>
     </ClCompile>
-    <ClCompile Include="AsyncTask.cpp">
-      <Filter>Task</Filter>
-    </ClCompile>
     <ClCompile Include="PeerRegister.cpp">
       <Filter>Peer</Filter>
-    </ClCompile>
-    <ClCompile Include="AsyncTimerEvent.cpp">
-      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

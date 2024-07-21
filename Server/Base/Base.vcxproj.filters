@@ -95,6 +95,8 @@
       <Filter>Lock</Filter>
     </ClInclude>
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Time.h" />
+    <ClInclude Include="Math.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -146,6 +148,12 @@
       <Filter>Lock</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

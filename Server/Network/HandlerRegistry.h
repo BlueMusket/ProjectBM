@@ -17,5 +17,4 @@ private:
 	std::map<int, CHandler*> m_List;
 };
 
-
-typedef CSingleton<CHandlerRegistry> g_HandlerRegistry;
+#define g_HandlerRegistry CSingleton<CHandlerRegistry>::GetInstance()

@@ -83,4 +83,8 @@ public:
 
 private:
 	static std::atomic<int> s_InstanceCount; ///< Peer의 수
+
+public:
+	CAsyncTcpEventSink* ToSink() { return reinterpret_cast<CAsyncTcpEventSink*>(this); };
+	CObject* ToObject() { return reinterpret_cast<CObject*>(this); };
 };

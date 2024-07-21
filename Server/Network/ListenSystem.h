@@ -14,4 +14,4 @@ private:
 	CPeerListener* m_Listener;
 };
 
-typedef CSingleton<CListenSystem> g_ListenSystem;
+#define g_ListenSystem CSingleton<CListenSystem>::GetInstance()

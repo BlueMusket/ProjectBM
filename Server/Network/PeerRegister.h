@@ -27,4 +27,4 @@ public:
 };
 
 
-typedef CSingleton<CPeerRegister> g_PeerRegister;
+#define g_PeerRegister CSingleton<CPeerRegister>::GetInstance()

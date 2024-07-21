@@ -165,6 +165,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AsyncTimerEvent.h" />
     <ClInclude Include="LinkPolicy.h" />
     <ClInclude Include="LoginPolicy.h" />
     <ClInclude Include="pch.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="TimerShard.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AsyncTimerEvent.cpp" />
     <ClCompile Include="LinkPolicy.cpp" />
     <ClCompile Include="LoginPolicy.cpp" />
     <ClCompile Include="pch.cpp">

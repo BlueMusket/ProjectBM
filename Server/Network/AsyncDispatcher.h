@@ -42,4 +42,4 @@ private:
 	std::vector<CIocpThread*> m_ThreadList;
 };
 
-typedef CSingleton<CAsyncDispatcher> g_AsyncDispatcher;
+#define g_AsyncDispatcher CSingleton<CAsyncDispatcher>::GetInstance()

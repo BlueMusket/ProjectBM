@@ -1,16 +1,11 @@
 ﻿#include "Task.h"
 
-CTask::CTask(const Callback& callback)
-	: m_Callback(callback)
-{
-}
-
 CTask::~CTask()
 {
 
 }
 
-void CTask::OnCallbackEvent()
+void CTask::OnCallbackEvent() const
 {
 	m_Callback();
 }

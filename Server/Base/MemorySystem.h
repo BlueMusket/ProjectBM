@@ -20,4 +20,4 @@ private:
 	CMemoryEntity* m_MemoryEntity;
 };
 
-typedef CSingleton<CMemorySystem> g_MemorySystem;
+#define g_MemorySystem CSingleton<CMemorySystem>::GetInstance()

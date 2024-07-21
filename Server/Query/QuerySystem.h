@@ -8,4 +8,4 @@ public:
 	void SendQuery();
 };
 
-typedef CSingleton<CQuerySystem> g_QuerySystem;
+#define g_QuerySystem CSingleton<CQuerySystem>::GetInstance()

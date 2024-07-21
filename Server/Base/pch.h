@@ -43,3 +43,5 @@
 #include "Task.h"
 #include "Atomic.h"
 #include "Delegate.h"
+#include "Time.h"
+#include "Math.h"
