@@ -18,6 +18,9 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
     </ClCompile>
+    <PreBuildEvent>
+      <Command>REM start "" "$(MSBuildProjectDirectory)\PacketGenerater.bat" $(SolutionDir) $(MSBuildProjectDirectory)\</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup />
 </Project>

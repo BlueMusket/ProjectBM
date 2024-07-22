@@ -24,12 +24,12 @@ bool CGameServerAppManager::Setup()
         GamePacketHandlerSetup::Setup();
     }
 
-    g_AsyncDispatcher::GetInstance()->Start();
+    g_AsyncDispatcher->Start();
     //데이터 세팅
-    g_ListenSystem::GetInstance()->Init(New(CServerListener));
-    g_ListenSystem::GetInstance()->Start();
+    g_ListenSystem->Init(New(CServerListener));
+    g_ListenSystem->Start();
 
-    g_AsyncDispatcher::GetInstance()->Join();
+    g_AsyncDispatcher->Join();
 
 
     return result;

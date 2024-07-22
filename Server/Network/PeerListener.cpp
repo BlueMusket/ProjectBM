@@ -41,7 +41,7 @@ void CPeerListener::PostAccept(CAsyncTcpEvent* acceptEvent)
 	if (true == component->Accept(newSocket, acceptEvent))
 	{
 		// 추가 처리를 위해 이벤트를 Enqueue
-		g_AsyncDispatcher::GetInstance()->Enqueue(nullptr, &acceptEvent->GetTag());
+		g_AsyncDispatcher->Enqueue(nullptr, &acceptEvent->GetTag());
 	}
 	else
 	{
@@ -69,9 +69,9 @@ void CPeerListener::OnAcceptEvent(CAsyncTcpEvent* tcpEvent)
 	
 	newPeer->OnAccepted(tcpEvent);
 
-	g_AsyncDispatcher::GetInstance()->Associate(newPeer, newPeer->GetSocket());
+	g_AsyncDispatcher->Associate(newPeer, newPeer->GetSocket());
 
-	g_PeerRegister::GetInstance()->AddPeer(newPeer);
+	g_PeerRegister->AddPeer(newPeer);
 
 
 	// 이벤트 다시 재활용한다.

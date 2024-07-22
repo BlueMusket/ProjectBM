@@ -30,7 +30,7 @@ int CMarshalerComponent::UnMarshal(CPeer* peer, uint8_t* buffer, int ioByte)
 		return 0;
 	}
 
-	CHandler* handler = g_HandlerRegistry::GetInstance()->Find(id);
+	CHandler* handler = g_HandlerRegistry->Find(id);
 
 	if (nullptr == handler) 
 	{

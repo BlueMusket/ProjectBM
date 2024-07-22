@@ -1,5 +1,5 @@
-﻿SET solutionPath=%1
-SET projectPath=%2
+﻿SET solutionPath=C:\Programming\ProjectBM\Server\
+SET projectPath=C:\Programming\ProjectBM\Shared\
 
 start "" "%solutionPath%..\ProjectBM\ThirdParty\FlatBuffer\GenerateFlatBuffer.bat" %solutionPath% %projectPath% Shared.fbs
 

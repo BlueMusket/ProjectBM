@@ -70,7 +70,7 @@ void CAsyncDispatcher::CIocpThread::Run()
 		CAsyncEvent::Tag* tag = nullptr;
 		DWORD ioByteSize = 0;
 
-		bool result = g_AsyncDispatcher::GetInstance()->Dequeue(
+		bool result = g_AsyncDispatcher->Dequeue(
 												  reinterpret_cast<ULONG_PTR*>(&sink)
 												, reinterpret_cast<LPOVERLAPPED*>(&tag)
 												, ioByteSize);

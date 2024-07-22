@@ -199,7 +199,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PreBuildEvent>
-      <Command>start "" "$(MSBuildProjectDirectory)\MakePacket.bat" $(SolutionDir) $(MSBuildProjectDirectory)\</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Development_Editor|x64'">

@@ -4,9 +4,6 @@
 class CAsyncTimerEvent;
 class CTimerShard : public CSingleton<CTimerShard>
 {
-private:
-    class CEvent;
-
 public:
 	virtual bool Setup() override;
 
@@ -16,7 +13,7 @@ public:
 	void PushEvent();
 	void HeartBeat();
 private:
-	using EventQueue = tbb::concurrent_priority_queue<CEvent>;
+	using EventQueue = tbb::concurrent_priority_queue<CAsyncTimerEvent*>;
 	std::array<EventQueue, 100> m_EventArray;
 };
 

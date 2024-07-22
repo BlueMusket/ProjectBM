@@ -6,7 +6,7 @@ class CAtomic
 {
 public:
     CAtomic(T initValue) : m_Value(initValue) {}
-    CAtomic() : {}
+    CAtomic() : m_Value(NULL) {}
 
 public:
     void  Store(T newValue)

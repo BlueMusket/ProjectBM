@@ -4,5 +4,5 @@
 
 void GamePacketHandlerSetup::Setup()
 {
-	g_HandlerRegistry::GetInstance()->Resist(CG_LoginHandler::GetEnum(), CG_LoginHandler::GetClone());
+	g_HandlerRegistry->Resist(CG_LoginHandler::GetEnum(), CG_LoginHandler::GetClone());
 }
