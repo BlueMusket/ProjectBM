@@ -173,6 +173,7 @@
     <ClInclude Include="DeadLockDetector.h" />
     <ClInclude Include="Delegate.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Genaric.h" />
     <ClInclude Include="Lock.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MemoryEntity.h" />
@@ -196,6 +197,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DeadLockDetector.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Genaric.cpp" />
     <ClCompile Include="Lock.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="MemoryEntity.cpp" />

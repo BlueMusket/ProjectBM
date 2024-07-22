@@ -39,6 +39,12 @@ public:
         return m_Value.fetch_sub(value);
     }
 
+    T operator++() { return Increase(); }
+    T operator--() { return Decrease(); }
+    T operator+=(T value) { return Increase(value); }
+    T operator-=(T value) { return Decrease(value); }
+    T operator=(T value) { Store(value); return value; }
+    operator T() const { return Load(); }
 private:
     std::atomic<T> m_Value;
 };

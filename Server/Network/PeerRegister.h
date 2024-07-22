@@ -6,12 +6,11 @@ class CPeer;
 
 class CPeerRegister : public CSingleton<CPeerRegister>
 {
+	SINGLETON_FOUNDATION(CPeerRegister)
+
 private:
 	CLock m_Lock;
 	std::unordered_map<PeerId_t, CPeer*> m_PeerMap; ///< 등록된 피어들을 저장하는 리스트
-
-public:
-	virtual bool Setup() override;
 
 public:
 	/// <summary>

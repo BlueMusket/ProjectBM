@@ -5,9 +5,7 @@
 
 class CHandlerRegistry : public CSingleton<CHandlerRegistry>
 {
-public:
-	CHandlerRegistry();
-	virtual ~CHandlerRegistry();
+	SINGLETON_FOUNDATION(CHandlerRegistry)
 
 public:
 	void Resist(int id, CHandler* handler);

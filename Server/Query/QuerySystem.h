@@ -4,6 +4,7 @@
 
 class CQuerySystem : public CSingleton<CQuerySystem>
 {
+	SINGLETON_FOUNDATION(CQuerySystem)
 public:
 	void SendQuery();
 };

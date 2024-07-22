@@ -3,9 +3,7 @@
 
 class CAppManager : public CSingleton<CAppManager>
 {
-public:
-	CAppManager() {};
-	virtual ~CAppManager() {};
+SINGLETON_FOUNDATION(CAppManager)
 
 public:
 	virtual bool Setup();

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Network/AsyncEvent.h"
 
 class CAsyncEventSink;
@@ -9,11 +9,11 @@ private:
     CAsyncEventSink* m_Sink;
     CTask* m_Task;
     
-    Milli_t m_Activation; ///< È°¼ºÈ­ ½Ã°£
-    Milli_t m_NextActiveTick; ///<´ÙÀ½ È°¼ºÈ­ ½Ã°£
-    Milli_t m_Duration; ///< È°¼ºÈ­ °£°Ý
-    int m_Interval; ///< È°¼ºÈ­ È½¼ö
-    int m_MaxInterval; ///< ÃÖ´ë È°¼ºÈ­ È½¼ö
+    Milli_t m_Activation; ///< ë‹¤ìŒ í™œì„±í™” ì‹œê°„
+    Milli_t m_Expiration; ///< ë§Œë£Œ ì‹œê°„
+    Milli_t m_Duration; ///< ë°˜ë³µ ì£¼ê¸°
+    int m_Interval; ///< ë°˜ë³µ íšŸìˆ˜
+    int m_MaxInterval; ///< ìµœëŒ€ ë°˜ë³µ íšŸìˆ˜
 public:
     CAsyncTimerEvent();
     virtual ~CAsyncTimerEvent();
@@ -45,8 +45,8 @@ public:
 
     Milli_t GetActivation() const { return m_Activation; }
     void SetActivation(Milli_t activation) { m_Activation = activation; }
-    Milli_t GetNextActiveTick() const { return m_NextActiveTick; }
-    void SetNextActiveTick(Milli_t nextActiveTick) { m_NextActiveTick = nextActiveTick; }
+    Milli_t GetExpiration() const { return m_Expiration; }
+    void SetExpiration(Milli_t expiration) { m_Expiration = expiration; }
     Milli_t GetDuration() const { return m_Duration; }
     void SetDuration(Milli_t duration) { m_Duration = duration; }
     int GetInterval() const { return m_Interval; }

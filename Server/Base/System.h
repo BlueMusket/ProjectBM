@@ -6,8 +6,7 @@
 
 class CSystem : public CSingleton<CSystem>
 {
-public:
-	CSystem() {};
-	virtual ~CSystem() {};
+	SINGLETON_FOUNDATION(CSystem)
+
 };
 

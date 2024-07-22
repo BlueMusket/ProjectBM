@@ -14,9 +14,7 @@ class CAsyncEventSink;
 
 class CAsyncDispatcher : public CSingleton<CAsyncDispatcher>
 {
-public:
-	CAsyncDispatcher();
-	virtual ~CAsyncDispatcher();
+	SINGLETON_FOUNDATION(CAsyncDispatcher)
 
 public:
 	void Start();

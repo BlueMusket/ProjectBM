@@ -7,7 +7,7 @@ CAsyncTimerEvent::CAsyncTimerEvent()
     : m_Sink(nullptr)
     , m_Task(nullptr)
     , m_Activation(0)
-    , m_NextActiveTick(Time::GetCurrentMilliTick())
+    , m_Expiration(0)
     , m_Duration(0)
     , m_Interval(0)
     , m_MaxInterval(1)
@@ -37,7 +37,7 @@ void CAsyncTimerEvent::Execute(bool result, int ioByteSize, CAsyncEventSink* sin
             {
                 if (sink != m_Sink)
                 {
-                    // ÀÌ°Ô ¹«½¼ ¹®Á¦ÀÎ°¡
+                    // error;
                     break;
                 }
             }
@@ -58,7 +58,7 @@ void CAsyncTimerEvent::Execute(bool result, int ioByteSize, CAsyncEventSink* sin
     }
     else
     {
-        // ¾ÈÀüÇÏ°Ô Á¦°ÅÇØ¾ßÇÔ
+        // ì•ˆì „í•œ ì‚­ì œ?
     }
 }
 

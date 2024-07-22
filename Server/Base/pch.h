@@ -27,6 +27,7 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <algorithm>
 
 // lib 헤더
 // TBB
@@ -36,6 +37,7 @@
 #include "tbb/concurrent_priority_queue.h"
 
 // 커스텀 헤더
+#include "Genaric.h"
 #include "MemoryUtil.h"
 #include "Lock.h"
 #include "BitBase.h"

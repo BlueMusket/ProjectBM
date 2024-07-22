@@ -4,8 +4,7 @@
 
 class CDeadLockDetector : public CSingleton<CDeadLockDetector>
 {
-protected:
-    virtual bool Setup() override;
+SINGLETON_FOUNDATION(CDeadLockDetector)
 
 private:
     CLock m_Lock;

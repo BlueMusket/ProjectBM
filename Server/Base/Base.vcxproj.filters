@@ -97,6 +97,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="Genaric.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -154,6 +155,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Math.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Genaric.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

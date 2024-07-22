@@ -1,9 +1,14 @@
 #include "PeerRegister.h"
 #include "Peer.h"
 
-bool CPeerRegister::Setup()
+CPeerRegister::CPeerRegister()
 {
-    return true;
+
+}
+
+CPeerRegister::~CPeerRegister()
+{
+
 }
 
 /// <summary>

@@ -3,9 +3,7 @@
 
 class CZoneFactory : public CSingleton<CZoneFactory>
 {
-public:
-	CZoneFactory() {};
-	virtual ~CZoneFactory() {};
+	SINGLETON_FOUNDATION(CZoneFactory)
 };
 
 

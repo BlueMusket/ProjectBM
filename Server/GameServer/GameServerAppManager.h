@@ -5,10 +5,6 @@
 class CGameServerAppManager : public CServerAppManager
 {
 public:
-	CGameServerAppManager();
-	virtual ~CGameServerAppManager();
-
-public:
 	virtual bool Setup() override;
 };
 

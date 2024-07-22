@@ -4,14 +4,6 @@
 #include "Server/ServerListener.h"
 #include "GamePacketHandlerSetup.h"
 
-CGameServerAppManager::CGameServerAppManager()
-{
-}
-
-CGameServerAppManager::~CGameServerAppManager()
-{
-}
-
 bool CGameServerAppManager::Setup()
 {
     bool result = __super::Setup();

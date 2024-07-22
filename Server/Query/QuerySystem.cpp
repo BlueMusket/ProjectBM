@@ -7,6 +7,16 @@ namespace
 
 }
 
+CQuerySystem::CQuerySystem()
+{
+
+}
+
+CQuerySystem::~CQuerySystem()
+{
+
+}
+
 void CQuerySystem::SendQuery()
 {
 

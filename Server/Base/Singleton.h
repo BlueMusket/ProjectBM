@@ -4,12 +4,7 @@ template<typename T>
 class CSingleton
 {
 protected:
-	CSingleton() { Setup(); };
 	virtual ~CSingleton() {};
-
-
-	virtual bool Setup() { return true; };
-
 
 public:
 	static T* GetInstance()
@@ -23,3 +18,9 @@ public:
 		return instance;
 	}
 };
+
+#define SINGLETON_FOUNDATION(name)\
+public:\
+name();\
+protected:\
+virtual ~name();

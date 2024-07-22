@@ -9,7 +9,7 @@ void normalFunction()
     std::cout << "This is a normal function." << std::endl;
 }
 
-// ÇÔ¼ö °´Ã¼
+// ï¿½Ô¼ï¿½ ï¿½ï¿½Ã¼
 struct FunctionObject 
 {
     void operator()() const 
@@ -18,7 +18,7 @@ struct FunctionObject
     }
 };
 
-// Å¬·¡½º¿Í ¸â¹ö ÇÔ¼ö
+// Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
 class MyClass {
 public:
     void memberFunction() 
@@ -30,24 +30,24 @@ int main()
 {
     std::vector<std::unique_ptr<CTask>> tasks;
 
-    // 1. ÀÏ¹Ý ÇÔ¼ö¸¦ »ç¿ëÇÑ Task
+    // 1. ï¿½Ï¹ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Task
     tasks.push_back(std::make_unique<CTask>(normalFunction));
 
-    // 2. ¶÷´Ù Ç¥Çö½ÄÀ» »ç¿ëÇÑ Task
+    // 2. ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Task
     tasks.push_back(std::make_unique<CTask>([]() 
     {
         std::cout << "This is a lambda function." << std::endl;
     }));
 
-    // 3. ÇÔ¼ö °´Ã¼¸¦ »ç¿ëÇÑ Task
+    // 3. ï¿½Ô¼ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Task
     FunctionObject fo;
     tasks.push_back(std::make_unique<CTask>( fo));
 
-    // 4. Å¬·¡½ºÀÇ ¸â¹ö ÇÔ¼ö¸¦ »ç¿ëÇÑ Task
+    // 4. Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Task
     MyClass myClass;
     tasks.push_back(std::make_unique<CTask>(&MyClass::memberFunction, &myClass));
 
-    // Task Æ÷ÀÎÅÍ¸¦ ÅëÇØ operator()¸¦ È£Ãâ
+    // Task ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ operator()ï¿½ï¿½ È£ï¿½ï¿½
     for (const auto& task : tasks) 
     {
         (*task)();  
