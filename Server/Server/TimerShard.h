@@ -1,9 +1,8 @@
 #pragma once
+#include "AsyncTimerEvent.h"
 #include "Base/Singleton.h"
-
 class CTask;
 class CAsyncEventSink;
-class CAsyncTimerEvent;
 class CTimerShard : public CSingleton<CTimerShard>
 {
 SINGLETON_FOUNDATION(CTimerShard)

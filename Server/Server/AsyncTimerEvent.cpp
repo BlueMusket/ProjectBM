@@ -54,7 +54,7 @@ void CAsyncTimerEvent::Execute(bool result, int ioByteSize, CAsyncEventSink* sin
 
     if (true == readd)
     {
-        g_TimerShard->Readd(this);
+        g_TimerShard->PushEvent(this);
     }
     else
     {

@@ -5,9 +5,7 @@
 
 class CMemorySystem : public CSystem
 {
-public:
-	CMemorySystem();
-	virtual ~CMemorySystem();
+SINGLETON_FOUNDATION(CMemorySystem)
 
 public:
 	template<typename T, typename... Types>

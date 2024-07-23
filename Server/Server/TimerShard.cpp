@@ -1,6 +1,6 @@
 #include "TimerShard.h"
 #include "Network/AsyncDispatcher.h"
-#include "AsyncTimerEvent.h"
+
 
 CTimerShard::CTimerShard()
     : m_Index(-1)
@@ -33,9 +33,9 @@ void CTimerShard::PushEvent(CTask* task, CAsyncEventSink* sink, Milli_t delay, M
 void CTimerShard::HeartBeat(Milli_t now)
 {
     // 지금 호출이 필요한 timer enqueue
-    static int eventArraySize = m_EventArray.size();
+    static int eventArraySize = (int)m_EventArray.size();
 
-    int index = m_Index++;
+    int index = ++m_Index;
     index = index % eventArraySize;
 
     CAsyncTimerEvent* timerEvent = nullptr;
