@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "System.h"
+#include "Singleton.h"
 #include "MemoryEntity.h"
 
-class CMemorySystem : public CSystem
+class CMemorySystem : public CSingleton<CMemorySystem>
 {
 SINGLETON_FOUNDATION(CMemorySystem)
 

@@ -47,7 +47,7 @@ void CThread::Run()
 
 		Milli_t waitTick = Math::Min(CalculateWaitTick() - duration , (Milli_t)0);
 
-		Sleep(waitTick);
+		Sleep((DWORD)waitTick);
 	}
 }
 

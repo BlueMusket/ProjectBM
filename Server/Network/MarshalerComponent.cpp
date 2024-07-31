@@ -1,15 +1,18 @@
 ﻿#include "MarshalerComponent.h"
-#include "AsyncTcpEvent.h"
-#include "PacketRegistry.h"
 #include "PacketHandler.h"
 #include "HandlerRegistry.h"
 #include "Packet.h"
 #include "Peer.h"
 
-void CMarshalerComponent::Init()
+CMarshalerComponent::CMarshalerComponent(CEntity* owner)
+	: CComponent(owner)
 {
 }
 
+CMarshalerComponent::~CMarshalerComponent()
+{
+
+}
 int CMarshalerComponent::UnMarshal(CPeer* peer, uint8_t* buffer, int ioByte)
 {
 	if (ioByte < sizeof(PacketHeader))

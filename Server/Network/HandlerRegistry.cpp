@@ -1,5 +1,5 @@
-﻿#include "pch.h"
-#include "HandlerRegistry.h"
+﻿#include "HandlerRegistry.h"
+#include "Handler.h"
 
 CHandlerRegistry::CHandlerRegistry()
 {

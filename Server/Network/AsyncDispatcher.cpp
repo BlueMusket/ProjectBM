@@ -23,6 +23,8 @@ public:
 			, reinterpret_cast<LPOVERLAPPED*>(&tag)
 			, ioByteSize);
 
+		sink->IncreaseRefCount(ASYNC_REF_TYPE_EVENT);
+
 		const DWORD lastError = GetLastError();
 		if (nullptr != tag && (0 == lastError || ERROR_IO_PENDING == lastError))
 		{
@@ -32,6 +34,8 @@ public:
 		{
 			CPeerFacade::Disconnected(sink);
 		}
+
+		sink->DecreaseRefCount(ASYNC_REF_TYPE_EVENT);
 	}
 
 	virtual const wchar_t* GetName() { return L"Iocp Thread"; }

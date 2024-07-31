@@ -3,9 +3,15 @@
 #include "AsyncTcpEvent.h"
 #include "SendPolicy.h"
 
-void CAsyncTcpComponent::Init()
+CAsyncTcpComponent::CAsyncTcpComponent(CEntity* owner)
+    : CComponent(owner)
 {
     m_RecvEvent = New(CAsyncTcpEvent, CAsyncTcpEvent::EventType::Receive);
+}
+
+CAsyncTcpComponent::~CAsyncTcpComponent()
+{
+
 }
 
 CSocket* CAsyncTcpComponent::GetSocket()

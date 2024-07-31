@@ -75,9 +75,6 @@
     <ClInclude Include="Entity.h">
       <Filter>ECS</Filter>
     </ClInclude>
-    <ClInclude Include="System.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>Pattern</Filter>
     </ClInclude>
@@ -124,9 +121,6 @@
     </ClCompile>
     <ClCompile Include="AppManager.cpp">
       <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="System.cpp">
-      <Filter>ECS</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>ECS</Filter>

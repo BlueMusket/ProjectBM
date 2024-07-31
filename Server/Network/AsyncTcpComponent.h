@@ -11,8 +11,6 @@ class CAsyncTcpComponent : public CComponent
 public:
 	CSocket* GetSocket();
 	void SetSocket(CSocket* socket);
-protected:
-	virtual void Init();
 
 public:
 	bool Bind(sockaddr_in& addr);

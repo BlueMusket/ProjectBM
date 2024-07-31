@@ -1,8 +1,7 @@
 ﻿#pragma once
 #include "Base/Singleton.h"
-#include "Handler.h"
-#include <map>
 
+class CHandler;
 class CHandlerRegistry : public CSingleton<CHandlerRegistry>
 {
 	SINGLETON_FOUNDATION(CHandlerRegistry)

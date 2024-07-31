@@ -1,15 +1,15 @@
 ﻿#pragma once
-#include "Base/System.h"
+#include "Base/Singleton.h"
 #include "PeerListener.h"
 
-class CListenSystem : public CSystem
+class CListenSystem : public CSingleton<CListenSystem>
 {
-public:
-	CListenSystem();
-	virtual ~CListenSystem();
+	SINGLETON_FOUNDATION(CListenSystem)
 
+public:
 	void Init(CPeerListener* listener);
 	void Start();
+
 private:
 	CPeerListener* m_Listener;
 };

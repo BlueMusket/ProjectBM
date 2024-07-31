@@ -183,7 +183,6 @@
     <ClInclude Include="PacketBase.h" />
     <ClInclude Include="PacketHandler.h" />
     <ClInclude Include="PacketReader.h" />
-    <ClInclude Include="PacketRegistry.h" />
     <ClInclude Include="PacketWriter.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Peer.h" />
@@ -211,7 +210,6 @@
     <ClCompile Include="PacketBase.cpp" />
     <ClCompile Include="PacketHandler.cpp" />
     <ClCompile Include="PacketReader.cpp" />
-    <ClCompile Include="PacketRegistry.cpp" />
     <ClCompile Include="PacketWriter.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

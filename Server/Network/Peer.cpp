@@ -8,7 +8,7 @@
 #include "PeerFacade.h"
 
 
-std::atomic<int> CPeer::s_InstanceCount = 0;
+CAtomic<int> CPeer::s_InstanceCount = 0;
 
 namespace
 {	
@@ -21,25 +21,19 @@ namespace
 
 CPeer::CPeer()
 	: m_Id(GetNextId())
-	, m_RefCount(0)
-{
-	// 각 요소를 0으로 초기화
-	for (auto& refCount : m_RefCountArray) 
 	{
-		refCount.Store(0);
-	}
 
 	InsertComponent<CAsyncTcpComponent>();
 	InsertComponent<CMarshalerComponent>();
 
 	m_SendPolicy = New(CSendPolicy);
 
-	s_InstanceCount.fetch_add(1);
+	s_InstanceCount.Increase();
 }
 
 CPeer::~CPeer()
 {
-	s_InstanceCount.fetch_add(-1);
+	s_InstanceCount.Decrease();
 }
 
 void CPeer::OnReceiveEvent(bool result, int ioByteSize, CAsyncTcpEvent* tcpEvent)
@@ -73,6 +67,8 @@ void CPeer::OnReceiveEvent(bool result, int ioByteSize, CAsyncTcpEvent* tcpEvent
 	else
 	{
 		CPeerFacade::Disconnected(this);
+
+		return;
 	}
 	
 	CAsyncTcpComponent* tcpComponent = GetComponent<CAsyncTcpComponent>();
@@ -130,34 +126,4 @@ void CPeer::Disconnect()
 PeerId_t CPeer::GetId() const
 {
 	return m_Id;
-}
-
-/// <summary>
-/// 특정 타입의 참조 카운트를 증가시킵니다.
-/// </summary>
-/// <param name="type"> 참조 타입 </param>
-void CPeer::IncreaseRefCount(PeerRefType type)
-{
-	m_RefCountArray[type].Increase();
-	m_RefCount.Increase();
-}
-
-/// <summary>
-/// 특정 타입의 참조 카운트를 감소시킵니다.
-/// </summary>
-/// <param name="type"> 참조 타입 </param>
-void CPeer::DecreaseRefCount(PeerRefType type)
-{
-	m_RefCountArray[type].Decrease();
-	m_RefCount.Decrease(1);
-}
-
-/// <summary>
-/// 특정 타입의 참조 카운트를 가져옵니다.
-/// </summary>
-/// <param name="type"> 참조 타입 </param>
-/// <returns> 참조 카운트 </returns>
-int CPeer::GetRefCount(PeerRefType type/* = PEER_REF_TYPE_MAX*/) const
-{
-	return PEER_REF_TYPE_MAX == type ? m_RefCount.Load() : m_RefCountArray[type].Load();
 }

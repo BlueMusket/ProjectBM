@@ -184,7 +184,6 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="ObjectRecycler.h" />
     <ClInclude Include="Singleton.h" />
-    <ClInclude Include="System.h" />
     <ClInclude Include="Task.h" />
     <ClInclude Include="TaskComponent.h" />
     <ClInclude Include="Thread.h" />
@@ -212,7 +211,6 @@
     </ClCompile>
     <ClCompile Include="ObjectRecycler.cpp" />
     <ClCompile Include="Singleton.cpp" />
-    <ClCompile Include="System.cpp" />
     <ClCompile Include="Task.cpp" />
     <ClCompile Include="TaskComponent.cpp" />
     <ClCompile Include="Thread.cpp" />
