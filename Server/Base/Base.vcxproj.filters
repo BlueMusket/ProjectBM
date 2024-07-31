@@ -98,6 +98,7 @@
     <ClInclude Include="Time.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="Genaric.h" />
+    <ClInclude Include="RecyclerThread.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -158,6 +159,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Genaric.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="RecyclerThread.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

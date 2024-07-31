@@ -173,6 +173,7 @@
     <ClInclude Include="ServerListener.h" />
     <ClInclude Include="ServerPeer.h" />
     <ClInclude Include="TimerShard.h" />
+    <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AsyncTimerEvent.cpp" />
@@ -188,6 +189,7 @@
     <ClCompile Include="ServerListener.cpp" />
     <ClCompile Include="ServerPeer.cpp" />
     <ClCompile Include="TimerShard.cpp" />
+    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Base\Base.vcxproj">

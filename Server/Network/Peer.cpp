@@ -22,7 +22,6 @@ namespace
 CPeer::CPeer()
 	: m_Id(GetNextId())
 	, m_RefCount(0)
-	, m_Self(nullptr)
 {
 	// 각 요소를 0으로 초기화
 	for (auto& refCount : m_RefCountArray) 
@@ -36,14 +35,11 @@ CPeer::CPeer()
 	m_SendPolicy = New(CSendPolicy);
 
 	s_InstanceCount.fetch_add(1);
-
-	m_Self = CPeerPtr(this, CObject::SafeDelete);
 }
 
 CPeer::~CPeer()
 {
 	s_InstanceCount.fetch_add(-1);
-	m_Self.reset();
 }
 
 void CPeer::OnReceiveEvent(bool result, int ioByteSize, CAsyncTcpEvent* tcpEvent)
@@ -164,13 +160,4 @@ void CPeer::DecreaseRefCount(PeerRefType type)
 int CPeer::GetRefCount(PeerRefType type/* = PEER_REF_TYPE_MAX*/) const
 {
 	return PEER_REF_TYPE_MAX == type ? m_RefCount.Load() : m_RefCountArray[type].Load();
-}
-
-/// <summary>
-/// 자신에 대한 shared_ptr를 반환합니다.
-/// </summary>
-/// <returns> shared_ptr로 된 자신 </returns>
-CPeerPtr CPeer::GetSelf()
-{
-	return m_Self;
 }

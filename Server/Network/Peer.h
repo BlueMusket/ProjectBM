@@ -17,7 +17,6 @@ public:
 
 private:
 	PeerId_t m_Id; ///< 피어 ID
-	CPeerPtr m_Self; ///< 자신의 Shared
 	std::array<CAtomic<int>, PEER_REF_TYPE_MAX> m_RefCountArray; ///< 참조 카운트 배열
 	CAtomic<int> m_RefCount; ///< 전체 참조 카운트
 
@@ -74,12 +73,6 @@ public:
 	/// <param name="type"> 참조 타입 </param>
 	/// <returns> 참조 카운트 </returns>
 	int GetRefCount(PeerRefType type = PEER_REF_TYPE_MAX) const;
-
-	/// <summary>
-	 /// 자신에 대한 shared_ptr를 반환합니다.
-	 /// </summary>
-	 /// <returns> shared_ptr로 된 자신 </returns>
-	CPeerPtr GetSelf();
 
 private:
 	static std::atomic<int> s_InstanceCount; ///< Peer의 수
