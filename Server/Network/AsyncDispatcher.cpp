@@ -5,6 +5,39 @@
 #include "Socket.h"
 #include "PeerFacade.h"
 
+class CAsyncDispatcher::CIocpThread : public CThread
+{
+public:
+	CIocpThread() : CThread() {}
+	~CIocpThread() {}
+
+public:
+	virtual void Execute()
+	{
+		CAsyncEventSink* sink = nullptr;
+		CAsyncEvent::Tag* tag = nullptr;
+		DWORD ioByteSize = 0;
+
+		bool result = g_AsyncDispatcher->Dequeue(
+			reinterpret_cast<ULONG_PTR*>(&sink)
+			, reinterpret_cast<LPOVERLAPPED*>(&tag)
+			, ioByteSize);
+
+		const DWORD lastError = GetLastError();
+		if (nullptr != tag && (0 == lastError || ERROR_IO_PENDING == lastError))
+		{
+			tag->m_Owner->Execute(result, ioByteSize, sink);
+		}
+		else
+		{
+			CPeerFacade::Disconnected(sink);
+		}
+	}
+
+	virtual const wchar_t* GetName() { return L"Iocp Thread"; }
+};
+
+
 CAsyncDispatcher::CAsyncDispatcher()
 {
 	m_Iocp = New(CIocp);
@@ -51,38 +84,4 @@ bool CAsyncDispatcher::Enqueue(CAsyncEventSink* sink, CAsyncEvent::Tag* tag)
 bool CAsyncDispatcher::Dequeue(ULONG_PTR* sink, LPOVERLAPPED* tag, DWORD& ioByte)
 {
 	return GetQueuedCompletionStatus(m_Iocp->GetHandle(), &ioByte, sink, tag, INFINITE);
-}
-
-
-CAsyncDispatcher::CIocpThread::CIocpThread()
-{
-}
-
-CAsyncDispatcher::CIocpThread::~CIocpThread()
-{
-}
-
-void CAsyncDispatcher::CIocpThread::Run()
-{
-	while (true)
-	{
-		CAsyncEventSink* sink = nullptr;
-		CAsyncEvent::Tag* tag = nullptr;
-		DWORD ioByteSize = 0;
-
-		bool result = g_AsyncDispatcher->Dequeue(
-												  reinterpret_cast<ULONG_PTR*>(&sink)
-												, reinterpret_cast<LPOVERLAPPED*>(&tag)
-												, ioByteSize);
-
-		const DWORD lastError = GetLastError();
-		if (nullptr != tag && (0 == lastError || ERROR_IO_PENDING == lastError))
-		{
-			tag->m_Owner->Execute(result, ioByteSize, sink);
-		}
-		else
-		{
-			CPeerFacade::Disconnected(sink);
-		}
-	}
 }

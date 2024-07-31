@@ -18,15 +18,20 @@ class CThread
 	};
 
 public:
-	CThread();
+	CThread(Milli_t waitTick = 0);
 	virtual ~CThread();
 
 	void Init();
 	void Start();
 	void Join();
-	virtual void Run() = 0;
+	virtual Milli_t CalculateWaitTick();
+	virtual void Execute() = 0;
+	void Run();
 	virtual const wchar_t* GetName() { return L"Default Thread"; }
 private:
 	std::thread m_Thread;
+
+	Milli_t m_StartTick;
+	Milli_t m_WaitTick;
 };
 

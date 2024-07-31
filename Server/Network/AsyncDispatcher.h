@@ -24,19 +24,10 @@ public:
 	bool Dequeue(ULONG_PTR* sink, LPOVERLAPPED* tag, DWORD& ioByte);
 
 private:
-	class CIocpThread : public CThread
-	{
-	public:
-		CIocpThread();
-		~CIocpThread();
-
-	public:
-		virtual void Run();
-		virtual const wchar_t* GetName() { return L"Iocp Thread"; }
-	};
-
 private:
 	CIocp* m_Iocp;
+
+	class CIocpThread;
 	std::vector<CIocpThread*> m_ThreadList;
 };
 

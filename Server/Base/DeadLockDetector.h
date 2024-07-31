@@ -19,3 +19,5 @@ public:
 
     void LockReleased(const void* lockAddress);
 };
+
+#define g_DeadLockDetector CSingleton<CDeadLockDetector>::GetInstance()

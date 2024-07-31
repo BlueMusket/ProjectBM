@@ -1,4 +1,5 @@
 #include "Object.h"
+#include "Base/ObjectRecycler.h"
 
 CObject::CObject()
 	: m_IsDeleted(false)
@@ -28,12 +29,5 @@ void CObject::ReleaseSelf()
 
 void CObject::SafeDelete(CObject* object)
 {
-	if (false == object->CanDelete())
-	{
-
-	}
-	else
-	{
-		delete object;
-	}
+	g_ObjectRecycler->Enqueue(object);
 }

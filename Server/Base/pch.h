@@ -37,13 +37,14 @@
 #include "tbb/concurrent_priority_queue.h"
 
 // 커스텀 헤더
-#include "Genaric.h"
-#include "MemoryUtil.h"
-#include "Lock.h"
-#include "BitBase.h"
-#include "Thread.h"
-#include "Task.h"
-#include "Atomic.h"
-#include "Delegate.h"
 #include "Time.h"
 #include "Math.h"
+#include "Genaric.h"
+#include "Lock.h"
+#include "BitBase.h"
+#include "Atomic.h"
+#include "Delegate.h"
+#include "MemoryUtil.h"
+
+#include "Thread.h"
+#include "Task.h"
