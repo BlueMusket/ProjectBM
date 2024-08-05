@@ -96,6 +96,7 @@
     <ClInclude Include="Math.h" />
     <ClInclude Include="Genaric.h" />
     <ClInclude Include="ObjectRecycler.h" />
+    <ClInclude Include="Pool.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -156,6 +157,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="ObjectRecycler.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Pool.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

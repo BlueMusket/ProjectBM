@@ -1,11 +1,16 @@
 ﻿#pragma once
 #include "AsyncEvent.h"
 
+
 class CSocket;
 class CAsyncEventSink;
 class CSendPolicy;
 class CAsyncTcpEvent : public CAsyncEvent
 {
+public:
+	static CAsyncTcpEvent* Alloc();
+	static void Dealloc(CAsyncTcpEvent* tcpEvent);
+
 public:
 	enum class EventType
 	{
@@ -16,8 +21,23 @@ public:
 		, Disconnect
 		, Count
 	};
+
+private:
+	CSocket* m_Socket;
+	EventType m_Type;
+
+	uint8_t* m_Buffer;
+
+	// event가 다루는 버퍼의 최대 사이즈
+	int m_MaxBufferSize;
+
+	WSABUF m_WsaBuffer;
+
+	// event가 진행중인 크기
+	int m_ProceedingSize;
+
 public:
-	CAsyncTcpEvent(const EventType type);
+	CAsyncTcpEvent(const EventType type, int bufferSize);
 	virtual ~CAsyncTcpEvent();
 
 public:
@@ -37,18 +57,5 @@ public:
 
 	void CleanBuffer();
 	WSABUF* GetWsaBuffer() { return &m_WsaBuffer; };
-	
-private:
-	CSocket* m_Socket;
-	EventType m_Type;
 
-	uint8_t* m_Buffer;
-
-	// event가 다루는 버퍼의 최대 사이즈
-	int m_MaxBufferSize;
-
-	WSABUF m_WsaBuffer;
-
-	// event가 진행중인 크기
-	int m_ProceedingSize;
 };

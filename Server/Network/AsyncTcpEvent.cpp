@@ -4,12 +4,21 @@
 
 #define MAX_PACKET_SIZE 1024
 
-CAsyncTcpEvent::CAsyncTcpEvent(const EventType type)
+CAsyncTcpEvent* CAsyncTcpEvent::Alloc()
+{
+	return nullptr;
+}
+
+void CAsyncTcpEvent::Dealloc(CAsyncTcpEvent* tcpEvent)
+{
+}
+
+CAsyncTcpEvent::CAsyncTcpEvent(const EventType type, int bufferSize)
 	: m_Type(type)
 	, m_ProceedingSize(0)
 {
-	m_MaxBufferSize = MAX_PACKET_SIZE;
-	m_Buffer = new uint8_t[m_MaxBufferSize]; // 일단 이렇게
+	m_MaxBufferSize = bufferSize;
+	m_Buffer = new uint8_t[m_MaxBufferSize];
 	ZeroMemory(&m_WsaBuffer, sizeof(m_WsaBuffer));
 }
 
