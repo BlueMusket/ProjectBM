@@ -4,7 +4,7 @@
 
 #define MAX_PACKET_SIZE 1024
 
-CAsyncTcpEvent* CAsyncTcpEvent::Alloc()
+CAsyncTcpEvent* CAsyncTcpEvent::Alloc(int bufferSize)
 {
 	return nullptr;
 }

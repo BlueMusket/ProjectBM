@@ -33,6 +33,9 @@
     <Filter Include="Atomic">
       <UniqueIdentifier>{758f8c7e-87e8-49b6-90d0-8fc48b5ff77a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Time">
+      <UniqueIdentifier>{03db5bba-0a51-4fd7-b985-2d59039f3ff6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -92,11 +95,13 @@
       <Filter>Lock</Filter>
     </ClInclude>
     <ClInclude Include="Object.h" />
-    <ClInclude Include="Time.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="Genaric.h" />
     <ClInclude Include="ObjectRecycler.h" />
     <ClInclude Include="Pool.h" />
+    <ClInclude Include="Time.h">
+      <Filter>Time</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -147,9 +152,6 @@
     <ClCompile Include="Object.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Math.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -161,6 +163,9 @@
     </ClCompile>
     <ClCompile Include="Pool.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Time</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

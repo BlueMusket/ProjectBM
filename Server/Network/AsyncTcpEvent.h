@@ -8,7 +8,7 @@ class CSendPolicy;
 class CAsyncTcpEvent : public CAsyncEvent
 {
 public:
-	static CAsyncTcpEvent* Alloc();
+	static CAsyncTcpEvent* Alloc(int bufferSize);
 	static void Dealloc(CAsyncTcpEvent* tcpEvent);
 
 public:

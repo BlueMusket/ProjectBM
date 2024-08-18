@@ -123,6 +123,9 @@
     <ClInclude Include="PeerDef.h">
       <Filter>Peer</Filter>
     </ClInclude>
+    <ClInclude Include="AsyncTcpEventPool.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -196,6 +199,9 @@
     </ClCompile>
     <ClCompile Include="PeerRegister.cpp">
       <Filter>Peer</Filter>
+    </ClCompile>
+    <ClCompile Include="AsyncTcpEventPool.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

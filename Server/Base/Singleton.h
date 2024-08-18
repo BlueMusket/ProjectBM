@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <mutex>
 
 template<typename T>
 class CSingleton
@@ -9,13 +10,16 @@ protected:
 public:
 	static T* GetInstance()
 	{
-		static T* instance;
-		if (nullptr == instance)
-		{
-			instance = new T;
-		}
+        static std::once_flag flag;
+        static T* instance = nullptr;
 
-		return instance;
+        // threadSafe한 객체 생성
+        std::call_once(flag, []()
+        {
+            instance = new T;
+        });
+
+        return instance;
 	}
 };
 

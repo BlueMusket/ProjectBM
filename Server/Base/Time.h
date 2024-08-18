@@ -1,12 +1,14 @@
 #pragma once
 #include <chrono>
 #include <ctime>
+#include <sstream>
+#include <iomanip>
 
 using Milli_t = long long;
 static const Milli_t INVALID_TIME = -1;
 static const Milli_t INFINITE_TIME = LLONG_MAX;
 
-namespace Time
+namespace Tick
 {
     /// <summary>
     /// 현재 시간을 밀리초 단위로 반환합니다.
@@ -42,3 +44,38 @@ namespace Time
     /// <returns>주어진 시점이 아직 오지 않았다면 true, 그렇지 않다면 false를 반환합니다.</returns>
     bool IsFeature(Milli_t tick);
 }
+
+
+class CTime
+{
+public:
+    CTime(bool isUTC = false);
+    CTime(const SYSTEMTIME& st, bool isUTC);
+
+    bool IsUTC() const;
+    void SetToUTC();
+    void SetToLocal();
+
+    void AddYears(int years);
+    void AddMonths(int months);
+    void AddDays(int days);
+    void AddHours(int hours);
+    void AddMinutes(int minutes);
+    void AddSeconds(int seconds);
+    void AddMilliseconds(int milliseconds);
+
+    std::string ToString(const std::string& format) const;
+    ULONGLONG ToULONGLONG() const;
+    static CTime FromULONGLONG(ULONGLONG value, bool isUTC);
+    static CTime FromTickCount64(bool asUTC);
+    ULONGLONG ToTickCount64() const;
+
+private:
+    ULONGLONG m_time; // 100-nanosecond intervals since January 1, 1601 (UTC)
+    bool m_isUTC;
+
+    void NormalizeTime();
+    static ULONGLONG GetSystemStartTime();
+    static ULONGLONG SystemTimeToULONGLONG(const SYSTEMTIME& st);
+    static void ULONGLONGToSystemTime(ULONGLONG time, SYSTEMTIME& st);
+};
