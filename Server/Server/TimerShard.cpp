@@ -3,7 +3,7 @@
 
 
 CTimerShard::CTimerShard()
-    : m_Index(-1)
+    : m_Index(0)
     , m_EventArray()
     , m_PushEventArray()
 {
@@ -35,7 +35,7 @@ void CTimerShard::HeartBeat(Milli_t now)
     // 지금 호출이 필요한 timer enqueue
     static int eventArraySize = (int)m_EventArray.size();
 
-    int index = ++m_Index;
+    int index = m_Index.Increase();
     index = index % eventArraySize;
 
     CAsyncTimerEvent* timerEvent = nullptr;

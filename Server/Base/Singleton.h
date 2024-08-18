@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include <mutex>
+#include <xcall_once.h>
 
 template<typename T>
 class CSingleton

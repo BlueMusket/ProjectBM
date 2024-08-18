@@ -2,9 +2,11 @@
 
 #include "Network/NetworkAppManager.h"
 
-class CServerAppManager : public CNetworkAppManager
+class CServerAppManager : public CSingleton<CServerAppManager>
 {
+SINGLETON_FOUNDATION(CServerAppManager)
+
 public:
-	virtual bool Setup();
+	bool Setup();
 };
 

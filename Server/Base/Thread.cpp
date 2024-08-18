@@ -45,7 +45,7 @@ void CThread::Run()
 
 		// 너무 길면 로그
 
-		Milli_t waitTick = Math::Min(CalculateWaitTick() - duration , (Milli_t)0);
+		Milli_t waitTick = Math::Max(CalculateWaitTick() - duration , (Milli_t)0);
 
 		Sleep((DWORD)waitTick);
 	}

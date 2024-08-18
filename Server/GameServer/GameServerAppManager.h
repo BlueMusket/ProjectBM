@@ -2,9 +2,10 @@
 
 #include "Server/ServerAppManager.h"
 
-class CGameServerAppManager : public CServerAppManager
+class CGameServerAppManager : public CSingleton<CGameServerAppManager>
 {
 public:
-	virtual bool Setup() override;
+	bool Setup();
 };
 
+#define g_GameServerAppManager CSingleton<CGameServerAppManager>::GetInstance()

@@ -61,6 +61,10 @@ CObjectRecycler::~CObjectRecycler()
 void CObjectRecycler::Start()
 {
 	m_Thread->Init();
+
+	m_Thread->Start();
+
+	// m_Thread->Join();
 }
 
 void CObjectRecycler::Enqueue(CObject* object)

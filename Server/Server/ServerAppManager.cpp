@@ -1,12 +1,22 @@
 ﻿#include "ServerAppManager.h"
 #include "Network/AsyncDispatcher.h"
 #include "Network/ListenSystem.h"
+#include "Network/Socket.h"
 #include "ServerListener.h"
 #include "Base/ObjectRecycler.h"
 
+CServerAppManager::CServerAppManager()
+{
+}
+
+CServerAppManager::~CServerAppManager()
+{
+
+}
+
 bool CServerAppManager::Setup()
 {
-	bool result = __super::Setup();
+    Network::Setup();
 
     g_AsyncDispatcher->Start();
     //데이터 세팅
@@ -17,5 +27,5 @@ bool CServerAppManager::Setup()
 
     g_ObjectRecycler->Start();
 
-	return result;
+	return true;
 }

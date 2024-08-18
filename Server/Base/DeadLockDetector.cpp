@@ -1,5 +1,15 @@
 #include "DeadLockDetector.h"
 
+
+CDeadLockDetector::CDeadLockDetector()
+{
+}
+
+CDeadLockDetector::~CDeadLockDetector()
+{
+
+}
+
 bool CDeadLockDetector::DetectCycle(const void* currentLock, const void* targetLock, std::unordered_set<const void*>& visited)
 {
 	if (currentLock == targetLock)

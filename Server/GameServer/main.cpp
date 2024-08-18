@@ -1,19 +1,25 @@
-#include "Network/Peer.h"
-#include "Base/Task.h"
-#include "Network/AsyncDispatcher.h"
-#include <iostream>
-#include <vector>
-#include <memory>
-#include "Network/Peer.h"
+#include "GameServerAppManager.h"
+#include "Server/TimerShard.h"
 
 int main()
 {
-	std::shared_ptr<CPeer> same;
+	g_GameServerAppManager->Setup();
 
-	auto newPeer = New(CPeer); // 원본 생성 m_Self가 만들어 지면서 참조 카운트 1
+	// TODO : IsAppTerminated
+	while (true)
+	{
+		Milli_t current = CTime::GetTickCount64();
 
-	newPeer->ReleaseSelf();
-	same = newPeer->GetSelf<CPeer>(); // 원본으로 새로운 SharedPtr을 만들며 참조 카운트 2
+		g_TimerShard->HeartBeat(current);
+
+		Milli_t duration = CTime::GetTickCount64() - current;
+
+		// 너무 길면 로그
+
+		Milli_t waitTick = Math::Max((Milli_t)100 - duration, (Milli_t)0);
+
+		Sleep((DWORD)waitTick);
+	}
 
 	return 0;
 }
