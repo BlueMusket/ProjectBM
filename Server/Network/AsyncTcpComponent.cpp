@@ -6,7 +6,7 @@
 CAsyncTcpComponent::CAsyncTcpComponent(CEntity* owner)
     : CComponent(owner)
 {
-    m_RecvEvent = New(CAsyncTcpEvent, CAsyncTcpEvent::EventType::Receive);
+    m_RecvEvent = New(CAsyncTcpEvent, CAsyncTcpEvent::EventType::Receive, MAX_PACKET_SIZE);
 }
 
 CAsyncTcpComponent::~CAsyncTcpComponent()
@@ -55,7 +55,7 @@ bool CAsyncTcpComponent::Connect(sockaddr_in& addr, CAsyncTcpEvent* connectEvent
 
 void CAsyncTcpComponent::Disconnect()
 {
-    m_Socket->Disconnect(New(CAsyncTcpEvent, CAsyncTcpEvent::EventType::Disconnect));
+    m_Socket->Disconnect(New(CAsyncTcpEvent, CAsyncTcpEvent::EventType::Disconnect, MIN_PACKET_SIZE));
 }
 
 bool CAsyncTcpComponent::Recv()

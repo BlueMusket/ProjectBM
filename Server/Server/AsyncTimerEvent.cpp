@@ -64,7 +64,7 @@ void CAsyncTimerEvent::Execute(bool result, int ioByteSize, CAsyncEventSink* sin
 
 bool CAsyncTimerEvent::CanReadd() const
 {
-    if (Time::IsPast(m_Activation))
+    if (CTime::IsPast(m_Activation))
     {
         return false;
     }

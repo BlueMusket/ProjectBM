@@ -25,8 +25,10 @@ public:
 
 	CAsyncTcpEvent* operator()()
 	{
-		CAsyncTcpEvent* sendEvent = New(CAsyncTcpEvent, CAsyncTcpEvent::EventType::Send);
-		sendEvent->SetBuffer(MakeBuffer());
+		uint8_t* buffer = MakeBuffer();
+
+		CAsyncTcpEvent* sendEvent = New(CAsyncTcpEvent, CAsyncTcpEvent::EventType::Send, sizeof(buffer));
+		sendEvent->SetBuffer(buffer);
 
 		return sendEvent;
 	}

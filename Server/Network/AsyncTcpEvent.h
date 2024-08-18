@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "AsyncEvent.h"
 
-
 class CSocket;
 class CAsyncEventSink;
 class CSendPolicy;

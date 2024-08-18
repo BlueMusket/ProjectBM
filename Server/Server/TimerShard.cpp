@@ -24,7 +24,7 @@ void CTimerShard::PushEvent(CTask* task, CAsyncEventSink* sink, Milli_t delay, M
     CAsyncTimerEvent* newEvent = New(CAsyncTimerEvent);
     newEvent->SetTask(task);
     newEvent->SetSink(sink);
-    newEvent->SetActivation(Time::GetCurrentMilliTick() + delay);
+    newEvent->SetActivation(CTime::GetElapsedTick(delay));
     newEvent->SetExpiration(expiration);
 
     PushEvent(newEvent);

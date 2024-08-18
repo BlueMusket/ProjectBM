@@ -7,5 +7,6 @@
 #pragma once
 #include "Base/pch.h"
 
+#include "PacketDef.h"
 #include "Network/PacketWriter.h"
 #include "Network/PacketReader.h"

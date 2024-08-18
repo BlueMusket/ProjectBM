@@ -1,8 +1,15 @@
 ﻿#include "AsyncTcpEvent.h"
 #include "Socket.h"
 #include "AsyncTcpEventSink.h"
+#include "AsyncTcpEventPool.h"
 
-#define MAX_PACKET_SIZE 1024
+namespace
+{
+	class CAsyncTcpEventPoolImpl
+	{
+
+	};
+}
 
 CAsyncTcpEvent* CAsyncTcpEvent::Alloc(int bufferSize)
 {

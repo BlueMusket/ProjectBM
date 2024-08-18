@@ -12,13 +12,14 @@ public:
         m_Pool.push(item);
     }
 
-    T* Get() 
+    template<typename... Types>
+    T* Get(Types&&... args)
     {
         T* item = nullptr;
 
         if (m_Pool.empty())
         {
-            item = New(T);
+            item = New(T, std::forward<Types>(args)...);
         }
         else
         {
@@ -29,9 +30,9 @@ public:
         return item;
     }
 
-    size_t GetSize() const 
+    int GetSize() const
     {
-        return m_Pool.size();
+        return (int)m_Pool.size();
     }
 };
 
@@ -47,22 +48,22 @@ public:
     {
         m_Pool.push(item);
     }
-
-    T* Get() 
+    template<typename... Types>
+    T* Get(Types&&... args)
     {
         T* item = nullptr;
 
         if (!m_Pool.try_pop(item))
         {
-            item = New(T);
+            item = New(T, std::forward<Types>(args)...);
         }
 
         return item;
     }
 
-    size_t GetSize() const 
+    int GetSize() const
     {
-        return m_Pool.unsafe_size();
+        return (int)m_Pool.unsafe_size();
     }
 };
 
@@ -75,6 +76,7 @@ struct is_pool<CPool<T>> : std::true_type {};
 
 template<typename T>
 struct is_pool<CLockFreePool<T>> : std::true_type {};
+
 
 template<typename T, typename PoolType, int ARRAY_SIZE = 1>
 class CPoolArray
@@ -94,23 +96,26 @@ public:
     {
         int index = m_PutIndex.Increase() % ARRAY_SIZE;
 
+        item->~T();
+
         m_PoolArray[index].Put(item);
     }
 
-    T* Get() 
+    template<typename... Types>
+    T* Get(Types&&... args)
     {
         int index = m_GetIndex.Increase() % ARRAY_SIZE;
 
-        T* item = m_PoolArray[index].Get();
+        T* item = m_PoolArray[index].Get(std::forward<Types>(args)...);
 
-        new (item) T;
+        new (item) T(std::forward<Types>(args)...);
 
         return item;
     }
 
-    size_t GetTotalSize() const 
+    int GetTotalSize() const 
     {
-        size_t total = 0;
+        int total = 0;
         for (const auto& pool : m_PoolArray) 
         {
             total += pool.GetSize();

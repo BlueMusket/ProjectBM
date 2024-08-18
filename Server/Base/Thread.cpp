@@ -37,11 +37,11 @@ void CThread::Run()
 {
 	while (true) 
 	{
-		m_StartTick = Time::GetCurrentMilliTick();
+		m_StartTick = CTime::GetTickCount64();
 
 		Execute();
 
-		Milli_t duration = Time::GetCurrentMilliTick() - m_StartTick;
+		Milli_t duration = CTime::GetTickCount64() - m_StartTick;
 
 		// 너무 길면 로그
 

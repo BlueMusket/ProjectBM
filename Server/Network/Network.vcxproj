@@ -182,6 +182,7 @@
     <ClInclude Include="NetworkAppManager.h" />
     <ClInclude Include="Packet.h" />
     <ClInclude Include="PacketBase.h" />
+    <ClInclude Include="PacketDef.h" />
     <ClInclude Include="PacketHandler.h" />
     <ClInclude Include="PacketReader.h" />
     <ClInclude Include="PacketWriter.h" />
@@ -210,6 +211,7 @@
     <ClCompile Include="NetworkAppManager.cpp" />
     <ClCompile Include="Packet.cpp" />
     <ClCompile Include="PacketBase.cpp" />
+    <ClCompile Include="PacketDef.cpp" />
     <ClCompile Include="PacketHandler.cpp" />
     <ClCompile Include="PacketReader.cpp" />
     <ClCompile Include="PacketWriter.cpp" />
