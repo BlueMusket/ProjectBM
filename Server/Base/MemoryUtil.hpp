@@ -8,4 +8,9 @@ namespace MemoryUtil
 	{
 		return g_MemorySystem->Alloc<T>(std::forward<Types>(args)...);
 	}
+	template<typename T>
+	void Dealloc(T* item)
+	{
+		g_MemorySystem->Dealloc<T>(item);
+	}
 }

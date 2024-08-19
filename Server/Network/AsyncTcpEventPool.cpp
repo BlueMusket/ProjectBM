@@ -1,12 +1,12 @@
 #include "AsyncTcpEventPool.h"
 #include "AsyncTcpEvent.h"
 
-CAsyncTcpEventPool::CAsyncTcpEventPool(int initialSizePerPool)
+CAsyncTcpEventPool::CAsyncTcpEventPool()
 {
     for (int size = MIN_PACKET_SIZE; size <= MAX_PACKET_SIZE; size *= 2)
     {
         m_Pools[size] = new CPoolArray<CAsyncTcpEvent, CPool<CAsyncTcpEvent>, 4>();
-        for (int j = 0; j < initialSizePerPool; ++j)
+        for (int j = 0; j < 25; ++j)
         {
             m_Pools[size]->Put(new CAsyncTcpEvent(CAsyncTcpEvent::EventType::Send, size));
             m_Pools[size]->Put(new CAsyncTcpEvent(CAsyncTcpEvent::EventType::Receive, size));
@@ -34,19 +34,19 @@ int CAsyncTcpEventPool::GetNextPowerOfTwo(int n) const
 
 CAsyncTcpEvent* CAsyncTcpEventPool::Get(CAsyncTcpEvent::EventType type, int bufferSize)
 {
-    int actualSize = GetNextPowerOfTwo(bufferSize);
+    int actualSize = g_AsyncTcpEventPool->GetNextPowerOfTwo(bufferSize);
     if (actualSize > MAX_PACKET_SIZE)
     {
         throw std::out_of_range("Buffer size too large");
     }
-    return m_Pools[actualSize]->Get(type, bufferSize);
+    return g_AsyncTcpEventPool->m_Pools[actualSize]->Get(type, bufferSize);
 }
 
 void CAsyncTcpEventPool::Put(CAsyncTcpEvent* event)
 {
     if (!event) return;
-    auto it = m_Pools.find(event->GetMaxBufferSize());
-    if (it != m_Pools.end())
+    auto it = g_AsyncTcpEventPool->m_Pools.find(event->GetMaxBufferSize());
+    if (it != g_AsyncTcpEventPool->m_Pools.end())
     {
         it->second->Put(event);
     }

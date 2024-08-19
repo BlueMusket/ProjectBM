@@ -4,8 +4,15 @@
 template<typename T>
 class CSingleton
 {
+    friend T;
+
 protected:
-	virtual ~CSingleton() {};
+	CSingleton() = default;
+	virtual ~CSingleton() = default;
+    
+public:
+    CSingleton(const CSingleton&) = delete;
+    CSingleton& operator=(const CSingleton&) = delete;
 
 public:
 	static T* GetInstance()
@@ -25,6 +32,8 @@ public:
 
 #define SINGLETON_FOUNDATION(name)\
 public:\
-name();\
-protected:\
-virtual ~name();
+    name();\
+    virtual ~name();\
+private:\
+    name(const name&) = delete;\
+    name& operator=(const name&) = delete;
