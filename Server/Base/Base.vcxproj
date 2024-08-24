@@ -164,7 +164,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AllocComponent.h" />
     <ClInclude Include="AppManager.h" />
     <ClInclude Include="Atomic.h" />
     <ClInclude Include="BaseDef.h" />
@@ -176,7 +175,6 @@
     <ClInclude Include="Genaric.h" />
     <ClInclude Include="Lock.h" />
     <ClInclude Include="Math.h" />
-    <ClInclude Include="MemoryEntity.h" />
     <ClInclude Include="MemorySystem.h" />
     <ClInclude Include="MemoryUtil.h" />
     <ClInclude Include="MemoryUtil.hpp" />
@@ -191,7 +189,6 @@
     <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AllocComponent.cpp" />
     <ClCompile Include="AppManager.cpp" />
     <ClCompile Include="Atomic.cpp" />
     <ClCompile Include="BitBase.cpp" />
@@ -201,7 +198,6 @@
     <ClCompile Include="Genaric.cpp" />
     <ClCompile Include="Lock.cpp" />
     <ClCompile Include="Math.cpp" />
-    <ClCompile Include="MemoryEntity.cpp" />
     <ClCompile Include="MemorySystem.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="pch.cpp">

@@ -1,6 +1,7 @@
 #pragma once
 #include "Base/Pool.h"
 #include "Base/Singleton.h"
+
 class CAsyncTcpEvent;
 
 /// <summary>
@@ -18,9 +19,19 @@ private:
 public:
     static CAsyncTcpEvent* Get(CAsyncTcpEvent::EventType type, int bufferSize);
     static void Put(CAsyncTcpEvent* event);
-
-    int GetTotalSize() const;
-    void PrintPoolSizes() const;
 };
 
 #define g_AsyncTcpEventPool CSingleton<CAsyncTcpEventPool>::GetInstance()
+
+//template<typename... Types>
+//CAsyncTcpEvent* PoolAlloc(Types&&... args)
+//{
+//    return nullptr;
+//}
+//
+//template<>
+//void PoolDealloc(CAsyncTcpEvent* item)
+//{
+//
+//}
+//

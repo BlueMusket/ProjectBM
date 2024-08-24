@@ -66,12 +66,6 @@
     <ClInclude Include="MemorySystem.h">
       <Filter>Memory</Filter>
     </ClInclude>
-    <ClInclude Include="MemoryEntity.h">
-      <Filter>Memory</Filter>
-    </ClInclude>
-    <ClInclude Include="AllocComponent.h">
-      <Filter>Memory</Filter>
-    </ClInclude>
     <ClInclude Include="Component.h">
       <Filter>ECS</Filter>
     </ClInclude>
@@ -117,12 +111,6 @@
       <Filter>Task</Filter>
     </ClCompile>
     <ClCompile Include="MemorySystem.cpp">
-      <Filter>Memory</Filter>
-    </ClCompile>
-    <ClCompile Include="MemoryEntity.cpp">
-      <Filter>Memory</Filter>
-    </ClCompile>
-    <ClCompile Include="AllocComponent.cpp">
       <Filter>Memory</Filter>
     </ClCompile>
     <ClCompile Include="AppManager.cpp">

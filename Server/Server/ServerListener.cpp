@@ -4,7 +4,7 @@
 #include "Network/AsyncTcpComponent.h"
 #include "Network/AsyncTcpEvent.h"
 #include "Network/Socket.h"
-
+#include "Network/AsyncTcpEventPool.h"
 
 CServerListener::CServerListener()
 {

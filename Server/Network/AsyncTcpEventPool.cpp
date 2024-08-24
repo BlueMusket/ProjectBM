@@ -55,22 +55,3 @@ void CAsyncTcpEventPool::Put(CAsyncTcpEvent* event)
         delete event;  // If we don't have a pool for this size, delete the event
     }
 }
-
-int CAsyncTcpEventPool::GetTotalSize() const
-{
-    int total = 0;
-    for (const auto& pair : m_Pools)
-    {
-        total += pair.second->GetTotalSize();
-    }
-    return total;
-}
-
-void CAsyncTcpEventPool::PrintPoolSizes() const
-{
-    //for (const auto& pair : m_Pools)
-    //{
-    //    std::cout << "Pool for buffer size " << pair.first
-    //        << ": " << pair.second->GetTotalSize() << " events\n";
-    //}
-}

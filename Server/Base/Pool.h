@@ -1,5 +1,4 @@
 #pragma once
-#include "Singleton.h"
 
 template<typename T>
 class CPool
@@ -8,11 +7,19 @@ private:
 	std::queue<T*> m_Pool;
 
 public:
-    void Put(T* item) 
+    template<typename... Types>
+    T* operator()(Types&&... args)
     {
-        item->~T();
-
-        m_Pool.push(item);
+        return Get(std::forward<Types>(args)...);
+    }
+public:
+    void Init(int size)
+    {
+        for (int index = 0; index < size; ++index)
+        {
+            T* item = new T();
+            m_Pool.push(item);
+        }
     }
 
     template<typename... Types>
@@ -22,7 +29,7 @@ public:
 
         if (m_Pool.empty())
         {
-            item = New(T, std::forward<Types>(args)...);
+            item = new T(std::forward<Types>(args)...);
         }
         else
         {
@@ -36,12 +43,18 @@ public:
         return item;
     }
 
+    void Put(T* item) 
+    {
+        item->~T();
+
+        m_Pool.push(item);
+    }
+
     int GetSize() const
     {
         return (int)m_Pool.size();
     }
 };
-
 
 template<typename T>
 class CLockFreePool
@@ -50,12 +63,23 @@ private:
 	tbb::concurrent_queue<T*> m_Pool;
 
 public:
-    void Put(T* item) 
+    template<typename... Types>
+    T* operator()(Types&&... args)
     {
-        item->~T();
-
-        m_Pool.push(item);
+        return Get(std::forward<Types>(args)...);
     }
+
+public:
+
+    void Init(int size)
+    {
+        for (int index = 0; index < size; ++index)
+        {
+            T* item = new T();
+            m_Pool.push(item);
+        }
+    }
+
     template<typename... Types>
     T* Get(Types&&... args)
     {
@@ -63,7 +87,7 @@ public:
 
         if (!m_Pool.try_pop(item))
         {
-            item = New(T, std::forward<Types>(args)...);
+            item = new T(std::forward<Types>(args)...);
         }
         else
         {
@@ -71,6 +95,13 @@ public:
         }
 
         return item;
+    }
+
+    void Put(T* item)
+    {
+        item->~T();
+
+        m_Pool.push(item);
     }
 
     int GetSize() const
@@ -91,7 +122,7 @@ struct Is_Pool<CLockFreePool<T>> : std::true_type {};
 
 
 template<typename T, typename PoolType, int ARRAY_SIZE = 1>
-class CPoolArray : CSingleton<CPoolArray<T, PoolType, ARRAY_SIZE>>
+class CPoolArray
 {
     static_assert(Is_Pool<PoolType>::value, "PoolType must be either CPool or CLockFreePool");
 
@@ -101,24 +132,39 @@ private:
 
 	std::array<PoolType, ARRAY_SIZE> m_PoolArray;
 
-private:
+public:
     CPoolArray() : m_GetIndex(0), m_PutIndex(0) {}
 
 public:
-
-    static void Put(T* item) 
+    template<typename... Types>
+    T* operator()(Types&&... args)
     {
-        int index = CPoolArray::GetInstance()->m_PutIndex.Increase() % ARRAY_SIZE;
+        return Get(std::forward<Types>(args)...);
+    }
 
-        CPoolArray::GetInstance()->m_PoolArray[index].Put(item);
+public:
+
+    void Init(int size)
+    {
+        for (int index = 0; index < ARRAY_SIZE; ++index)
+        {
+            m_PoolArray[index].Init(size);
+        }
+    }
+
+    void Put(T* item) 
+    {
+        int index = m_PutIndex.Increase() % ARRAY_SIZE;
+
+        m_PoolArray[index].Put(item);
     }
 
     template<typename... Types>
-    static T* Get(Types&&... args)
+    T* Get(Types&&... args)
     {
-        int index = CPoolArray::GetInstance()->m_GetIndex.Increase() % ARRAY_SIZE;
+        int index = m_GetIndex.Increase() % ARRAY_SIZE;
 
-        T* item = CPoolArray::GetInstance()->m_PoolArray[index].Get(std::forward<Types>(args)...);
+        T* item = m_PoolArray[index].Get(std::forward<Types>(args)...);
 
         return item;
     }
@@ -149,28 +195,18 @@ public:
 template<typename T>
 struct Is_UsePool : std::false_type {};
 
-class CAsyncTcpEvent;
-template<>
-struct Is_UsePool<CAsyncTcpEvent> : std::true_type {};
-
-
-// Pool을 사용하는 클래스를 위한 type 어시스트
 template<typename T>
-struct PoolClassName
+class ObjectPool 
 {
-    using type = void;  // 기본값으로 void 사용
-};
+public:
+    template<typename... Types>
+    static T* Allocate(Types&&... args)
+    {
+        return new T(std::forward<Types>(args)...);
+    }
 
-// Packet의 특수한 성격 때문에 이렇게 만든다 실제 예제는 아래
-class CAsyncTcpEventPool;
-template<>
-struct PoolClassName<CAsyncTcpEvent>
-{
-    using type = CAsyncTcpEventPool;
+    static void Deallocate(T* item) 
+    {
+        delete item;
+    }
 };
-
-//// CAsyncTcpEventPool을 특수화
-//using CAsyncTcpEventPool = CPool<CAsyncTcpEvent>;
-//
-//template<>
-//struct Is_UsePool<CAsyncTcpEvent> : std::true_type {};

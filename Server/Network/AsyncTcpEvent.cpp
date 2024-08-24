@@ -1,24 +1,8 @@
 ﻿#include "AsyncTcpEvent.h"
 #include "Socket.h"
 #include "AsyncTcpEventSink.h"
-#include "AsyncTcpEventPool.h"
 
-namespace
-{
-	class CAsyncTcpEventPoolImpl
-	{
-
-	};
-}
-
-CAsyncTcpEvent* CAsyncTcpEvent::Alloc(int bufferSize)
-{
-	return nullptr;
-}
-
-void CAsyncTcpEvent::Dealloc(CAsyncTcpEvent* tcpEvent)
-{
-}
+std::map<int, CPoolArray<CAsyncTcpEvent, CLockFreePool<CAsyncTcpEvent>, 4>*> ObjectPool<CAsyncTcpEvent>::m_Pools;
 
 CAsyncTcpEvent::CAsyncTcpEvent(const EventType type, int bufferSize)
 	: m_Type(type)
