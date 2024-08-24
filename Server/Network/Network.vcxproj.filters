@@ -129,6 +129,9 @@
     <ClInclude Include="PacketDef.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="SendBroker.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -207,6 +210,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="PacketDef.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SendBroker.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

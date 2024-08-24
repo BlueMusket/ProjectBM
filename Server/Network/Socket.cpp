@@ -70,6 +70,9 @@ namespace Network
 
 
 CSocket::CSocket()
+	: m_Handle()
+	, m_Addr()
+	, m_RWLock()
 {
 	m_Handle = WSASocket(AF_INET, SOCK_STREAM, 0, NULL, 0, WSA_FLAG_OVERLAPPED);	// windows
 
@@ -92,7 +95,7 @@ CSocket::CSocket()
 
 CSocket::~CSocket()
 {
-	::closesocket(m_Handle);
+	Close();
 }
 
 SOCKET& CSocket::GetHandle()
@@ -102,14 +105,20 @@ SOCKET& CSocket::GetHandle()
 
 void CSocket::Close()
 {
-	::closesocket(m_Handle);
+	{
+		CWriteScopeLock lock(&m_RWLock);
+		::closesocket(m_Handle);
+	}
 }
 
 bool CSocket::Listen()
 {
-	if (SOCKET_ERROR == ::listen(GetHandle(), SOMAXCONN))
 	{
-		return false;
+		CReadScopeLock lock(&m_RWLock);
+		if (SOCKET_ERROR == ::listen(GetHandle(), SOMAXCONN))
+		{
+			return false;
+		}
 	}
 
 	return true;
@@ -117,10 +126,13 @@ bool CSocket::Listen()
 
 bool CSocket::Bind(sockaddr_in& addr)
 {
-	if (SOCKET_ERROR == ::bind(GetHandle(), reinterpret_cast<sockaddr*>(&addr), sizeof(addr)))
 	{
-		//Logger::getInstance()->log(Logger::Level::WARNING, "Error_Bind");
-		return false;
+		CReadScopeLock lock(&m_RWLock);
+		if (SOCKET_ERROR == ::bind(GetHandle(), reinterpret_cast<sockaddr*>(&addr), sizeof(addr)))
+		{
+			//Logger::getInstance()->log(Logger::Level::WARNING, "Error_Bind");
+			return false;
+		}
 	}
 	return true;
 }
@@ -129,9 +141,13 @@ bool CSocket::Accept(CSocket* newSocket, CAsyncTcpEvent* acceptEvent)
 {
 	DWORD outputBuffer{ 0 };
 	DWORD receivedByte{ 0 };
-	const bool result = ::AcceptEx(GetHandle(), newSocket->GetHandle(), (PVOID)&outputBuffer,
-		0, sizeof(sockaddr_in) + 16, sizeof(sockaddr_in) + 16, &receivedByte, (LPOVERLAPPED)(&acceptEvent->GetTag()));
 
+	bool result = false;
+	{
+		CReadScopeLock lock(&m_RWLock);
+		result = ::AcceptEx(GetHandle(), newSocket->GetHandle(), (PVOID)&outputBuffer,
+			0, sizeof(sockaddr_in) + 16, sizeof(sockaddr_in) + 16, &receivedByte, (LPOVERLAPPED)(&acceptEvent->GetTag()));
+	}
 	/*if (nullptr == Network::lpfnAcceptEx)
 	{
 		if (false == Network::LinkSocketFunc(WSAID_ACCEPTEX, &Network::lpfnAcceptEx, GetHandle()))
@@ -158,16 +174,24 @@ bool CSocket::Connect(sockaddr_in& addr, CAsyncTcpEvent* connectEvent)
 	wsaBuffer->buf = (char*)connectEvent->GetBuffer();
 	wsaBuffer->len = sizeof(connectEvent->GetBuffer());
 
+	bool result = false;
+	{
+		CReadScopeLock lock(&m_RWLock);
+		result = ::connect(GetHandle(), reinterpret_cast<SOCKADDR*>(&addr), sizeof(addr));
+	}
 
-	const bool result = ::connect(GetHandle(), reinterpret_cast<SOCKADDR*>(&addr), sizeof(addr));
-	
 	return result;
 }
 
 bool CSocket::Disconnect(CAsyncTcpEvent* disconnectEvent)
 {
 	// disconnectEvent를 받아도 ioByte가 0이라 Disconnect를 또 보낸다. Status로 분기 처리를 해줘야할듯
-	const bool result = Network::lpfnDisconnectEx(GetHandle(), NULL, 0, 0);
+
+	bool result = false;
+	{
+		CReadScopeLock lock(&m_RWLock);
+		result = Network::lpfnDisconnectEx(GetHandle(), NULL, 0, 0);
+	}
 
 	return result;
 }
@@ -183,7 +207,10 @@ bool CSocket::Recv(CAsyncTcpEvent* recvEvent)
 	wsaBuffer->buf = (char*)recvEvent->GetBuffer() + recvEvent->GetProceedingSize();
 	wsaBuffer->len = recvEvent->GetMaxBufferSize() - recvEvent->GetProceedingSize();
 	
-	WSARecv(GetHandle(), wsaBuffer, 1, &recvBytes, &flags, &recvEvent->GetTag(), NULL);
+	{
+		CReadScopeLock lock(&m_RWLock);
+		WSARecv(GetHandle(), wsaBuffer, 1, &recvBytes, &flags, &recvEvent->GetTag(), NULL);
+	}
 
 	return WSA_IO_PENDING != GetLastError();
 }
@@ -197,7 +224,10 @@ bool CSocket::Send(CAsyncTcpEvent* sendEvent)
 	wsaBuffer->buf = (char*)sendEvent->GetBuffer();
 	wsaBuffer->len = sendEvent->GetMaxBufferSize();
 
-	WSASend(GetHandle(), wsaBuffer, 1, &sendBytes, flags, &sendEvent->GetTag(), NULL);
+	{
+		CReadScopeLock lock(&m_RWLock);
+		WSASend(GetHandle(), wsaBuffer, 1, &sendBytes, flags, &sendEvent->GetTag(), NULL);
+	}
 
 	return WSA_IO_PENDING != GetLastError();
 }
@@ -209,9 +239,12 @@ bool CSocket::OnAccepted(CAsyncTcpEvent* acceptEvent)
 
 	int localLen = 0;
 	int remoteLen = 0;
-	
-	Network::lpfnGetAcceptExSocketAddrs(acceptEvent->GetBuffer(), (sizeof(sockaddr_in) + 16) * 2, sizeof(sockaddr_in) + 16, sizeof(sockaddr_in) + 16
-		, &localAddr, &localLen, &remoteAddr, &remoteLen);
+
+	{
+		CReadScopeLock lock(&m_RWLock);
+		Network::lpfnGetAcceptExSocketAddrs(acceptEvent->GetBuffer(), (sizeof(sockaddr_in) + 16) * 2, sizeof(sockaddr_in) + 16, sizeof(sockaddr_in) + 16
+			, &localAddr, &localLen, &remoteAddr, &remoteLen);
+	}
 
 	return true;
 }

@@ -30,4 +30,5 @@ public:
 private:
 	SOCKET m_Handle; // 소켓 핸들
 	sockaddr m_Addr;
+	CRWLock m_RWLock;
 };
